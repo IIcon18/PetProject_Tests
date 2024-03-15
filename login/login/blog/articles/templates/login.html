@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{{ STATIC_URL }}/static/css/article.css">
+	</head>
+	<body>
+		<div class="content">
+			<h1>Вход</h1>
+			<form method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<p>Имя пользователя</p>
+				<input style="height: 20px; width: 15%;" type="text" name="logininput" placeholder="" value="{{ form.name }}">
+				</br>
+				<p>Пароль</p>
+				<input style="height: 20px; width: 15%;" type="text" name="passinput" placeholder="" value="{{ form.pass }}">
+				</br>
+				<input type="submit" value="Войти">
+			</form>
+			{{ form.errors }}
+		</div>
+	</body>
+</html>
