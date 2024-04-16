@@ -5,18 +5,32 @@
   </head>
   <body>
     <div class="content">
-      <h1>Вход</h1>
+      <h1>Авторизация</h1>
       <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <p>Имя пользователя</p>
+        <p>Имя пользователя(Логин)</p>
         <input style="height: 20px; width: 15%;" type="text" name="logininput" placeholder="" value="{{ form.name }}">
         </br>
         <p>Пароль</p>
         <input style="height: 20px; width: 15%;" type="text" name="passinput" placeholder="" value="{{ form.pass }}">
         </br>
-        <input type="submit" value="Войти">
-      </form>
+        <style>
+        .button {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer
+          }
+        </style>
+        <a href="http://127.0.0.1:8000/account" class="button">Вход</a>
+        </form>
       {{ form.errors }}
     </div>
   </body>
