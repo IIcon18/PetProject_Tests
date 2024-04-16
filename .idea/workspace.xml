@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="63f2477e-0a66-423a-b5a8-7c39374239ac" name="Changes" comment="добавление методички">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pupok/Pupok/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/Pupok/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pupok/main/static/main/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/static/main/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pupok/main/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/templates/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pupok/main/templates/main/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/templates/main/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pupok/main/templates/main/manual.html" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/templates/main/manual.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pupok/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pupok/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
