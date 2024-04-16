@@ -7,3 +7,7 @@ def login(request):
 
 def index(request):
     return render(request, 'main/index.html')
+
+
+def manual(request):
+    return render(request, 'main/manual.html')

@@ -4,69 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63f2477e-0a66-423a-b5a8-7c39374239ac" name="Changes" comment="страница входа">
+    <list default="true" id="63f2477e-0a66-423a-b5a8-7c39374239ac" name="Changes" comment="страница входа + лк">
       <change beforePath="$PROJECT_DIR$/.idea/Project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/.idea/web-app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/static/main/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/templates/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/templates/main/result.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/templates/main/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/main/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/questions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/templates/main/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/questions/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/questions/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/questions/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question_Models/questions/questions/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/.idea/Lab4.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/.idea/lab4.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pupok/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/static/css/article.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/templates/archive.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/templates/article.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/templates/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/templates/preview.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/articles/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/blog/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/blog/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/blog/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/blog/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/blog/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/blog/manage.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +66,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
+        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
       </set>
     </attachedChunks>
   </component>
@@ -149,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710545172936</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="страница входа + лк">
+      <option name="closed" value="true" />
+      <created>1713255356124</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713255356125</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +106,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="страница входа" />
-    <option name="LAST_COMMIT_MESSAGE" value="страница входа" />
+    <MESSAGE value="страница входа + лк" />
+    <option name="LAST_COMMIT_MESSAGE" value="страница входа + лк" />
   </component>
 </project>
