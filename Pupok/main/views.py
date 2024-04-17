@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Articles
+from django.views.generic import DetailView
 
 def materials_home(request):
     materials = Articles.objects.all()
@@ -15,3 +16,8 @@ def index(request):
 
 def manual(request):
     return render(request, 'main/manual.html')
+
+class NewsDetailView(DetailView):
+    model = Articles
+    template_name ='main/details_view.html'
+    context_object_name = 'article'

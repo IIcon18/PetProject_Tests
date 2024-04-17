@@ -8,7 +8,7 @@ class Articles(models.Model):
     full_text = models.TextField('Текст')
 
     def __str__(self):
-        return f':{self.title}'
+        return f':{self.id}'
 
     def get_absolute_url(self):
         return f'/news/{self.id}'
