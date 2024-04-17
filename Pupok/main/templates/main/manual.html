@@ -11,11 +11,13 @@
 </head>
 <body>
     <h1>Методичка</h1>
-    <p>Раздел 1</p>
-    <p>Раздел 2</p>
-    <p>Раздел 3</p>
-    <p>Раздел 4</p>
-    <p>Раздел 5</p>
+    {% for el in materials %}
+        <div class="alert alert-warning">
+        <h3>{{ el.title }}</h3>
+        <p>{{ el.anons }}</p>
+        </div>
+    {% endfor %}
+
     <a href="http://127.0.0.1:8000/account" class="btn btn-warning">Вернуться в личный кабинет</a>
     <a href="http://127.0.0.1:8000" class="btn btn-danger">Выйти из аккаунта</a>
 </body>

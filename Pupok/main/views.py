@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from .models import Articles
 
-# Create your views here.
+def materials_home(request):
+    materials = Articles.objects.all()
+    return render(request, 'main/manual.html',{'materials':materials})
 
 
 def login(request):
