@@ -7,6 +7,7 @@ class Questions(models.Model):
     full_text = models.TextField('Варианты ')
 
     def __str__(self):
-        return self.number
+        return f"{self.number}"
+    
 
 

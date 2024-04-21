@@ -8,9 +8,15 @@
     <title>овощи/фрукты</title>
 </head>
 <body>
+      
 <h1>ФРОНТЫ УЕБАНЫ</h1>
-<p>Да да Именно Фронты</p>
-<p>А Бэки вообще Ахуенные</p>
+      {% for el in tests %}
+            <div class="alert alert-warning">
+            <h3>{{ el.number }}</h3>
+            <p> {{ el.anons }} </p>
+            <p>{{ el.full_text }}</p>
+</div>
+{% endfor %}
  <style>
         .button {
   background-color: #0000FF;
