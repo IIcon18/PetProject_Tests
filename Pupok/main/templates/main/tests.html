@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="tests.css">
 </head>
 <body>
+{% csrf_token %}
 <h1>Тест</h1>
       {% for el in tests %}
             <div class="alert alert-warning">
