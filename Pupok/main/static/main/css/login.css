@@ -1,38 +1,78 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('Pupok/main/static/main/Pictures/bg1.png'); /* Путь к вашему изображению */
+    background-image: url('Pupok/main/static/main/css/bg1.png'); /* Путь к вашему изображению */
     background-size: cover;
     background-position: center;
     margin: 0;
     padding: 0;
 }
+h2{
+    font-family: Arial, sans-serif;
+    transform: translate(5em, 1em);
+    font-size:35px;
 
+}
 header {
     background-color: #cc000a; /* Цвет фона */
     color: #fff; /* Цвет текста */
-    padding: 50px; /* Внутренние отступы */
+    padding: 30px; /* Внутренние отступы */
     text-align: left; /* Выравнивание текста по центру */
 }
 
 h1 {
     margin: 0; /* Убираем отступы вокруг заголовка */
+    transform: translate(2px, 40px);
 }
 
-input[type="text"],
+h4{
+    font-family: Arial, sans-serif;
+    transform: translate(25em, -20px);
+    font-size:15px;
+}
+
 input[type="password"] {
+    transform: translate(2em, 3em);/* Пароль заливка поля*/
     width: 460px;
     padding: 30px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+   background-color: #7C82A2;
+   border: 2px solid transparent;
 }
 
-input[type="text"]:focus,
+input[type="text"]{
+    transform: translate(2em, 1em);/* Логин заливка поля*/
+    width: 460px;
+    padding: 30px;
+    margin-bottom: 10px;
+    background-color: #7C82A2;
+    border: 2px solid transparent;
+ 
+}
+
 input[type="password"]:focus {
-    border-color: #007bff;
+    display: inline-block;
+    background-color: #7C82A2;
+    border: #7C82A2;
     outline: none;
 }
+
+input[type="text"]:focus{
+    display: inline-block;
+    background-color: #7C82A2;
+    border: #7C82A2;
+    outline: none;
+
+}
+
+
 button{
-    padding: 30px;
+    padding: 30px 15px;
+    transform: translate(4em, 2em);
     width: 460px;
+    background-color: #cc000a ;
+    border: none;
+}
+.messages{
+    transform: translate(9em, 2em);
+
 }

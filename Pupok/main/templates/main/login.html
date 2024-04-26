@@ -12,19 +12,24 @@
 <body>
     <header>
         <h1>Белый Раст</h1>
-        <p>
+        <h4>
             Терминально-
-            логистический 
+            <br>
+            логистический
+            <br> 
             центр
-        </p>
+        </h4>
     </header>
-    <p>Авторизация</p>
-    <br>
+    <p>
+            <h2>Авторизация</h2>
+        <br>
+    </p>
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="Имя пользователя">
+        <input type="text" name="username"  placeholder="Имя пользователя" style="color: aliceblue;"   >
         <br>
-        <input type="password" name="password" placeholder="Пароль">
+        <input type="password" name="password" placeholder="Пароль" style="color: aliceblue;">
+        <br>
         <br>
         <br>
         <button type="submit">Войти</button>
