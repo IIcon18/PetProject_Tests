@@ -1,9 +1,148 @@
-header {
-    background-color: #000000; /* Красный цвет фона */
-    color: #fff; /* Цвет текста */
-    padding: 50px; /* Внутренние отступы */
-    text-align: center; /* Выравнивание текста по центру */
-}
-h1 {
-    margin: 0; /* Убираем отступы вокруг заголовка */
-}
+element.styles {
+    display: inline-block;
+    width: 1440px;
+    background: url('b0b5cf84e7688e80219149cdf8575a7edbe3c825') 50%;
+ }
+ .login-form-container {
+    box-sizing: border-box;
+    min-width: 1440px;
+    padding-right: 24px;
+    padding-left: 81px;
+ }
+ .auth-form-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 461px;
+    padding-top: 116px;
+    padding-bottom: 162px;
+ }
+ .title-heading {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    align-self: center;
+    width: 371px;
+    font: 700 48px Inter, sans-serif;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    letter-spacing: -1.44px;
+    white-space: pre-wrap;
+ }
+ .login-form-container1 {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 21px;
+    align-items: stretch;
+    justify-content: flex-start;
+ }
+ .user-card {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    height: 79px;
+    padding-right: 19px;
+    padding-left: 29px;
+    background: rgba(124, 130, 162, 1);
+ }
+ .username-text-style {
+    flex: 0 0 auto;
+    font: 400 24px "JetBrains Mono", monospace;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: -0.72px;
+    white-space: pre-wrap;
+ }
+ .user-avatar-styles {
+    box-sizing: border-box;
+    display: block;
+    width: 37px;
+    max-width: initial;
+    height: 35px;
+    clip-path: undefined;
+    border: none;
+    mix-blend-mode: normal;
+    object-fit: contain;
+ }
+ .password-container {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    height: 71px;
+    padding-right: 5px;
+    padding-left: 29px;
+    margin-top: 30px;
+    background: rgba(124, 130, 162, 1);
+ }
+ .username-text-style {
+    flex: 0 0 auto;
+    font: 400 24px "JetBrains Mono", monospace;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: -0.72px;
+    white-space: pre-wrap;
+ }
+ .password-image {
+    box-sizing: border-box;
+    display: block;
+    width: 64px;
+    max-width: initial;
+    height: 40px;
+    clip-path: undefined;
+    border: none;
+    mix-blend-mode: normal;
+    object-fit: contain;
+ }
+ .login-controls-container {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 17px;
+    padding-left: 24.5px;
+ }
+ .remember-button-container {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+ }
+ .svg-container {
+    display: flex;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    color: rgba(255, 255, 255, 1);
+ }
+ .remember-button-style {
+    flex: 0 0 auto;
+    margin-left: 10.5px;
+    font: 700 16px Inter, sans-serif;
+    color: rgba(255, 255, 255, 1);
+    white-space: pre-wrap;
+ }
+ .forgot-password-link-text-style {
+    flex: 0 0 auto;
+    font: 800 16px Inter, sans-serif;
+    color: rgba(255, 255, 255, 1);
+    white-space: pre-wrap;
+ }
+ .registration-title {
+    flex: 0 0 auto;
+    align-self: center;
+    font: 800 32px Inter, sans-serif;
+    color: rgba(255, 255, 255, 1);
+    white-space: pre-wrap;
+ }

@@ -1,35 +1,37 @@
-{% load i18n %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Авторизация</title>
-    <link rel="stylesheet" type="text/css" href="static/main/css/login.css">
-    
-</head>
-<body>
-    <header>
-        <h1>Белый Раст</h1>
-    </header>
+<div
+  style="
+    display: inline-block;
+    width: 1440px;
+    background: url('b0b5cf84e7688e80219149cdf8575a7edbe3c825') 50%;
+  "
+  data-ignore="used only for top most containter width"
+>
+  <div class="login-form-container">
+    <div class="auth-form-container">
+      <p class="title-heading">Авторизация</p>
+      <div class="login-form-container1">
+        <div class="user-card">
+          <p class="username-text-style">Имя пользователя</p>
+          <img src="assets/img_21_27_f1a633.png" class="user-avatar-styles" />
+        </div>
+        <div class="password-container">
+          <p class="username-text-style">Пароль</p>
+          <img src="assets/img_21_24_bd2a7b.png" class="password-image" />
+        </div>
+        <div class="login-controls-container">
+          <div class="remember-button-container">
+            <div class="svg-container">...</div>
+            <p class="remember-button-style">Запомнить</p>
+          </div>
+          <p class="forgot-password-link-text-style">Забыли пароль?</p>
+        </div>
+        <!-- PLACEHOLDER - Button Component detected here. Go to "React Code" via right click menu to see code generated -->
+      </div>
+      <p class="registration-title">Регистрация</p>
+    </div>
+  </div>
+</div>
 
-    <p>Авторизация</p>
-    <br>
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Логин">
-        <input type="password" name="password" placeholder="Пароль">
-        <br>
-        <br>
-        <button type="submit">Войти</button>
-    </form>
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-</body>
-</html>
+<link rel="stylesheet" type="text/css" href="static/main/css/login.css">
+
+<link rel="stylesheet" type="text/css" href="static/main/css/login.css">
