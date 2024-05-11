@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    display: inline-block;
+    background-image: url('bg1.png'); /* Путь к вашему изображению */
+    background-size: fill;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+ }
+ h2{
+    font-family: Arial, sans-serif;
+    transform: translate(5em, 1em);
+    font-size:35px;
+ 
+ }
+ 
+ header {
+    background-image: url('logo1.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-color: #E43232; /* Цвет фона */
+    background-size: 590px 170px;
+    color: #fff; /* Цвет текста */
+    padding: 30px; /* Внутренние отступы */
+    margin-right: -590px;
+    text-align: left; /* Выравнивание текста по центру */
+ }
+ h1 {
+    margin: 0; /* Убираем отступы вокруг заголовка */
+    transform: translate(2px, 35px);
+ }
+ 
+ h4{
+    font-family: Arial, sans-serif;
+    transform: translate(22em, -27px);
+    font-size:15px;
+ }
+ 
+ 
+ 
+ input[type="password"] {
+    transform: translate(2em, 3em);/* Пароль заливка поля*/
+    width: 460px;
+    padding: 30px;
+    margin-bottom: 10px;
+   background-color: #7C82A2;
+   border: 2px solid transparent;
+ }
+ 
+ input[type="text"]{
+    transform: translate(2em, 1em);/* Логин заливка поля*/
+    width: 460px;
+    padding: 30px;
+    margin-bottom: 10px;
+    background-color: #7C82A2;
+    border: 2px solid transparent;
+ 
+ }
+ 
+ input[type="password"]:focus {
+    display: inline-block;
+    background-color: #7C82A2;
+    border: #7C82A2;
+    outline: none;
+ }
+ 
+ input[type="text"]:focus{
+    display: inline-block;
+    background-color: #7C82A2;
+    border: #7C82A2;
+    outline: none;
+ 
+ }
+ 
+ button{
+    padding: 30px 15px;
+    transform: translate(4em, 2em);
+    width: 460px;
+    background-color: #E43232 ;
+    border: none;
+ }
+ button:hover {
+    opacity: .9;
+    cursor: pointer;
+ }
+ .messages{
+    transform: translate(9em, 2em);
+ 
+ }

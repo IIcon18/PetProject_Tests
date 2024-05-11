@@ -1,0 +1,45 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Авторизация</title>
+    <link rel="stylesheet" type="text/css" href="static/main/css/login.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Белый Раст</h1>
+        <h4>
+            Терминально-
+            <br>
+            логистический
+            <br> 
+            центр
+        </h4>
+    </header>
+    <p>
+            <h2>Авторизация</h2>
+        <br>
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username"  placeholder="Имя пользователя" style="color: aliceblue;"   >
+        <br>
+        <input type="password" name="password" placeholder="Пароль" style="color: aliceblue;">
+        <br>
+        <br>
+        <br>
+        <button type="submit">Войти</button>
+    </form>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
