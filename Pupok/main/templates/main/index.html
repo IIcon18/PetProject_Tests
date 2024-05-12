@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  {% csrf_token %}
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -9,18 +10,19 @@
     <link rel="stylesheet"  href="static/main/css/index.css">
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<body>
-  
 
-        <style>
-          /* Добавляем фоновое изображение */
-        body {
-            background-image: url('bg5.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        </style>
+    <style>
+      body {
+        background: url(https://s-krylov.ru/photos/69f7c52bb8438d98a5ac6095e67927ea.jpg);
+        background-attachment: fixed; 
+        background-repeat: no-repeat;
+        background-size: auto;
+      }
+      header {
+        background: url(http://diplomstudent.net/uploads/posts/2018-10/1538556433_iuoq75tx6.jpg);
+        
+      }
+       </style>
       
         <div class="railway-logistics-layout">
           <style>
