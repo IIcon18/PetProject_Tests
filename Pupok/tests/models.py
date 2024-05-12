@@ -1,13 +1,9 @@
 from django.db import models
 
-class Questions(models.Model):
-    objects = None
-    number = models.CharField('Номер', max_length=50)
-    anons = models.CharField('Сам вопрос', max_length=250)
-    full_text = models.TextField('Варианты ')
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
 
-    def __str__(self):
-        return f"{self.number}"
-    
-
-
+class Choice(models.Model):
+    Question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    is_correct = models.BooleanField(default=False)
