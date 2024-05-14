@@ -8,7 +8,7 @@
 <body>
     <form method="post">
         <!-- Не включаем CSRF токен -->
-        {% for question in questions %}
+        {% for questions in question %}
             <h3>{{ question.question_text }}</h3>
             {% for choice in question.choice_set.all %}
                 <input type="radio" name="{{ question.id }}" value="{{ choice.id }}"> {{ choice.choice_text }}<br>
