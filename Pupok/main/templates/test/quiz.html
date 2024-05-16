@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>тесты</title>
+  </head>
+  <body>
+   
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.prod.js"></script>
+<div id="app">
+  <ul>
+    <div class="container mt-5 pt-5">
+        <div class="col-md-6 mx-auto">
+
+            
+                <h3>Тестик на Отчисление</h3>
+                <div v-for="question in questions">
+                <hr>
+                <p>[[question.question]]</p>
+
+            <div class="form-check" v-for="answer in question.answer">
+                <input @change="checkAnswer($event, question.uid)" :value="answer.answer" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  [[answer.answer]]
+                </label>
+              </div>
+            
+          
+            </div> 
+               </div>
+        </div>
+    <!-- <li v-for="task in tasks">[[task]]</li> -->
+  </ul>
+</div>
+  <script>
+    const app = Vue.createApp({
+        el: '#app',
+        delimiters: ['[[', ']]'],
+        data() {
+          return {
+            gfg: '{{gfg}}',
+            questions :[]
+                   }
+        },
+        methods : {
+            getQuestions(){
+                var _this = this
+                fetch(`../get-quiz/?gfg=${this.gfg}`)
+                .then(response => response.json())
+                .then(result =>{
+                    console.log(result)
+                    _this.questions = result.data
+                })
+            },
+            checkAnswer(event, uid){
+
+                this.questions.map(question =>{
+                   
+                    answer = question.answer
+                    for(var i=0; i<answer.length; i++){
+                        if(answer[i].answer==event.target.value){
+                            if(answer[i].is_correct){
+                                console.log('Your answer is correct!')
+                                alert("Ответ Правильный!")
+                            }else{
+                                console.log('Your answer is wrong!')
+                                alert("Неправильный ответ")
+                            }
+                        }
+                    }
+
+                })
+                console.log(event.target.value  , uid)
+            }
+        },
+        created() {
+            this.getQuestions( )
+         },
+      });
+      
+      app.mount('#app')
+  </script>
+  <a href="http://127.0.0.1:8000/account" class="btn btn-danger">Вернуться в личный кабинет</a>
+</body>
+</html>
