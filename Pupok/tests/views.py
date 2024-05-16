@@ -3,7 +3,7 @@ from .models import Question, Choice
 
 def index(request):
     questions = Question.objects.all()
-    return render(request, 'test/index.html', {'questions': questions})
+    return render(request, 'test/index1.html', {'questions': questions})
 
 def submit_answers(request):
     if request.method == 'POST':
@@ -18,4 +18,5 @@ def submit_answers(request):
         percentage_score = (score / total_questions) * 100
         return render(request, 'test/result.html', {'score': score, 'total_questions': total_questions, 'percentage_score': percentage_score})
     else:
-        return redirect('index')
+        return redirect('index1')
+
