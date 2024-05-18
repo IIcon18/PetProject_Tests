@@ -1,90 +1,123 @@
 body {
-    font-family: Arial, sans-serif;
-    display: inline-block;
-    background-image: url('bg1.png'); 
-    background-size: fill;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
- }
- h2{
-    font-family: Arial, sans-serif;
-    transform: translate(5em, 1em);
-    font-size:35px;
- 
- }
- 
- header {
-    background-image: url('logo1.png');
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-color: #E43232; /* Цвет фона */
-    background-size: 590px 170px;
-    color: #fff; /* Цвет текста */
-    padding: 30px; /* Внутренние отступы */
-    margin-right: -590px;
-    text-align: left; /* Выравнивание текста по центру */
- }
- h1 {
-    margin: 0; /* Убираем отступы вокруг заголовка */
-    transform: translate(2px, 35px);
- }
- 
- h4{
-    font-family: Arial, sans-serif;
-    transform: translate(22em, -27px);
-    font-size:15px;
- }
- 
- 
- 
- input[type="password"] {
-    transform: translate(2em, 3em);/* Пароль заливка поля*/
-    width: 460px;
-    padding: 30px;
-    margin-bottom: 10px;
+   font-family: Arial, sans-serif;
+   background-image: url('bg1.png'); 
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+h2 {
+   font-size: 2rem;
+   margin-top: 1em;
+   margin-left: -900px;
+}
+
+header {
+   background-image: url('logo1.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-color: #E43232;
+   color: #fff;
+   padding: 4em;
+   width: 100%;
+   text-align: left;
+   max-width: 1400px;
+   position: relative;
+}
+
+h1 {
+   margin: 0;
+   font-size: 2.5rem;
+}
+
+h4 {
+   font-size: 1rem;
+   position: absolute;
+   top: 40px; /* Сдвиг вверх на 27 пикселей */
+   left: 450px; /* Сдвиг вправо на 350 пикселей */
+}
+
+form {
+   display: flex;
+   flex-direction: column;
+   align-items: left;
+   width: 100%;
+   max-width: 600px;
+   margin-top: 1em;
+   margin-left: -800px;
+}
+
+input[type="text"], input[type="password"] {
+   width: 100%;
+   max-width: 460px;
+   padding: 25px;
+   margin-bottom: 1em;
    background-color: #7C82A2;
    border: 2px solid transparent;
- }
- 
- input[type="text"]{
-    transform: translate(2em, 1em);/* Логин заливка поля*/
-    width: 460px;
-    padding: 30px;
-    margin-bottom: 10px;
-    background-color: #7C82A2;
-    border: 2px solid transparent;
- 
- }
- 
- input[type="password"]:focus {
-    display: inline-block;
-    background-color: #7C82A2;
-    border: #7C82A2;
-    outline: none;
- }
- 
- input[type="text"]:focus{
-    display: inline-block;
-    background-color: #7C82A2;
-    border: #7C82A2;
-    outline: none;
- 
- }
- 
- button{
-    padding: 30px 15px;
-    transform: translate(4em, 2em);
-    width: 460px;
-    background-color: #E43232 ;
-    border: none;
- }
- button:hover {
-    opacity: .9;
-    cursor: pointer;
- }
- .messages{
-    transform: translate(9em, 2em);
- 
- }
+
+   
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+   outline: none;
+   border-color: #7C82A2;
+   
+}
+
+button {
+   width: 100%;
+   max-width: 460px;
+   padding: 25px;
+   background-color: #E43232;
+   border: none;
+   color: #fff;
+   font-size: 1rem;
+   margin-left:20px;
+}
+
+button:hover {
+   opacity: 0.9;
+   cursor: pointer;
+}
+
+.messages {
+   margin-top: 2em;
+   list-style-type: none;
+   padding: 0;
+   width: 100%;
+   max-width: 600px;
+}
+
+.messages li {
+   background-color: #ffdddd;
+   color: #a94442;
+   padding: 1em;
+   margin-bottom: 1em;
+   border: 1px solid #a94442;
+}
+
+@media (max-width: 600px) {
+   header {
+       padding: 1em;
+       background-size: 100% 100px;
+   }
+
+   h1 {
+       font-size: 2rem;
+   }
+
+   h4 {
+       font-size: 0.8rem;
+       top: 27px; /* Сдвиг вверх на 27 пикселей для мобильных устройств */
+       left: 50%; /* Центрирование для мобильных устройств */
+       transform: translateX(-50%);
+   }
+
+   input[type="text"], input[type="password"], button {
+       width: 100%;
+   }
