@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  {% csrf_token %}
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -9,18 +10,17 @@
     <link rel="stylesheet"  href="static/main/css/index.css">
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<body>
-  
 
-        <style>
-          /* Добавляем фоновое изображение */
-        body {
-            background-image: url('bg5.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        </style>
+    <style>
+      body {
+        background: url(http://png.pngtree.com/background/20210709/original/pngtree-red-festive-peaceful-home-spring-festival-background-picture-image_961539.jpg);
+        background-size:5000px;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+      }
+       </style>
       
         <div class="railway-logistics-layout">
           <style>
@@ -34,20 +34,35 @@
             padding: 48px 13px 222px;
         }
         </style>
-        <img src="11.png" class="unique-image-container" />
+        <img src="http://diplomstudent.net/uploads/posts/2018-10/1538556433_iuoq75tx6.jpg" class="truu">
         <style>
-          .unique-image-container {
-              box-sizing: border-box;
-              display: block;
-              width: 436px;
-              max-width: initial;
-              height: 489px;
-              clip-path: undefined;
-              border: none;
-              border-radius: 15px;
-              mix-blend-mode: normal;
-              object-fit: cover;
-            }
+          .truu {
+            box-sizing: border-box;
+            display: block;
+            width: 1500px;
+            max-width: initial;
+            height: 1570px;
+            clip-path: undefined;
+            border: none;
+            mix-blend-mode: normal;
+            object-fit: cover;
+            padding-top:150px
+          }
+        </style>
+        <img src="https://furman.top/uploads/posts/2023-08/1690931676_furman-top-p-belii-fon-s-krasnoi-ramkoi-oboi-43.jpg" class="sveg" />
+        <style>
+          .sveg {
+            width: 2500px;
+            max-width: initial;
+            height: 2500px;
+            clip-path: undefined;
+            border: none;
+            mix-blend-mode: normal;
+            margin-left:150px;
+            padding-top:900px;
+            padding-bottom:500px;
+          }
+        </style>
         </style>
         <div class="central-content-block">
           <style>
@@ -93,28 +108,15 @@
               justify-content: flex-start;
             }
           </style>
-        <img src="assets/img_35_58_1e880e.png" class="white-flower-palette1" />
-        <style>
-          .white-flower-palette1 {
-            box-sizing: border-box;
-            display: block;
-            width: 55px;
-            max-width: initial;
-            height: 57px;
-            clip-path: undefined;
-            border: none;
-            mix-blend-mode: normal;
-            object-fit: cover;
-          }
-        </style>
         <p class="white-flower-palette">Белый Раст</p>
         <style>
           .white-flower-palette {
             flex: 0 0 auto;
-            margin-left: 29px;
-            font: 600 48px Inter, sans-serif;
+            margin-left:-2500px;
+            font: 600 100px Inter, sans-serif;
             color: rgba(0, 0, 0, 1);
             white-space: pre-wrap;
+            padding-top:300px;
           }
         </style>
         </div>
@@ -122,25 +124,21 @@
         <style>
           .terminal-logistics-center-heading {
             flex: 0 0 auto;
-            padding-right: 38px;
-            padding-left: 84px;
-            margin-top: 31px;
-            font: 500 24px Inter, sans-serif;
+            margin-left:-2500px;
+            font: 300 50px Inter, sans-serif;
             color: rgba(0, 0, 0, 1);
-            text-align: left;
             white-space: pre-wrap;
           }
         </style>
         <p class="steam-locomotive-palette">Паровозов<br />Паровоз Паровозович</p>
         <style>
           .steam-locomotive-palette {
+            color: #000000;
             flex: 0 0 auto;
-            align-self: flex-end;
-            margin-top: 191px;
-            font: 600 36px Inter, sans-serif;
-            color: rgba(255, 255, 255, 1);
-            text-align: left;
-            white-space: pre-wrap;
+            margin-left:-2500px;
+            font: 600 100px Inter, sans-serif;
+            color: rgba(0, 0, 0, 1);
+            padding-top: 500px;
           }
         </style>
         </div>
@@ -165,31 +163,32 @@
         <p class="contact-info-heading1">Телефон: 8(800)555-35-35</p>
         <style>
           .contact-info-heading1 {
-            font: 400 24px Inter, sans-serif;
+            color: #000000;
+            flex: 0 0 auto;
+            margin-left:-1650px;
+            font: 300 70px Inter, sans-serif;
             color: rgba(0, 0, 0, 1);
-            white-space: pre-wrap;
+            padding-top: 500px;
           }
         </style>
         <p class="contact-info-heading">Факс: +7(499)260-50-88</p>
         <style>
           .contact-info-heading {
-            padding-right: 3px;
-            padding-left: 3px;
-            margin-top: 8px;
-            font: 400 24px Inter, sans-serif;
+            color: #000000;
+            flex: 0 0 auto;
+            margin-left:-1650px;
+            font: 250 80px Inter, sans-serif;
             color: rgba(0, 0, 0, 1);
-            white-space: pre-wrap;
           }
         </style>
         <p class="contact-info-email">BeliyRast@center.rzd.ru</p>
         <style>
           .contact-info-email {
-            padding-right: 3px;
-            padding-left: 3px;
-            margin-top: 6px;
-            font: 400 24px Inter, sans-serif;
+            color: #000000;
+            flex: 0 0 auto;
+            margin-left:-1650px;
+            font: 250 80px Inter, sans-serif;
             color: rgba(0, 0, 0, 1);
-            white-space: pre-wrap;
           }
         </style>
         </div>
@@ -204,27 +203,6 @@
               margin-top: 232px;
             }
           </style>
-        <p class="chief-title-text-style">Должность: Главный по РЖД</p>
-        <style>
-          .chief-title-text-style {
-            flex: 0 0 auto;
-            font: 500 20px Inter, sans-serif;
-            color: rgba(255, 255, 255, 1);
-            white-space: pre-wrap;
-          }
-        </style>
-        <p class="chief-title-style">Руководитель: Пыхтелов</p>
-        <style>
-          .chief-title-style {
-            flex: 0 0 auto;
-            align-self: flex-start;
-            padding-right: 44px;
-            padding-left: 44px;
-            margin-top: 6px;
-            font: 500 20px Inter, sans-serif;
-            color: rgba(255, 255, 255, 1);
-            white-space: pre-wrap;
-          }
         </style>
         </div>
       </div>
@@ -233,5 +211,23 @@
     <a href="http://127.0.0.1:8000/" class="btn btn-info">Выйти</a>
     <a href="http://127.0.0.1:8000/login/account/manual" class="btn btn-info">Методичка</a>
     <a href="http://127.0.0.1:8000/account/tests/" class="btn btn-info">Пройти тест</a>
+    <style>
+      a.btn {
+        display: inline-block;
+        padding: 20px 30px;
+        background-color: #CC000A;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 32px;
+        font-weight: bold;
+         }
+    </style>
+    <style>
+      a.btn:hover {
+        background-color: #630000;
+        }
+    </style>
 </body>
 </html>
