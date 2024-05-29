@@ -19,7 +19,7 @@
         <div class="col-md-6 mx-auto">
 
             
-                <h3>Тестик на Отчисление</h3>
+                <h3 style="color: red; text-align: center;">Тестик на Отчисление</h3>
                 <div v-for="question in questions">
                 <hr>
                 <p>[[question.question]]</p>
@@ -86,6 +86,15 @@
       
       app.mount('#app')
   </script>
-  <a href="http://127.0.0.1:8000/account" class="btn btn-danger">Вернуться в личный кабинет</a>
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <a href="http://127.0.0.1:8000/account" class="btn btn-danger space-between">Вернуться в Л.К.</a>
+    <a href="http://127.0.0.1:8000/account/home/" class="btn btn-danger space-between">Вернуться к Категориям</a>
+</div>
+
+<style>
+.space-between:not(:last-child) {
+    margin-right: 10px; /* Задайте желаемый отступ */
+}
+</style>
 </body>
 </html>
