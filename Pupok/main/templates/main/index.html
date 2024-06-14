@@ -1,180 +1,75 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  {% csrf_token %}
+    {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Главная страница</title>
-    <link rel="stylesheet"  href="static/main/css/index.css">
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-
     <style>
-      body {
-        background: url('https://png.pngtree.com/background/20210709/original/pngtree-red-spring-train-background-design-picture-image_960856.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 100vh;
-        width: 100vw;
-        
-        
-        
-      }
-       </style>
-      
-        <div class="railway-logistics-layout">
-          <style>
-          .railway-logistics-layout {
-            box-sizing: border-box;
+        body {
+            background: url('https://png.pngtree.com/background/20210709/original/pngtree-red-spring-train-background-design-picture-image_960856.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
             display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: flex-start;
-            min-width: 1980px;
-        
+            align-items: center;
+            justify-content: center;
+            color: #fff;
         }
-        </style>
-        <img src="http://diplomstudent.net/uploads/posts/2018-10/1538556433_iuoq75tx6.jpg" class="truu">
-        <style>
-          .truu {
-            box-sizing: border-box;
-            display: block;
-            width: 300px;
-            max-width: initial;
-            height: 450px;
-            clip-path: undefined;
-            border: none;
-            mix-blend-mode: normal;
-            object-fit: cover;
-            padding-bottom:130px;
-            padding-top: 15px;
-          }
-        </style>
-        <img src="https://furman.top/uploads/posts/2023-08/1690931676_furman-top-p-belii-fon-s-krasnoi-ramkoi-oboi-43.jpg" class="sveg" />
-        <style>
-          .sveg {
-            width: 550px;
-            max-width: initial;
-            height: 500px;
-            clip-path: undefined;
-            border: none;
-            mix-blend-mode: normal;
-            margin-left:60px;
-            padding-top:250px;
-           
-          }
-        </style>
-        </style>
-        <div class="central-content-block">
-          <style>
-            .central-content-block {
-              flex: 1 0 auto;
-              align-self: center;
-              padding-top: 90px;
-              margin-left: 21px;
-            }
-          </style>
-        <div class="railway-station-design">
-          <style>
-            .railway-station-design {
-              box-sizing: border-box;
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              justify-content: flex-start;
-              width: 100%;
-              padding: 74px 14px 50px;
-              background-image: url("Pupok/main/templates/main/11.png")
-              no-repeat 50% / cover;
-            }
-          </style>
-        <div class="railway-cargo-center-info">
-        <style>
-          .railway-cargo-center-info {
-            box-sizing: border-box;
-            display: flex;
-            flex: 0 0 457px;
-            flex-direction: column;
-            align-items: stretch;
-            justify-content: flex-start;
-          }
-        </style>
-        <div class="white-flare">
-          <style>
-            .white-flare {
-              display: flex;
-              flex: 0 0 auto;
-              flex-direction: row;
-              align-items: flex-start;
-              justify-content: flex-start;
-            }
-          </style>
-        
-          
-        </style>
+        .profile-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-details {
+            list-style: none;
+            padding: 0;
+        }
+        .profile-details li {
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+        .btn-custom {
+            background-color: #CC000A;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            display: inline-block;
+        }
+        .btn-custom:hover {
+            background-color: #630000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container profile-container">
+        <div class="profile-header">
+            <h1>Профиль пользователя</h1>
         </div>
-        <div class="center-contact-info-section">
-          <style>
-            .center-contact-info-section {
-              box-sizing: border-box;
-              display: flex;
-              flex: 0 0 336px;
-              flex-direction: column;
-              align-items: stretch;
-              justify-content: center;
-              margin-left: 79px;
-            }
-          </style>
-        <div class="contact-info-container">
-          <style>
-            .contact-info-container {
-              flex: 0 0 auto;
-            }
-          </style>
-      
-        </style>
+        <ul class="profile-details list-group">
+            <li class="list-group-item bg-transparent text-white"><strong>Логин:</strong> {{ user.username }}</li>
+            <li class="list-group-item bg-transparent text-white"><strong>Почта:</strong> {{ user.email }}</li>
+            <li class="list-group-item bg-transparent text-white"><strong>Имя:</strong> {{ user.first_name }}</li>
+            <li class="list-group-item bg-transparent text-white"><strong>Фамилия:</strong> {{ user.last_name }}</li>
+            <li class="list-group-item bg-transparent text-white"><strong>Телефон:</strong> {{ user.profile.phone_number }}</li>
+        </ul>
+        <div class="text-center">
+            <a href="http://127.0.0.1:8000/" class="btn btn-info">Выйти</a>
+            <a href="http://127.0.0.1:8000/login/account/manual" class="btn-custom">Методичка</a>
+            <a href="http://127.0.0.1:8000/account/home/" class="btn-custom">Пройти тест</a>
         </div>
-        <div class="railway-chief-info-box">
-          <style>
-            .railway-chief-info-box {
-              display: flex;
-              flex: 0 0 auto;
-              flex-direction: column;
-              align-items: flex-end;
-              justify-content: flex-start;
-              margin-top: 232px;
-            }
-          </style>
-        </style>
-        </div>
-      </div>
     </div>
-  </div>
-    <a href="http://127.0.0.1:8000/" class="btn btn-info">Выйти</a>
-    <a href="http://127.0.0.1:8000/login/account/manual" class="btn btn-info">Методичка</a>
-    <a href="http://127.0.0.1:8000/account/home/" class="btn btn-info">Пройти тест</a>
-    <style>
-      a.btn {
-        display: inline-block;
-        padding: 5px 10px;
-        background-color: #CC000A;
-        color: #000000;
-        text-decoration: none;
-        border-radius: 5px;
-        font-family: Arial, sans-serif;
-        font-size: 20px;
-        font-weight: bold;
-        position: relative; /* Изменение значения position */
-        left: 170px;
-        top: -400px;
-         }
-    </style>
-    <style>
-      a.btn:hover {
-        background-color: #630000;
-        }
-    </style>
 </body>
 </html>
