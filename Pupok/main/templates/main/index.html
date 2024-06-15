@@ -1,3 +1,6 @@
+Вот обновленный HTML-код с улучшенным стилями для красивого отображения профиля пользователя:
+
+```html
 <!doctype html>
 <html lang="ru">
 <head>
@@ -19,13 +22,16 @@
             align-items: center;
             justify-content: center;
             color: #fff;
+            font-family: Arial, sans-serif;
         }
         .profile-container {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
-            width: 100%;
+            width: 90%;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
         .profile-header {
             text-align: center;
@@ -47,6 +53,7 @@
             padding: 10px 20px;
             margin: 10px 5px;
             display: inline-block;
+            transition: background-color 0.3s ease;
         }
         .btn-custom:hover {
             background-color: #630000;
@@ -64,6 +71,7 @@
             <li class="list-group-item bg-transparent text-white"><strong>Имя:</strong> {{ user.first_name }}</li>
             <li class="list-group-item bg-transparent text-white"><strong>Фамилия:</strong> {{ user.last_name }}</li>
             <li class="list-group-item bg-transparent text-white"><strong>Телефон:</strong> {{ user.profile.phone_number }}</li>
+            <li class="list-group-item bg-transparent text-white"><strong>Должность:</strong> {{ user.profile.position }}</li> <!-- Добавление строки должности -->
         </ul>
         <div class="text-center">
             <a href="http://127.0.0.1:8000/" class="btn btn-info">Выйти</a>
@@ -73,3 +81,6 @@
     </div>
 </body>
 </html>
+```
+
+Этот код добавляет тень для контейнера профиля, использует переходы для кнопок при наведении мыши и улучшает читаемость текста.

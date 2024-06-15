@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from .models import *
+import random
 
 def home(request):
     categories = Types.objects.all()
@@ -23,7 +24,10 @@ def get_quiz(request):
             for question in questions:
                 answers = list(Answer.objects.filter(question=question))
                 data.append({
+                    'uid': str(question.uid),
                     'question': question.question,
+                    'marks': question.marks,
+                    'question_type': question.question_type,
                     'answers': [{'answer': answer.answer, 'is_correct': answer.is_correct} for answer in answers]
                 })
             payload = {'status': True, 'data': data}
@@ -40,8 +44,8 @@ def result(request):
         questions = Question.objects.filter(gfg__gfg_name__icontains=selected_category)
 
         total_marks = 0
-        correct_answers = 0
-        incorrect_answers = 0
+        correct_answers_count = 0
+        incorrect_answers_count = 0
         results = []
 
         for question in questions:
@@ -55,20 +59,21 @@ def result(request):
                     correct = True
             else:  # SA type
                 try:
-                    extended_question = ExtendedQuestion.objects.get(pk=question.uid)
-                    correct_answers_objs = ExtendedAnswer.objects.filter(question=extended_question)
-                    for ans in correct_answers_objs:
-                        if user_answers and any(user_answer.strip().lower() == ans.text.strip().lower() for user_answer in user_answers):
+                    extended_question = ExtendedQuestion.objects.get(uid=question.uid)
+                    correct_answers_objs = ExtendedAnswer.objects.filter(question_text=extended_question, is_correct=True)
+                    correct_answers_text = [ans.text.strip().lower() for ans in correct_answers_objs]
+                    if user_answers:
+                        user_answer_text = user_answers[0].strip().lower()
+                        if user_answer_text in correct_answers_text:
                             correct = True
-                            break
                 except ExtendedQuestion.DoesNotExist:
                     pass
 
             if correct:
-                correct_answers += 1
+                correct_answers_count += 1
                 total_marks += question.marks
             else:
-                incorrect_answers += 1
+                incorrect_answers_count += 1
 
             results.append({
                 'question': question.question,
@@ -78,12 +83,11 @@ def result(request):
 
         context = {
             'total_marks': total_marks,
-            'correct_answers': correct_answers,
-            'incorrect_answers': incorrect_answers,
+            'correct_answers_count': correct_answers_count,
+            'incorrect_answers_count': incorrect_answers_count,
             'results': results,
             'selected_category': selected_category
         }
         return render(request, 'test/result.html', context)
     else:
         return redirect('home')
-

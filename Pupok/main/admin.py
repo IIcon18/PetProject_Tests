@@ -4,16 +4,22 @@ from django.contrib.auth.models import User
 from .models import Profile
 
 # Define an inline admin descriptor for Profile model
-# which acts a bit like a singleton
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
-    verbose_name_plural = 'profiles'
+    verbose_name_plural = 'Профиль'  # Изменение множественного числа
 
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
+    list_display = ('username', 'email', 'first_name', 'last_name', 'get_position')
 
-# Re-register UserAdmin
+    def get_position(self, instance):
+        return instance.profile.position if hasattr(instance, 'profile') else None
+    get_position.short_description = 'Должность'  # Название колонки
+
+# Unregister old User admin
 admin.site.unregister(User)
+
+# Register new User admin that includes ProfileInline
 admin.site.register(User, UserAdmin)

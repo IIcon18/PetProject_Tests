@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-import random
+import random  # Добавляем импорт модуля random
 
 class BaseModel(models.Model):
     uid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
@@ -9,7 +9,7 @@ class BaseModel(models.Model):
     
     class Meta:
         abstract = True
-        
+
 class Types(BaseModel):
     gfg_name = models.CharField(max_length=100)
     
@@ -44,7 +44,7 @@ class Question(BaseModel):
             return data
         else:
             return []
-    
+
 class Answer(BaseModel):
     question = models.ForeignKey(Question, related_name='question_answer', on_delete=models.CASCADE)
     answer = models.CharField(max_length=100)
@@ -52,7 +52,7 @@ class Answer(BaseModel):
     
     def __str__(self):
         return self.answer
-    
+
 class ExtendedQuestion(BaseModel):
     text = models.TextField(verbose_name="Текст вопроса")
     
@@ -73,4 +73,4 @@ class ExtendedAnswer(BaseModel):
         verbose_name_plural = "Ответы на вопросы с развернутым ответом"
     
     def __str__(self):
-        return f"{self.question.text[:20]} - {self.text[:50]}"
+        return f"{self.question_text.text[:20]} - {self.text[:50]}"

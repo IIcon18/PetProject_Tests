@@ -19,9 +19,13 @@ class Articles(models.Model):
 
 
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
+    position = models.CharField(max_length=100, blank=True, null=True)  # Новое поле "должность"
 
     def __str__(self):
         return self.user.username
+
+
