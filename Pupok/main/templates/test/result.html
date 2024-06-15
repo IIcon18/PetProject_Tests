@@ -1,48 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Результаты теста</title>
 </head>
 <body>
-<div class="container mt-5 pt-5">
-    <h1 class="text-center">Результаты теста</h1>
-    <div class="col-md-8 mx-auto mt-4">
-        <div class="alert alert-info" role="alert">
-            <p>Всего баллов: <strong>{{ total_marks }}</strong></p>
-            <p>Правильных ответов: <strong>{{ correct_answers }}</strong></p>
-            <p>Неправильных ответов: <strong>{{ incorrect_answers }}</strong></p>
-        </div>
+    <h1>Результаты теста по категории "{{ selected_category }}":</h1>
+    <p>Общее количество баллов: {{ total_marks }}</p>
+    <p>Количество правильных ответов: {{ correct_answers }}</p>
+    <p>Количество неправильных ответов: {{ incorrect_answers }}</p>
 
-        <ul class="list-group">
-            {% for result in results %}
-            <li class="list-group-item">
-                <h5>{{ result.question }}</h5>
-                <p>Ваш ответ: <strong>{{ result.user_answer }}</strong></p>
-                {% if result.correct %}
-                <span class="badge badge-success">Правильно</span>
-                {% else %}
-                <span class="badge badge-danger">Неправильно</span>
-                {% endif %}
+    <h2>Детали:</h2>
+    <ul>
+        {% for result in results %}
+            <li>
+                <p><strong>Вопрос:</strong> {{ result.question }}</p>
+                <p><strong>Ответ пользователя:</strong> {{ result.user_answers|join:", " }}</p>
+                <p><strong>Результат:</strong> {% if result.correct %} Правильный {% else %} Неправильный {% endif %}</p>
             </li>
-            {% endfor %}
-        </ul>
+        {% endfor %}
+    </ul>
 
-        <div class="mt-4">
-            <a href="{% url 'home' %}" class="btn btn-primary">Вернуться на главную</a>
-        </div>
-    </div>
-</div>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGaS4p1p4ojINa6pPaj/4djwJ9" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6dAxbu7jz9aPBrwa5nFf/nVSd4G//L7X9p0x" crossorigin="anonymous"></script>
+    <a href="{% url 'home' %}" class="btn btn-primary">Вернуться к выбору категории</a>
 </body>
 </html>
