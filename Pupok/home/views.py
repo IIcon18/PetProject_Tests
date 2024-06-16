@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
+from django.utils import timezone
 from .models import *
 import random
+from datetime import datetime, timedelta  # Добавлен импорт модуля timedelta
 
 def home(request):
     categories = Types.objects.all()
@@ -10,6 +12,8 @@ def home(request):
 def quiz(request):
     if request.method == 'GET' and 'gfg' in request.GET:
         selected_category = request.GET.get('gfg')
+        start_time = timezone.now()  # Сохранение времени начала теста
+        request.session['start_time'] = start_time.isoformat()
         questions = Question.objects.filter(gfg__gfg_name__icontains=selected_category)
         return render(request, 'test/quiz.html', {'questions': questions, 'selected_category': selected_category})
     else:
@@ -43,9 +47,22 @@ def result(request):
         selected_category = request.POST.get('gfg')
         questions = Question.objects.filter(gfg__gfg_name__icontains=selected_category)
 
+        # Получение времени начала теста из сессии
+        start_time_str = request.session.get('start_time')
+        if start_time_str:
+            start_time = datetime.fromisoformat(start_time_str)
+        else:
+            start_time = timezone.now()
+
+        end_time = timezone.now()
+        test_duration = end_time - start_time
+
+        # Преобразование test_duration в часы, минуты и секунды, удаление миллисекунд
+        test_duration_str = str(timedelta(seconds=int(test_duration.total_seconds())))
+
         total_marks = 0
         correct_answers_count = 0
-        incorrect_answers_count = 0
+        incorrect_answers = 0
         results = []
 
         for question in questions:
@@ -62,10 +79,8 @@ def result(request):
                     extended_question = ExtendedQuestion.objects.get(uid=question.uid)
                     correct_answers_objs = ExtendedAnswer.objects.filter(question_text=extended_question, is_correct=True)
                     correct_answers_text = [ans.text.strip().lower() for ans in correct_answers_objs]
-                    if user_answers:
-                        user_answer_text = user_answers[0].strip().lower()
-                        if user_answer_text in correct_answers_text:
-                            correct = True
+                    if user_answers and any(user_answer.strip().lower() in correct_answers_text for user_answer in user_answers):
+                        correct = True
                 except ExtendedQuestion.DoesNotExist:
                     pass
 
@@ -73,7 +88,7 @@ def result(request):
                 correct_answers_count += 1
                 total_marks += question.marks
             else:
-                incorrect_answers_count += 1
+                incorrect_answers += 1
 
             results.append({
                 'question': question.question,
@@ -83,10 +98,11 @@ def result(request):
 
         context = {
             'total_marks': total_marks,
-            'correct_answers_count': correct_answers_count,
-            'incorrect_answers_count': incorrect_answers_count,
+            'correct_answers': correct_answers_count,
+            'incorrect_answers': incorrect_answers,
             'results': results,
-            'selected_category': selected_category
+            'selected_category': selected_category,
+            'test_duration': test_duration_str
         }
         return render(request, 'test/result.html', context)
     else:

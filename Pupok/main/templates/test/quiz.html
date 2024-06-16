@@ -34,6 +34,13 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+        #timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +48,7 @@
         <h1>Тесты в категории "{{ selected_category }}"</h1>
     </div>
     <div class="container">
+        <div id="timer">00:00:00</div>
         <form action="{% url 'result' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="gfg" value="{{ selected_category }}">
@@ -62,5 +70,24 @@
             <button type="submit" class="btn btn-primary">Отправить ответы</button>
         </form>
     </div>
+    <script>
+        let startTime = new Date();
+        
+        function updateTimer() {
+            let now = new Date();
+            let elapsedTime = now - startTime;
+            
+            let hours = Math.floor(elapsedTime / 1000 / 60 / 60);
+            let minutes = Math.floor((elapsedTime / 1000 / 60) % 60);
+            let seconds = Math.floor((elapsedTime / 1000) % 60);
+            
+            document.getElementById('timer').textContent = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+    </script>
 </body>
 </html>
