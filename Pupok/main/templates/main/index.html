@@ -1,6 +1,3 @@
-Вот обновленный HTML-код с улучшенным стилями для красивого отображения профиля пользователя:
-
-```html
 <!doctype html>
 <html lang="ru">
 <head>
@@ -14,28 +11,51 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <style>
         body {
-            background: url('https://png.pngtree.com/background/20210709/original/pngtree-red-spring-train-background-design-picture-image_960856.jpg');
+            background-image: url('{% static "main/images/bg5.png" %}');
             background-repeat: no-repeat;
             background-size: cover;
-            height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: #fff;
+            color: #000;
             font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            font-weight: bold; /* Устанавливаем жирность текста */
+        }
+        .header {
+            background-color: #CC000A;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+            color: black;
+        }
+        .header a {
+            color: black;
+            text-decoration: none;
         }
         .profile-container {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-image: url('{% static "main/images/11.png" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             padding: 20px;
             border-radius: 10px;
-            max-width: 600px;
-            width: 90%;
-            margin: auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
+            width: 80%; /* Ширина контейнера */
+            max-width: 1000px; /* Максимальная ширина контейнера */
+            height: 80vh; /* Высота контейнера */
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            color: #000;
+            font-family: Arial, sans-serif;
+            text-align: left;
+            overflow: hidden; /* Скрытие излишков содержимого */
         }
         .profile-details {
             list-style: none;
@@ -45,42 +65,58 @@
             padding: 10px;
             border-bottom: 1px solid #555;
         }
+        .profile-details li strong {
+            color: #000;
+        }
+        .profile-details li:nth-child(3),
+        .profile-details li:nth-child(4),
+        .profile-details li:nth-child(6),
+        .profile-details li:nth-child(2),
+        .profile-details li:nth-child(1) {
+            color: #000;
+        }
+        .text-center {
+            text-align: center;
+        }
         .btn-custom {
             background-color: #CC000A;
             color: #fff;
             text-decoration: none;
+            border: 2px solid #630000; /* Добавляем контур */
             border-radius: 5px;
-            padding: 10px 20px;
-            margin: 10px 5px;
+            padding: 12px 24px; /* Увеличиваем отступы */
+            margin: 0 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             display: inline-block;
-            transition: background-color 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
         }
         .btn-custom:hover {
             background-color: #630000;
+            transform: scale(1.05); /* Увеличиваем масштаб */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Добавляем тень */
         }
     </style>
 </head>
 <body>
-    <div class="container profile-container">
-        <div class="profile-header">
-            <h1>Профиль пользователя</h1>
-        </div>
-        <ul class="profile-details list-group">
-            <li class="list-group-item bg-transparent text-white"><strong>Логин:</strong> {{ user.username }}</li>
-            <li class="list-group-item bg-transparent text-white"><strong>Почта:</strong> {{ user.email }}</li>
-            <li class="list-group-item bg-transparent text-white"><strong>Имя:</strong> {{ user.first_name }}</li>
-            <li class="list-group-item bg-transparent text-white"><strong>Фамилия:</strong> {{ user.last_name }}</li>
-            <li class="list-group-item bg-transparent text-white"><strong>Телефон:</strong> {{ user.profile.phone_number }}</li>
-            <li class="list-group-item bg-transparent text-white"><strong>Должность:</strong> {{ user.profile.position }}</li> <!-- Добавление строки должности -->
-        </ul>
-        <div class="text-center">
-            <a href="http://127.0.0.1:8000/" class="btn btn-info">Выйти</a>
+    <div class="header">
+        <h1>Профиль пользователя</h1>
+        <div>
             <a href="http://127.0.0.1:8000/login/account/manual" class="btn-custom">Методичка</a>
             <a href="http://127.0.0.1:8000/account/home/" class="btn-custom">Пройти тест</a>
+            <a href="http://127.0.0.1:8000/" class="btn btn-info btn-custom">Выйти</a>
         </div>
+    </div>
+    
+    <div class="container profile-container">
+        <ul class="profile-details list-group">
+            <li class="list-group-item bg-transparent text-black"><strong>Телефон:</strong> {{ user.profile.phone_number }}</li>
+            <li class="list-group-item bg-transparent text-black"><strong>Почта:</strong> {{ user.email }}</li>
+            <li class="list-group-item bg-transparent text-black"><strong>Логин:</strong> {{ user.username }}</li>
+            <li class="list-group-item bg-transparent text-black"><strong>Имя:</strong> {{ user.first_name }}</li>
+            <li class="list-group-item bg-transparent text-black"><strong>Фамилия:</strong> {{ user.last_name }}</li>
+            <li class="list-group-item bg-transparent text-black"><strong>Должность:</strong> {{ user.profile.position }}</li>
+        </ul>
     </div>
 </body>
 </html>
-```
-
-Этот код добавляет тень для контейнера профиля, использует переходы для кнопок при наведении мыши и улучшает читаемость текста.
