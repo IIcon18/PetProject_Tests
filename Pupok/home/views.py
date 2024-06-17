@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from django.utils import timezone
 from .models import *
 import random
-from datetime import datetime, timedelta  # Добавлен импорт модуля timedelta
+from datetime import datetime, timedelta
 
 def home(request):
     categories = Types.objects.all()
@@ -14,8 +14,12 @@ def quiz(request):
         selected_category = request.GET.get('gfg')
         start_time = timezone.now()  # Сохранение времени начала теста
         request.session['start_time'] = start_time.isoformat()
-        questions = Question.objects.filter(gfg__gfg_name__icontains=selected_category)
-        return render(request, 'test/quiz.html', {'questions': questions, 'selected_category': selected_category})
+
+        # Получаем все вопросы (и обычные, и с развернутым ответом)
+        questions = list(Question.objects.filter(gfg__gfg_name__icontains=selected_category))
+        extended_questions = list(ExtendedQuestion.objects.filter(gfg__gfg_name__icontains=selected_category))
+
+        return render(request, 'test/quiz.html', {'questions': questions, 'extended_questions': extended_questions, 'selected_category': selected_category})
     else:
         return redirect('home')
 
@@ -45,7 +49,8 @@ def get_quiz(request):
 def result(request):
     if request.method == 'POST' and 'gfg' in request.POST:
         selected_category = request.POST.get('gfg')
-        questions = Question.objects.filter(gfg__gfg_name__icontains=selected_category)
+        questions = list(Question.objects.filter(gfg__gfg_name__icontains=selected_category))
+        extended_questions = list(ExtendedQuestion.objects.filter(gfg__gfg_name__icontains=selected_category))
 
         # Получение времени начала теста из сессии
         start_time_str = request.session.get('start_time')
@@ -92,6 +97,27 @@ def result(request):
 
             results.append({
                 'question': question.question,
+                'user_answers': user_answers,
+                'correct': correct
+            })
+
+        for question in extended_questions:
+            user_answers = request.POST.getlist(str(question.uid))
+            correct = False
+
+            correct_answers_objs = ExtendedAnswer.objects.filter(question_text=question, is_correct=True)
+            correct_answers_text = [ans.text.strip().lower() for ans in correct_answers_objs]
+            if user_answers and any(user_answer.strip().lower() in correct_answers_text for user_answer in user_answers):
+                correct = True
+
+            if correct:
+                correct_answers_count += 1
+                total_marks += question.marks
+            else:
+                incorrect_answers += 1
+
+            results.append({
+                'question': question.text,
                 'user_answers': user_answers,
                 'correct': correct
             })

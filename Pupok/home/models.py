@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-import random  # Добавляем импорт модуля random
+import random
 
 class BaseModel(models.Model):
     uid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
@@ -22,7 +22,7 @@ class Question(BaseModel):
         ('SA', 'Short Answer Question')
     ]
     
-    gfg = models.ForeignKey(Types, related_name='gfg', on_delete=models.CASCADE)
+    gfg = models.ForeignKey(Types, related_name='questions', on_delete=models.CASCADE)
     question = models.CharField(max_length=100)
     marks = models.IntegerField(default=5)
     question_type = models.CharField(max_length=3, choices=QUESTION_TYPE_CHOICES, default='MCQ')
@@ -46,7 +46,7 @@ class Question(BaseModel):
             return []
 
 class Answer(BaseModel):
-    question = models.ForeignKey(Question, related_name='question_answer', on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, related_name='answers', on_delete=models.CASCADE)
     answer = models.CharField(max_length=100)
     is_correct = models.BooleanField(default=False)
     
@@ -54,12 +54,14 @@ class Answer(BaseModel):
         return self.answer
 
 class ExtendedQuestion(BaseModel):
+    gfg = models.ForeignKey(Types, related_name='extended_questions', on_delete=models.CASCADE)
     text = models.TextField(verbose_name="Текст вопроса")
-    
+    marks = models.IntegerField(default=5)
+
     class Meta:
         verbose_name = "Вопрос с развернутым ответом"
         verbose_name_plural = "Вопросы с развернутым ответом"
-    
+
     def __str__(self):
         return self.text[:50]
 

@@ -67,6 +67,12 @@
                     {% endif %}
                 </div>
             {% endfor %}
+            {% for question in extended_questions %}
+                <div class="question">
+                    <h3>{{ question.text }}</h3>
+                    <textarea class="form-control" name="{{ question.uid }}"></textarea>
+                </div>
+            {% endfor %}
             <button type="submit" class="btn btn-primary">Отправить ответы</button>
         </form>
     </div>
