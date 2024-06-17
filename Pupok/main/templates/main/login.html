@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,8 +6,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Авторизация</title>
-    <link rel="stylesheet" type="text/css" href="static/main/css/login.css">
-    
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/login.css' %}">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Убираем полосы прокрутки */
+        }
+        
+        body {
+           font-family: Arial, sans-serif;
+           background-image: url('{% static "main/images/bg1.png" %}'); 
+           background-size: cover;
+           background-attachment: fixed;
+           background-position: center;
+           background-repeat: no-repeat;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           min-height: 100vh; /* Ensure the body covers the full height */
+        }
+
+        h2 {
+           font-size: 2rem;
+           margin-top: 1em;
+           margin-left: -55vw; /* Используем vw для адаптивного отступа */
+        }
+
+        header {
+           background-image: url('{% static "main/images/logo1.png" %}');
+           background-size: contain;
+           background-repeat: no-repeat;
+           background-color: #E43232;
+           color: #fff;
+           padding: 4vw; /* Используем vw для адаптивного отступа */
+           width: 100%;
+           text-align: left;
+           max-width: 100%; /* Ширина 100% для адаптивности */
+           position: relative;
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+        }
+
+        h1 {
+           margin: 0;
+           font-size: 2.5rem;
+           padding-left: 1rem; /* Добавляем отступ слева */
+           width: 50%; /* Пример установки ширины в процентах */
+        }
+
+        h4 {
+           font-size: 1rem;
+           position: absolute;
+           top: 2.5vw; /* Сдвиг вверх с использованием vw */
+           left: 28.125vw; /* Сдвиг вправо с использованием vw */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 50vw; /* 600px / 16px (1em) = 37.5vw */
+            margin-top: 1em;
+            margin-left: -32vw; /* Сдвиг влево от левого края на 5vw */
+        }
+        
+
+        input[type="text"], input[type="password"] {
+           width: 100%;
+           max-width: 50%; /* Пример установки ширины в процентах */
+           padding: 1.5625em; /* 25px / 16px (1em) = 1.5625em */
+           margin-bottom: 1em;
+           background-color: #7C82A2;
+           border: 2px solid transparent;
+           color: aliceblue;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+           outline: none;
+           border-color: #7C82A2;
+        }
+
+        button {
+           width: 100%;
+           max-width: 50%; /* Пример установки ширины в процентах */
+           padding: 1.5625em; /* 25px / 16px (1em) = 1.5625em */
+           background-color: #E43232;
+           border: none;
+           color: #fff;
+           font-size: 1rem;
+           margin-left: 1.25em; /* 20px / 16px (1em) = 1.25em */
+        }
+
+        button:hover {
+           opacity: 0.9;
+           cursor: pointer;
+        }
+
+        .messages {
+           margin-top: 2em;
+           list-style-type: none;
+           padding: 0;
+           width: 100%;
+           max-width: 50%; /* Пример установки ширины в процентах */
+        }
+
+        .messages li {
+           background-color: #ffdddd;
+           color: #a94442;
+           padding: 1em;
+           margin-bottom: 1em;
+           border: 1px solid #a94442;
+        }
+
+        @media (max-width: 600px) {
+           html, body {
+               overflow: auto; /* Включаем прокрутку на мобильных устройствах */
+           }
+
+           header {
+               padding: 2vw;
+               background-size: 100% 50px;
+               text-align: center;
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+           }
+
+           h1 {
+               font-size: 2rem;
+               width: 100%; /* Ширина на мобильных устройствах */
+           }
+
+           h4 {
+               font-size: 0.8rem;
+               top: 1.6875em; /* 27px / 16px (1em) = 1.6875em */
+               left: 50%;
+               transform: translateX(-50%);
+               text-align: center;
+           }
+
+           input[type="text"], input[type="password"], button {
+               width: 100%;
+               padding: 1rem;
+               font-size: 0.9rem;
+               max-width: 100%; /* Ширина на мобильных устройствах */
+           }
+
+           h2, form {
+               margin-left: 0;
+               align-items: center;
+               text-align: center;
+           }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,26 +173,18 @@
             <br> 
             центр
         </h4>
-        
     </header>
-    <p>
-            <h2>Авторизация</h2>
-        <br>
-    </p>
+    <h2>Авторизация</h2>
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="username"  placeholder="Имя пользователя" style="color: aliceblue;"   >
-        <br>
+        <input type="text" name="username" placeholder="Имя пользователя" style="color: aliceblue;">
         <input type="password" name="password" placeholder="Пароль" style="color: aliceblue;">
-        <br>
-        <br>
-        <br>
         <button type="submit">Войти</button>
     </form>
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <li>{{ message }}</li>
             {% endfor %}
         </ul>
     {% endif %}
