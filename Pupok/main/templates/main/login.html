@@ -11,7 +11,7 @@
         html, body {
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Убираем полосы прокрутки */
+            overflow: hidden;
         }
         
         body {
@@ -24,13 +24,13 @@
            display: flex;
            flex-direction: column;
            align-items: center;
-           min-height: 100vh; /* Ensure the body covers the full height */
+           min-height: 100vh;
         }
 
         h2 {
            font-size: 2rem;
            margin-top: 1em;
-           margin-left: -55vw; /* Используем vw для адаптивного отступа */
+           margin-left: -65vw;
         }
 
         header {
@@ -39,10 +39,10 @@
            background-repeat: no-repeat;
            background-color: #E43232;
            color: #fff;
-           padding: 4vw; /* Используем vw для адаптивного отступа */
+           padding: 4vw;
            width: 100%;
            text-align: left;
-           max-width: 100%; /* Ширина 100% для адаптивности */
+           max-width: 100%;
            position: relative;
            display: flex;
            flex-direction: column;
@@ -52,15 +52,15 @@
         h1 {
            margin: 0;
            font-size: 2.5rem;
-           padding-left: 1rem; /* Добавляем отступ слева */
-           width: 50%; /* Пример установки ширины в процентах */
+           padding-left: 1rem;
+           width: 50%;
         }
 
         h4 {
            font-size: 1rem;
            position: absolute;
-           top: 2.5vw; /* Сдвиг вверх с использованием vw */
-           left: 28.125vw; /* Сдвиг вправо с использованием vw */
+           top: 2.5vw;
+           left: 28.125vw;
         }
 
         form {
@@ -68,16 +68,16 @@
             flex-direction: column;
             align-items: flex-start;
             width: 100%;
-            max-width: 50vw; /* 600px / 16px (1em) = 37.5vw */
+            max-width: 50vw;
             margin-top: 1em;
-            margin-left: -32vw; /* Сдвиг влево от левого края на 5vw */
+            margin-left: -43vw;
         }
         
 
         input[type="text"], input[type="password"] {
            width: 100%;
-           max-width: 50%; /* Пример установки ширины в процентах */
-           padding: 1.5625em; /* 25px / 16px (1em) = 1.5625em */
+           max-width: 50%;
+           padding: 1.5625em;
            margin-bottom: 1em;
            background-color: #7C82A2;
            border: 2px solid transparent;
@@ -91,13 +91,13 @@
 
         button {
            width: 100%;
-           max-width: 50%; /* Пример установки ширины в процентах */
-           padding: 1.5625em; /* 25px / 16px (1em) = 1.5625em */
+           max-width: 50%;
+           padding: 1.5625em;
            background-color: #E43232;
            border: none;
            color: #fff;
            font-size: 1rem;
-           margin-left: 1.25em; /* 20px / 16px (1em) = 1.25em */
+           margin-left: 1.25em;
         }
 
         button:hover {
@@ -110,7 +110,7 @@
            list-style-type: none;
            padding: 0;
            width: 100%;
-           max-width: 50%; /* Пример установки ширины в процентах */
+           max-width: 50%;
         }
 
         .messages li {
@@ -123,7 +123,7 @@
 
         @media (max-width: 600px) {
            html, body {
-               overflow: auto; /* Включаем прокрутку на мобильных устройствах */
+               overflow: auto;
            }
 
            header {
@@ -137,12 +137,12 @@
 
            h1 {
                font-size: 2rem;
-               width: 100%; /* Ширина на мобильных устройствах */
+               width: 100%;
            }
 
            h4 {
                font-size: 0.8rem;
-               top: 1.6875em; /* 27px / 16px (1em) = 1.6875em */
+               top: 1.6875em;
                left: 50%;
                transform: translateX(-50%);
                text-align: center;
@@ -152,7 +152,7 @@
                width: 100%;
                padding: 1rem;
                font-size: 0.9rem;
-               max-width: 100%; /* Ширина на мобильных устройствах */
+               max-width: 100%;
            }
 
            h2, form {
