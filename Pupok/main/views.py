@@ -21,3 +21,15 @@ class NewsDetailView(DetailView):
     model = Articles
     template_name ='main/details_view.html'
     context_object_name = 'article'
+
+def home(request):
+    return render(request, 'test/home.html')
+
+def quiz(request):
+    return render(request, 'test/quiz.html')
+
+def get_quiz(request):
+    return render(request, 'test/quiz.html')
+
+def result(request):
+    return render(request, 'test/result.html')

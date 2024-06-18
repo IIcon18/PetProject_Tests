@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Articles(models.Model):
@@ -12,8 +13,18 @@ class Articles(models.Model):
 
     def get_absolute_url(self):
         return f'/news/{self.id}'
+    
     class Meta:
         verbose_name = 'Методичка'
         verbose_name_plural = 'Методички'
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    position = models.CharField(max_length=100, blank=True, null=True)
+    patronymic = models.CharField(max_length=100, blank=True, null=True)  # Добавлено поле отчества
+    manager = models.CharField(max_length=100, blank=True, null=True)  # Добавлено поле руководитель
+
+    def __str__(self):
+        return self.user.username

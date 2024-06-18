@@ -1,100 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>тесты</title>
-  </head>
-  <body>
-   
-    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.prod.js"></script>
-<div id="app">
-  <ul>
-    <div class="container mt-5 pt-5">
-        <div class="col-md-6 mx-auto">
-
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .header {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .question {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        #timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Тесты в категории "{{ selected_category }}"</h1>
+    </div>
+    <div class="container">
+        <div id="timer">00:00:00</div>
+        <form action="{% url 'result' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="gfg" value="{{ selected_category }}">
+            {% for question in questions %}
+                <div class="question">
+                    <h3>{{ question.question }}</h3>
+                    {% if question.question_type == 'MCQ' %}
+                        {% for answer in question.get_answers %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="{{ question.uid }}" value="{{ answer.answer }}">
+                                <label class="form-check-label">{{ answer.answer }}</label>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <textarea class="form-control" name="{{ question.uid }}"></textarea>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% for question in extended_questions %}
+                <div class="question">
+                    <h3>{{ question.text }}</h3>
+                    <textarea class="form-control" name="{{ question.uid }}"></textarea>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Отправить ответы</button>
+        </form>
+    </div>
+    <script>
+        let startTime = new Date();
+        
+        function updateTimer() {
+            let now = new Date();
+            let elapsedTime = now - startTime;
             
-                <h3 style="color: red; text-align: center;">Тестик на Отчисление</h3>
-                <div v-for="question in questions">
-                <hr>
-                <p>[[question.question]]</p>
-
-            <div class="form-check" v-for="answer in question.answer">
-                <input @change="checkAnswer($event, question.uid)" :value="answer.answer" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  [[answer.answer]]
-                </label>
-              </div>
+            let hours = Math.floor(elapsedTime / 1000 / 60 / 60);
+            let minutes = Math.floor((elapsedTime / 1000 / 60) % 60);
+            let seconds = Math.floor((elapsedTime / 1000) % 60);
             
-          
-            </div> 
-               </div>
-        </div>
-    <!-- <li v-for="task in tasks">[[task]]</li> -->
-  </ul>
-</div>
-  <script>
-    const app = Vue.createApp({
-        el: '#app',
-        delimiters: ['[[', ']]'],
-        data() {
-          return {
-            gfg: '{{gfg}}',
-            questions :[]
-                   }
-        },
-        methods : {
-            getQuestions(){
-                var _this = this
-                fetch(`../get-quiz/?gfg=${this.gfg}`)
-                .then(response => response.json())
-                .then(result =>{
-                    console.log(result)
-                    _this.questions = result.data
-                })
-            },
-            checkAnswer(event, uid){
-
-                this.questions.map(question =>{
-                   
-                    answer = question.answer
-                    for(var i=0; i<answer.length; i++){
-                        if(answer[i].answer==event.target.value){
-                            if(answer[i].is_correct){
-                                console.log('Your answer is correct!')
-                                alert("Ответ Правильный!")
-                            }else{
-                                console.log('Your answer is wrong!')
-                                alert("Неправильный ответ")
-                            }
-                        }
-                    }
-
-                })
-                console.log(event.target.value  , uid)
-            }
-        },
-        created() {
-            this.getQuestions( )
-         },
-      });
-      
-      app.mount('#app')
-  </script>
-  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <a href="http://127.0.0.1:8000/account" class="btn btn-danger space-between">Вернуться в Л.К.</a>
-    <a href="http://127.0.0.1:8000/account/home/" class="btn btn-danger space-between">Вернуться к Категориям</a>
-</div>
-
-<style>
-.space-between:not(:last-child) {
-    margin-right: 10px; /* Задайте желаемый отступ */
-}
-</style>
+            document.getElementById('timer').textContent = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+    </script>
 </body>
 </html>

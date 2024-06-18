@@ -1,38 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-
-    <title>Тесты</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор категории теста</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .header {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container mt-5 pt-5">
-    <!-- Added the Geeksforgeeks heading here -->
-    <h1 style="color: red; text-align: center;">Тесты: Белый Раст</h1>
-
-    <div class="col-md-6 mx-auto">
-        <form action="">
+    <div class="header">
+        <h1>Выберите категорию тестов</h1>
+    </div>
+    <div class="container">
+        <form action="{% url 'quiz' %}" method="get">
             <div class="form-group">
-                <label for="">Выберите Категорию</label>
-                <select name="gfg" id="" class="form-control" value="gfg">
-                    <option value="Choose">Выбрать</option>
-                    {% for type in catgories %}
-                    <option value="{{type.gfg_name}}">{{type.gfg_name}}</option>
+                <label for="categorySelect">Категория:</label>
+                <select class="form-control" id="categorySelect" name="gfg">
+                    <option value="">Выбрать</option>
+                    {% for category in categories %}
+                        <option value="{{ category.gfg_name }}">{{ category.gfg_name }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <button class="btn btn-danger mt-3">Подтвердить</button>
-            <a href="http://127.0.0.1:8000/account" class="btn btn-danger mt-3">Вернуться в Л.К.</a>
+            <button type="submit" class="btn btn-primary">Выбрать</button>
         </form>
     </div>
-</div>
 </body>
 </html>

@@ -1,13 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    {% csrf_token %}
     <meta charset="UTF-8">
-    <title>Test Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты теста</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .header {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .result {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
-    <h2>Your Test Result</h2>
-    <p>You scored {{ score }} out of {{ total_questions }} questions.</p>
-    <p>Your percentage score is {{ percentage_score }}%.</p>
+    <div class="header">
+        <h1>Результаты теста по категории "{{ selected_category }}"</h1>
+    </div>
+    <div class="container">
+        <p>Общее количество баллов: <strong>{{ total_marks }}</strong></p>
+        <p>Количество правильных ответов: <strong>{{ correct_answers }}</strong></p>
+        <p>Количество неправильных ответов: <strong>{{ incorrect_answers }}</strong></p>
+        <p>Время выполнения теста: <strong>{{ test_duration }}</strong></p>
+
+        <h2>Детали:</h2>
+        <ul>
+            {% for result in results %}
+                <li class="result">
+                    <p><strong>Вопрос:</strong> {{ result.question }}</p>
+                    <p><strong>Ответ пользователя:</strong> {{ result.user_answers|join:", " }}</p>
+                    <p><strong>Результат:</strong> {% if result.correct %} <span style="color: green;">Правильный</span> {% else %} <span style="color: red;">Неправильный</span> {% endif %}</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'home' %}" class="btn btn-primary">Вернуться к выбору категории</a>
+    </div>
 </body>
 </html>

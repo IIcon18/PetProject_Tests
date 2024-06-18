@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,8 +6,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Авторизация</title>
-    <link rel="stylesheet" type="text/css" href="static/main/css/login.css">
-    
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/login.css' %}">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        body {
+           font-family: Arial, sans-serif;
+           background-image: url('{% static "main/images/bg1.png" %}'); 
+           background-size: cover;
+           background-attachment: fixed;
+           background-position: center;
+           background-repeat: no-repeat;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           min-height: 100vh;
+        }
+
+        h2 {
+           font-size: 2rem;
+           margin-top: 1em;
+           margin-left: -65vw;
+        }
+
+        header {
+           background-image: url('{% static "main/images/logo1.png" %}');
+           background-size: contain;
+           background-repeat: no-repeat;
+           background-color: #E43232;
+           color: #fff;
+           padding: 4vw;
+           width: 100%;
+           text-align: left;
+           max-width: 100%;
+           position: relative;
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+        }
+
+        h1 {
+           margin: 0;
+           font-size: 2.5rem;
+           padding-left: 1rem;
+           width: 50%;
+        }
+
+        h4 {
+           font-size: 1rem;
+           position: absolute;
+           top: 2.5vw;
+           left: 28.125vw;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 50vw;
+            margin-top: 1em;
+            margin-left: -43vw;
+        }
+        
+
+        input[type="text"], input[type="password"] {
+           width: 100%;
+           max-width: 50%;
+           padding: 1.5625em;
+           margin-bottom: 1em;
+           background-color: #7C82A2;
+           border: 2px solid transparent;
+           color: aliceblue;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+           outline: none;
+           border-color: #7C82A2;
+        }
+
+        button {
+           width: 100%;
+           max-width: 50%;
+           padding: 1.5625em;
+           background-color: #E43232;
+           border: none;
+           color: #fff;
+           font-size: 1rem;
+           margin-left: 1.25em;
+        }
+
+        button:hover {
+           opacity: 0.9;
+           cursor: pointer;
+        }
+
+        .messages {
+           margin-top: 2em;
+           list-style-type: none;
+           padding: 0;
+           width: 100%;
+           max-width: 50%;
+        }
+
+        .messages li {
+           background-color: #ffdddd;
+           color: #a94442;
+           padding: 1em;
+           margin-bottom: 1em;
+           border: 1px solid #a94442;
+        }
+
+        @media (max-width: 600px) {
+           html, body {
+               overflow: auto;
+           }
+
+           header {
+               padding: 2vw;
+               background-size: 100% 50px;
+               text-align: center;
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+           }
+
+           h1 {
+               font-size: 2rem;
+               width: 100%;
+           }
+
+           h4 {
+               font-size: 0.8rem;
+               top: 1.6875em;
+               left: 50%;
+               transform: translateX(-50%);
+               text-align: center;
+           }
+
+           input[type="text"], input[type="password"], button {
+               width: 100%;
+               padding: 1rem;
+               font-size: 0.9rem;
+               max-width: 100%;
+           }
+
+           h2, form {
+               margin-left: 0;
+               align-items: center;
+               text-align: center;
+           }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,26 +173,18 @@
             <br> 
             центр
         </h4>
-        
     </header>
-    <p>
-            <h2>Авторизация</h2>
-        <br>
-    </p>
+    <h2>Авторизация</h2>
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="username"  placeholder="Имя пользователя" style="color: aliceblue;"   >
-        <br>
+        <input type="text" name="username" placeholder="Имя пользователя" style="color: aliceblue;">
         <input type="password" name="password" placeholder="Пароль" style="color: aliceblue;">
-        <br>
-        <br>
-        <br>
         <button type="submit">Войти</button>
     </form>
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <li>{{ message }}</li>
             {% endfor %}
         </ul>
     {% endif %}

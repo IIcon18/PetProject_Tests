@@ -1,180 +1,229 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  {% csrf_token %}
+    {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Главная страница</title>
-    <link rel="stylesheet"  href="static/main/css/index.css">
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-
     <style>
-      body {
-        background: url('https://png.pngtree.com/background/20210709/original/pngtree-red-spring-train-background-design-picture-image_960856.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 100vh;
-        width: 100vw;
-        
-        
-        
-      }
-       </style>
-      
-        <div class="railway-logistics-layout">
-          <style>
-          .railway-logistics-layout {
-            box-sizing: border-box;
+        body {
+            background-image: url('{% static "main/images/bg5.png" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
             display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: flex-start;
-            min-width: 1980px;
-        
-        }
-        </style>
-        <img src="http://diplomstudent.net/uploads/posts/2018-10/1538556433_iuoq75tx6.jpg" class="truu">
-        <style>
-          .truu {
-            box-sizing: border-box;
-            display: block;
-            width: 300px;
-            max-width: initial;
-            height: 450px;
-            clip-path: undefined;
-            border: none;
-            mix-blend-mode: normal;
-            object-fit: cover;
-            padding-bottom:130px;
-            padding-top: 15px;
-          }
-        </style>
-        <img src="https://furman.top/uploads/posts/2023-08/1690931676_furman-top-p-belii-fon-s-krasnoi-ramkoi-oboi-43.jpg" class="sveg" />
-        <style>
-          .sveg {
-            width: 550px;
-            max-width: initial;
-            height: 500px;
-            clip-path: undefined;
-            border: none;
-            mix-blend-mode: normal;
-            margin-left:60px;
-            padding-top:250px;
-           
-          }
-        </style>
-        </style>
-        <div class="central-content-block">
-          <style>
-            .central-content-block {
-              flex: 1 0 auto;
-              align-self: center;
-              padding-top: 90px;
-              margin-left: 21px;
-            }
-          </style>
-        <div class="railway-station-design">
-          <style>
-            .railway-station-design {
-              box-sizing: border-box;
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              justify-content: flex-start;
-              width: 100%;
-              padding: 74px 14px 50px;
-              background-image: url("Pupok/main/templates/main/11.png")
-              no-repeat 50% / cover;
-            }
-          </style>
-        <div class="railway-cargo-center-info">
-        <style>
-          .railway-cargo-center-info {
-            box-sizing: border-box;
-            display: flex;
-            flex: 0 0 457px;
             flex-direction: column;
-            align-items: stretch;
-            justify-content: flex-start;
-          }
-        </style>
-        <div class="white-flare">
-          <style>
-            .white-flare {
-              display: flex;
-              flex: 0 0 auto;
-              flex-direction: row;
-              align-items: flex-start;
-              justify-content: flex-start;
-            }
-          </style>
+            align-items: center;
+            color: #000;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            font-weight: bold;
+        }
+        .header {
+            background-color: #CC000A;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+            color: white;
+        }
+        .header a {
+            color: white;
+            text-decoration: none;
+        }
+        .profile-container {
+            background-image: url('{% static "main/images/11.png" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250vh;
+            max-width: 1100px;
+            height: 70vh;
+            margin-top: 100px;
+            margin-right: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            color: #000;
+            font-family: Arial, sans-serif;
+            text-align: left;
+            overflow: hidden;
+            position: relative;
+        }
+        .profile-detail {
+            position: absolute;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
         
-          
-        </style>
-        </div>
-        <div class="center-contact-info-section">
-          <style>
-            .center-contact-info-section {
-              box-sizing: border-box;
-              display: flex;
-              flex: 0 0 336px;
-              flex-direction: column;
-              align-items: stretch;
-              justify-content: center;
-              margin-left: 79px;
-            }
-          </style>
-        <div class="contact-info-container">
-          <style>
-            .contact-info-container {
-              flex: 0 0 auto;
-            }
-          </style>
-      
-        </style>
-        </div>
-        <div class="railway-chief-info-box">
-          <style>
-            .railway-chief-info-box {
-              display: flex;
-              flex: 0 0 auto;
-              flex-direction: column;
-              align-items: flex-end;
-              justify-content: flex-start;
-              margin-top: 232px;
-            }
-          </style>
-        </style>
-        </div>
-      </div>
-    </div>
-  </div>
-    <a href="http://127.0.0.1:8000/" class="btn btn-info">Выйти</a>
-    <a href="http://127.0.0.1:8000/login/account/manual" class="btn btn-info">Методичка</a>
-    <a href="http://127.0.0.1:8000/account/home/" class="btn btn-info">Пройти тест</a>
-    <style>
-      a.btn {
-        display: inline-block;
-        padding: 5px 10px;
-        background-color: #CC000A;
-        color: #000000;
-        text-decoration: none;
-        border-radius: 5px;
-        font-family: Arial, sans-serif;
-        font-size: 20px;
-        font-weight: bold;
-        position: relative; /* Изменение значения position */
-        left: 170px;
-        top: -400px;
-         }
-    </style>
-    <style>
-      a.btn:hover {
-        background-color: #630000;
+        .phone, .email, .username {
+            color: black;
+            transform: scale(1.2);
+            text-align: center;
+            right: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .first-name {
+            color: white;
+            font-weight: bold;
+            bottom: 10px;
+            left: 20px;
+            font-size: 28px;
+        }
+        
+        .last-name {
+            color: white;
+            font-weight: bold;
+            bottom: 50px;
+            left: 20px;
+            font-size: 28px;
+        }
+
+        .patronymic {
+            color: white;
+            font-weight: bold;
+            bottom: 30px;
+            left: 20px;
+            font-size: 28px;
+            top: 570px;
+        }
+
+        .position {
+            color: white;
+            font-weight: bold;
+            top: 500px;
+            right: 20px;
+            font-size: 20px;
+            padding-top: 10px;
+        }
+
+        .manager {
+            color: white;
+            font-weight: bold;
+            top: 550px;
+            right: 20px;
+            font-size: 20px;
+            padding-top: 10px;
+        }
+        
+        .top-left-text {
+            position: absolute;
+            top: 80px;
+            left: 150px;
+            color: black;
+            font-weight: bold;
+            font-size: 44px;
+        }
+
+        .additional-left-text {
+            position: absolute;
+            top: 180px;
+            left: 150px;
+            color: black;
+            font-size: 20px;
+        }
+
+        .additional1-left-text {
+            position: absolute;
+            top: 205px;
+            left: 150px;
+            color: black;
+            font-size: 20px;
+        }
+
+        .additional2-left-text {
+            position: absolute;
+            top: 230px;
+            left: 150px;
+            color: black;
+            font-size: 20px;
+        }
+
+        .avatar-container {
+            position: absolute;
+            top: 170px;
+            left: 150px;
+            width: 450px;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 5%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .phone { top: 150px; left: 650px; }
+        .email { top: 200px; left: 650px; }
+        .username { top: 250px; left: 650px; }
+        .first-name { bottom: 90px; left: 20px; }
+        .last-name { bottom: 50px; left: 20px; }
+        .patronymic { bottom: 70px; left: 20px; }
+        .position { bottom: 10px; right: 20px; }
+        .manager { bottom: 40px; right: 20px; }
+        .btn-custom {
+            background-color: #CC000A;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #630000;
+            border-radius: 5px;
+            padding: 12px 24px;
+            margin: 0 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn
+        .btn-custom:hover {
+            background-color: black;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
     </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Профиль пользователя</h1>
+        <div>
+            <a href="http://127.0.0.1:8000/login/account/manual" class="btn-custom">Методичка</a>
+            <a href="http://127.0.0.1:8000/account/home/" class="btn-custom">Пройти тест</a>
+            <a href="http://127.0.0.1:8000/" class="btn-custom">Выйти</a>
+        </div>
+    </div>
+    <div class="avatar-container">
+        <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
+    </div>
+    <div class="container profile-container">
+        <div class="top-left-text">Белый раст</div>
+        <div class="additional-left-text">Терминально-</div>
+        <div class="additional1-left-text">логический</div>
+        <div class="additional2-left-text">центр</div>
+        
+        <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
+        <div class="profile-detail email"><strong>Почта:</strong> {{ user.email }}</div>
+        <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
+        <div class="profile-detail first-name"><strong>Имя:</strong> {{ user.first_name }}</div>
+        <div class="profile-detail last-name"><strong>Фамилия:</strong> {{ user.last_name }}</div>
+        <div class="profile-detail patronymic"><strong>Отчество:</strong> {{ user.profile.patronymic }}</div>
+        <div class="profile-detail position"><strong>Должность:</strong> {{ user.profile.position }}</div>
+        <div class="profile-detail manager"><strong>Руководитель:</strong> {{ user.profile.manager }}</div>
+    </div>
 </body>
 </html>
