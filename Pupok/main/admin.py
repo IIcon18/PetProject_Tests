@@ -12,11 +12,15 @@ class ProfileInline(admin.StackedInline):
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
-    list_display = ('username', 'email', 'first_name', 'last_name', 'get_position')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'get_position', 'get_manager')
 
     def get_position(self, instance):
         return instance.profile.position if hasattr(instance, 'profile') else None
     get_position.short_description = 'Должность'  # Название колонки
+
+    def get_manager(self, instance):
+        return instance.profile.manager if hasattr(instance, 'profile') else None
+    get_manager.short_description = 'Руководитель'  # Название колонки
 
 # Unregister old User admin
 admin.site.unregister(User)

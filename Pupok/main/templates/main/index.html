@@ -21,7 +21,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             min-height: 100vh;
-            font-weight: bold; /* Устанавливаем жирность текста */
+            font-weight: bold;
         }
         .header {
             background-color: #CC000A;
@@ -34,10 +34,10 @@
         }
         .header h1 {
             margin: 0;
-            color: white; /* Меняем цвет текста на белый */
+            color: white;
         }
         .header a {
-            color: white; /* Меняем цвет текста на белый */
+            color: white;
             text-decoration: none;
         }
         .profile-container {
@@ -47,17 +47,17 @@
             background-position: center;
             padding: 20px;
             border-radius: 10px;
-            width: 250vh; /* Ширина контейнера */
-            max-width: 1100px; /* Максимальная ширина контейнера */
-            height: 70vh; /* Высота контейнера */
+            width: 250vh;
+            max-width: 1100px;
+            height: 70vh;
             margin-top: 100px;
             margin-right: 50px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             color: #000;
             font-family: Arial, sans-serif;
             text-align: left;
-            overflow: hidden; /* Скрытие излишков содержимого */
-            position: relative; /* Для абсолютного позиционирования внутренних элементов */
+            overflow: hidden;
+            position: relative;
         }
         .profile-detail {
             position: absolute;
@@ -66,12 +66,11 @@
             margin: 5px 0;
         }
         
-        /* Styling for specific profile details */
         .phone, .email, .username {
-            color: black; /* Set text color to black */
-            transform: scale(1.2); /* Increase scale */
-            text-align: center; /* Center align text */
-            right: 0; /* Move to the left */
+            color: black;
+            transform: scale(1.2);
+            text-align: center;
+            right: 0;
             font-size: 16px;
             font-weight: bold;
         }
@@ -79,7 +78,7 @@
         .first-name {
             color: white;
             font-weight: bold;
-            bottom: 10px; /* Move to the bottom */
+            bottom: 10px;
             left: 20px;
             font-size: 28px;
         }
@@ -87,24 +86,41 @@
         .last-name {
             color: white;
             font-weight: bold;
-            bottom: 50px; /* Move to the bottom */
+            bottom: 50px;
             left: 20px;
             font-size: 28px;
         }
-        
+
+        .patronymic {
+            color: white;
+            font-weight: bold;
+            bottom: 30px;
+            left: 20px;
+            font-size: 28px;
+        }
+
         .position {
             color: white;
             font-weight: bold;
-            top: 500px; /* Adjust top position */
+            top: 500px;
             right: 20px;
             font-size: 20px;
-            padding-top: 10px; /* Add padding top for spacing */
+            padding-top: 10px;
+        }
+
+        .manager {
+            color: white;
+            font-weight: bold;
+            top: 450px;
+            right: 20px;
+            font-size: 20px;
+            padding-top: 10px;
         }
         
         .top-left-text {
             position: absolute;
-            top: 80px; /* Adjust top position */
-            left: 150px; /* Adjust left position */
+            top: 80px;
+            left: 150px;
             color: black;
             font-weight: bold;
             font-size: 44px;
@@ -112,29 +128,28 @@
 
         .additional-left-text {
             position: absolute;
-            top: 180px; /* Adjust top position */
-            left: 150px; /* Adjust left position */
+            top: 180px;
+            left: 150px;
             color: black;
             font-size: 20px;
         }
 
         .additional1-left-text {
             position: absolute;
-            top: 205px; /* Adjust top position */
-            left: 150px; /* Adjust left position */
+            top: 205px;
+            left: 150px;
             color: black;
             font-size: 20px;
         }
 
         .additional2-left-text {
             position: absolute;
-            top: 230px; /* Adjust top position */
-            left: 150px; /* Adjust left position */
+            top: 230px;
+            left: 150px;
             color: black;
             font-size: 20px;
         }
 
-        /* Styles for avatar */
         .avatar-container {
             position: absolute;
             top: 170px;
@@ -143,8 +158,8 @@
             height: 450px;
             overflow: hidden;
             border-radius: 5%;
-            border: 5px solid #fff; /* Добавляем белую обводку */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Добавляем тень */
+            border: 5px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
         
         .avatar-container img {
@@ -153,31 +168,32 @@
             object-fit: cover;
         }
 
-        /* Other styles remain the same */
-        
         .phone { top: 150px; left: 650px; }
         .email { top: 200px; left: 650px; }
         .username { top: 250px; left: 650px; }
         .first-name { bottom: 90px; left: 20px; }
         .last-name { bottom: 50px; left: 20px; }
+        .patronymic { bottom: 70px; left: 20px; }
         .position { bottom: 10px; right: 20px; }
+        .manager { bottom: 40px; right: 20px; }
         .btn-custom {
             background-color: #CC000A;
-            color: #fff; /* Меняем цвет текста на белый */
+            color: #fff;
             text-decoration: none;
-            border: 2px solid #630000; /* Добавляем контур */
+            border: 2px solid #630000;
             border-radius: 5px;
-            padding: 12px 24px; /* Увеличиваем отступы */
+            padding: 12px 24px;
             margin: 0 5px;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             display: inline-block;
             font-size: 16px;
             font-weight: bold;
         }
+        .btn
         .btn-custom:hover {
             background-color: black;
-            transform: scale(1.05); /* Увеличиваем масштаб */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Добавляем тень */
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -191,11 +207,9 @@
         </div>
     </div>
     <div class="avatar-container">
-            <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
+        <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
     </div>
     <div class="container profile-container">
-        
-
         <div class="top-left-text">Белый раст</div>
         <div class="additional-left-text">Терминально-</div>
         <div class="additional1-left-text">логический</div>
@@ -206,9 +220,9 @@
         <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
         <div class="profile-detail first-name"><strong>Имя:</strong> {{ user.first_name }}</div>
         <div class="profile-detail last-name"><strong>Фамилия:</strong> {{ user.last_name }}</div>
+        <div class="profile-detail patronymic"><strong>Отчество:</strong> {{ user.profile.patronymic }}</div>
         <div class="profile-detail position"><strong>Должность:</strong> {{ user.profile.position }}</div>
+        <div class="profile-detail manager"><strong>Руководитель:</strong> {{ user.profile.manager }}</div>
     </div>
-    
 </body>
 </html>
-
