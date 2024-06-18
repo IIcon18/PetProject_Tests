@@ -1,23 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-# Create your models here.
-class Articles(models.Model):
-    objects = None
-    title = models.CharField('Название', max_length=50)
-    anons = models.CharField('Анонс', max_length=250)
-    full_text = models.TextField('Текст')
-
-    def __str__(self):
-        return f':{self.id}'
-
-    def get_absolute_url(self):
-        return f'/news/{self.id}'
-    
-    class Meta:
-        verbose_name = 'Методичка'
-        verbose_name_plural = 'Методички'
-
+from django.db import models
+import os
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -28,3 +12,16 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+def file_upload_path(instance, filename):
+    basename, extension = os.path.splitext(filename)
+    truncated_basename = basename[:150]  # Обрезаем имя файла до 100 символов
+    return f'documents/{truncated_basename}{extension}'
+
+class Document(models.Model):
+    title = models.CharField(max_length=150)  # Установите максимальное значение в 200 символов, если нужно
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    file = models.FileField(upload_to=file_upload_path)
+
+    def __str__(self):
+        return self.title
