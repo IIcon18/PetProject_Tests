@@ -34,10 +34,10 @@
         }
         .header h1 {
             margin: 0;
-            color: black;
+            color: white; /* Меняем цвет текста на белый */
         }
         .header a {
-            color: black;
+            color: white; /* Меняем цвет текста на белый */
             text-decoration: none;
         }
         .profile-container {
@@ -47,40 +47,123 @@
             background-position: center;
             padding: 20px;
             border-radius: 10px;
-            width: 80%; /* Ширина контейнера */
-            max-width: 1000px; /* Максимальная ширина контейнера */
-            height: 80vh; /* Высота контейнера */
-            margin-top: 20px;
+            width: 250vh; /* Ширина контейнера */
+            max-width: 1100px; /* Максимальная ширина контейнера */
+            height: 70vh; /* Высота контейнера */
+            margin-top: 100px;
+            margin-right: 50px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             color: #000;
             font-family: Arial, sans-serif;
             text-align: left;
             overflow: hidden; /* Скрытие излишков содержимого */
+            position: relative; /* Для абсолютного позиционирования внутренних элементов */
         }
-        .profile-details {
-            list-style: none;
-            padding: 0;
-        }
-        .profile-details li {
+        .profile-detail {
+            position: absolute;
             padding: 10px;
-            border-bottom: 1px solid #555;
+            border-radius: 5px;
+            margin: 5px 0;
         }
-        .profile-details li strong {
-            color: #000;
+        
+        /* Styling for specific profile details */
+        .phone, .email, .username {
+            color: black; /* Set text color to black */
+            transform: scale(1.2); /* Increase scale */
+            text-align: center; /* Center align text */
+            right: 0; /* Move to the left */
+            font-size: 16px;
+            font-weight: bold;
         }
-        .profile-details li:nth-child(3),
-        .profile-details li:nth-child(4),
-        .profile-details li:nth-child(6),
-        .profile-details li:nth-child(2),
-        .profile-details li:nth-child(1) {
-            color: #000;
+        
+        .first-name {
+            color: white;
+            font-weight: bold;
+            bottom: 10px; /* Move to the bottom */
+            left: 20px;
+            font-size: 28px;
         }
-        .text-center {
-            text-align: center;
+        
+        .last-name {
+            color: white;
+            font-weight: bold;
+            bottom: 50px; /* Move to the bottom */
+            left: 20px;
+            font-size: 28px;
         }
+        
+        .position {
+            color: white;
+            font-weight: bold;
+            top: 500px; /* Adjust top position */
+            right: 20px;
+            font-size: 20px;
+            padding-top: 10px; /* Add padding top for spacing */
+        }
+        
+        .top-left-text {
+            position: absolute;
+            top: 80px; /* Adjust top position */
+            left: 150px; /* Adjust left position */
+            color: black;
+            font-weight: bold;
+            font-size: 44px;
+        }
+
+        .additional-left-text {
+            position: absolute;
+            top: 180px; /* Adjust top position */
+            left: 150px; /* Adjust left position */
+            color: black;
+            font-size: 20px;
+        }
+
+        .additional1-left-text {
+            position: absolute;
+            top: 205px; /* Adjust top position */
+            left: 150px; /* Adjust left position */
+            color: black;
+            font-size: 20px;
+        }
+
+        .additional2-left-text {
+            position: absolute;
+            top: 230px; /* Adjust top position */
+            left: 150px; /* Adjust left position */
+            color: black;
+            font-size: 20px;
+        }
+
+        /* Styles for avatar */
+        .avatar-container {
+            position: absolute;
+            top: 170px;
+            left: 150px;
+            width: 450px;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 5%;
+            border: 5px solid #fff; /* Добавляем белую обводку */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Добавляем тень */
+        }
+        
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Other styles remain the same */
+        
+        .phone { top: 150px; left: 650px; }
+        .email { top: 200px; left: 650px; }
+        .username { top: 250px; left: 650px; }
+        .first-name { bottom: 90px; left: 20px; }
+        .last-name { bottom: 50px; left: 20px; }
+        .position { bottom: 10px; right: 20px; }
         .btn-custom {
             background-color: #CC000A;
-            color: #fff;
+            color: #fff; /* Меняем цвет текста на белый */
             text-decoration: none;
             border: 2px solid #630000; /* Добавляем контур */
             border-radius: 5px;
@@ -92,7 +175,7 @@
             font-weight: bold;
         }
         .btn-custom:hover {
-            background-color: #630000;
+            background-color: black;
             transform: scale(1.05); /* Увеличиваем масштаб */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Добавляем тень */
         }
@@ -104,19 +187,28 @@
         <div>
             <a href="http://127.0.0.1:8000/login/account/manual" class="btn-custom">Методичка</a>
             <a href="http://127.0.0.1:8000/account/home/" class="btn-custom">Пройти тест</a>
-            <a href="http://127.0.0.1:8000/" class="btn btn-info btn-custom">Выйти</a>
+            <a href="http://127.0.0.1:8000/" class="btn-custom">Выйти</a>
         </div>
     </div>
-    
-    <div class="container profile-container">
-        <ul class="profile-details list-group">
-            <li class="list-group-item bg-transparent text-black"><strong>Телефон:</strong> {{ user.profile.phone_number }}</li>
-            <li class="list-group-item bg-transparent text-black"><strong>Почта:</strong> {{ user.email }}</li>
-            <li class="list-group-item bg-transparent text-black"><strong>Логин:</strong> {{ user.username }}</li>
-            <li class="list-group-item bg-transparent text-black"><strong>Имя:</strong> {{ user.first_name }}</li>
-            <li class="list-group-item bg-transparent text-black"><strong>Фамилия:</strong> {{ user.last_name }}</li>
-            <li class="list-group-item bg-transparent text-black"><strong>Должность:</strong> {{ user.profile.position }}</li>
-        </ul>
+    <div class="avatar-container">
+            <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
     </div>
+    <div class="container profile-container">
+        
+
+        <div class="top-left-text">Белый раст</div>
+        <div class="additional-left-text">Терминально-</div>
+        <div class="additional1-left-text">логический</div>
+        <div class="additional2-left-text">центр</div>
+        
+        <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
+        <div class="profile-detail email"><strong>Почта:</strong> {{ user.email }}</div>
+        <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
+        <div class="profile-detail first-name"><strong>Имя:</strong> {{ user.first_name }}</div>
+        <div class="profile-detail last-name"><strong>Фамилия:</strong> {{ user.last_name }}</div>
+        <div class="profile-detail position"><strong>Должность:</strong> {{ user.profile.position }}</div>
+    </div>
+    
 </body>
 </html>
+
