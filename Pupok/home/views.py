@@ -9,11 +9,16 @@ def home(request):
     return render(request, 'test/home.html')
 
 def quiz(request):
+    num_questions = 10  # Количество вопросов в тесте
     start_time = timezone.now()  # Сохранение времени начала теста
     request.session['start_time'] = start_time.isoformat()
 
-    questions = list(Question.objects.all())
-    extended_questions = list(ExtendedQuestion.objects.all())
+    all_questions = list(Question.objects.all())
+    all_extended_questions = list(ExtendedQuestion.objects.all())
+
+    # Перемешиваем вопросы и выбираем нужное количество
+    questions = random.sample(all_questions, min(num_questions, len(all_questions)))
+    extended_questions = random.sample(all_extended_questions, min(num_questions, len(all_extended_questions)))
 
     return render(request, 'test/quiz.html', {'questions': questions, 'extended_questions': extended_questions})
 
