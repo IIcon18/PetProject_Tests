@@ -73,9 +73,10 @@
         .avatar-container {
             position: absolute;
             top: 20px;
-            left: 20px;
-            width: 150px;
-            height: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; /* Increase the size */
+            height: 200px; /* Increase the size */
             overflow: hidden;
             border-radius: 50%;
             border: 5px solid #fff;
@@ -90,30 +91,34 @@
 
         .top-left-text {
             position: absolute;
-            top: 20px;
-            left: 190px;
+            top: 250px; /* Adjust the position to accommodate the larger avatar */
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 24px;
             font-weight: bold;
+            text-align: center;
         }
 
         .additional-left-text,
         .additional1-left-text,
         .additional2-left-text {
             position: absolute;
-            left: 190px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
             font-size: 18px;
         }
 
         .additional-left-text {
-            top: 50px;
+            top: 280px; /* Adjust the position */
         }
 
         .additional1-left-text {
-            top: 70px;
+            top: 300px; /* Adjust the position */
         }
 
         .additional2-left-text {
-            top: 90px;
+            top: 320px; /* Adjust the position */
         }
 
         .btn-custom {
@@ -178,8 +183,8 @@
                 top: 20px;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 120px;
-                height: 120px;
+                width: 160px;
+                height: 160px;
             }
 
             .top-left-text,
@@ -192,12 +197,22 @@
             }
 
             .top-left-text {
+                top: 200px;
                 font-size: 20px;
             }
 
-            .additional-left-text,
-            .additional1-left-text,
+            .additional-left-text {
+                top: 230px;
+                font-size: 16px;
+            }
+
+            .additional1-left-text {
+                top: 250px;
+                font-size: 16px;
+            }
+
             .additional2-left-text {
+                top: 270px;
                 font-size: 16px;
             }
         }
@@ -207,17 +222,27 @@
                 top: 10px;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
             }
 
             .top-left-text {
+                top: 150px;
                 font-size: 18px;
             }
 
-            .additional-left-text,
-            .additional1-left-text,
+            .additional-left-text {
+                top: 180px;
+                font-size: 14px;
+            }
+
+            .additional1-left-text {
+                top: 200px;
+                font-size: 14px;
+            }
+
             .additional2-left-text {
+                top: 220px;
                 font-size: 14px;
             }
 
@@ -233,7 +258,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Профиль пользователя</h1>
+        <h1>Личный кабинет</h1>
         <div>
             <a href="http://127.0.0.1:8000/login/account/materials" class="btn-custom">Методички</a>
             <a href="http://127.0.0.1:8000/account/home/" class="btn-custom">Пройти тест</a>
@@ -244,11 +269,6 @@
         <div class="avatar-container">
             <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
         </div>
-        <div class="top-left-text">Белый раст</div>
-        <div class="additional-left-text">Терминально-</div>
-        <div class="additional1-left-text">логический</div>
-        <div class="additional2-left-text">центр</div>
-        
         <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
         <div class="profile-detail email"><strong>Почта:</strong> {{ user.email }}</div>
         <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
@@ -260,7 +280,3 @@
     </div>
 </body>
 </html>
-
-
-
-
