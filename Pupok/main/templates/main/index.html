@@ -22,10 +22,13 @@
             margin: 0;
             min-height: 100vh;
             font-weight: bold;
+            position: relative; /* Добавлено для позиционирования footer */
+            zoom: 1;
         }
         .header {
             background-color: #CC000A;
             width: 100%;
+            height: 80px;
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
@@ -47,7 +50,7 @@
             background-position: center;
             padding: 20px;
             border-radius: 10px;
-            width: 90%;
+            width: 100%;
             max-width: 1100px;
             height: 700px;
             margin-top: 20px;
@@ -58,74 +61,38 @@
             overflow: hidden;
             position: relative;
         }
+        .profile-details-container {
+            text-align: center;
+            margin-top: 20px;
+        }
         .profile-detail {
             padding: 10px;
             border-radius: 5px;
             margin: 5px 0;
+            position: absolute;
         }
-        
-        .phone, .email, .username, .position, .manager {
-            color: black;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
         .avatar-container {
             position: absolute;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px; /* Increase the size */
-            height: 200px; /* Increase the size */
+            width: 200px;
+            height: 200px;
             overflow: hidden;
             border-radius: 50%;
             border: 5px solid #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-        
         .avatar-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
-        .top-left-text {
-            position: absolute;
-            top: 250px; /* Adjust the position to accommodate the larger avatar */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .additional-left-text,
-        .additional1-left-text,
-        .additional2-left-text {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .additional-left-text {
-            top: 280px; /* Adjust the position */
-        }
-
-        .additional1-left-text {
-            top: 300px; /* Adjust the position */
-        }
-
-        .additional2-left-text {
-            top: 320px; /* Adjust the position */
-        }
-
         .btn-custom {
             background-color: #CC000A;
             color: #fff;
             text-decoration: none;
-            border: 2px solid #630000;
+            border: none; /* Remove the border */
             border-radius: 5px;
             padding: 12px 24px;
             margin: 0 5px;
@@ -134,89 +101,66 @@
             font-size: 16px;
             font-weight: bold;
         }
-
         .btn-custom:hover {
             background-color: black;
             transform: scale(1.05);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-
-        .first-name, .last-name, .patronymic {
+        .last-name, .first-name, .patronymic {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            font-size: 16px;
+            font-size: 24px;
             font-weight: bold;
+            color: white;
         }
-
         .last-name {
             bottom: 80px;
         }
-
-        .patronymic {
-            bottom: 50px;
+        .first-name {
+            bottom: 110px; /* Переместили ниже */
         }
-
+        .patronymic {
+            bottom: 50px; /* Переместили выше */
+        }
         .position, .manager {
             position: absolute;
             right: 20px;
             text-align: right;
             font-size: 16px;
             font-weight: bold;
+            color: white;
         }
-
         .position {
             bottom: 50px;
         }
-
         .manager {
             bottom: 20px;
         }
-
-        @media (max-width: 1200px) {
-            .profile-container {
-                width: 100%;
-                padding: 10px;
-            }
-
-            .avatar-container {
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 160px;
-                height: 160px;
-            }
-
-            .top-left-text,
-            .additional-left-text,
-            .additional1-left-text,
-            .additional2-left-text {
-                left: 50%;
-                transform: translateX(-50%);
-                text-align: center;
-            }
-
-            .top-left-text {
-                top: 200px;
-                font-size: 20px;
-            }
-
-            .additional-left-text {
-                top: 230px;
-                font-size: 16px;
-            }
-
-            .additional1-left-text {
-                top: 250px;
-                font-size: 16px;
-            }
-
-            .additional2-left-text {
-                top: 270px;
-                font-size: 16px;
-            }
+        .phone {
+            position: absolute;
+            right: 430px;
+            bottom: 360px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
         }
-
+        .username {
+            position: absolute;
+            right: 490px;
+            bottom: 400px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .email {
+            position: absolute;
+            right: 415px;
+            bottom: 320px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+        }
         @media (max-width: 768px) {
             .avatar-container {
                 top: 10px;
@@ -225,34 +169,37 @@
                 width: 120px;
                 height: 120px;
             }
-
-            .top-left-text {
-                top: 150px;
-                font-size: 18px;
-            }
-
-            .additional-left-text {
-                top: 180px;
-                font-size: 14px;
-            }
-
-            .additional1-left-text {
-                top: 200px;
-                font-size: 14px;
-            }
-
-            .additional2-left-text {
-                top: 220px;
-                font-size: 14px;
-            }
-
             .phone, .email, .username, .position, .manager {
                 font-size: 12px;
             }
-
-            .first-name, .last-name, .patronymic {
+            .last-name, .first-name, .patronymic {
                 font-size: 14px;
             }
+        }
+        .footer {
+            background-color: #CC000A;
+            color: white;
+            width: 100%;
+            height: 80px;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+        .footer .footer-text {
+            margin:  10px;
+            font-size: 16px;
+        }
+        .footer .footer-text-1 {
+            font-size: 34px; /* Размер первой надписи */
+        }
+        .footer .footer-text-2 {
+            font-size: 12px; /* Размер второй надписи */
         }
     </style>
 </head>
@@ -269,14 +216,22 @@
         <div class="avatar-container">
             <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
         </div>
-        <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
-        <div class="profile-detail email"><strong>Почта:</strong> {{ user.email }}</div>
-        <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
+        <div class="profile-details-container">
+            <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
+            <div class="profile-detail email"><strong>Почта:</strong> {{ user.email }}</div>
+            <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
+        </div>
         <div class="profile-detail last-name"><strong>Фамилия:</strong> {{ user.last_name }}</div>
         <div class="profile-detail first-name"><strong>Имя:</strong> {{ user.first_name }}</div>
         <div class="profile-detail patronymic"><strong>Отчество:</strong> {{ user.profile.patronymic }}</div>
         <div class="profile-detail position"><strong>Должность:</strong> {{ user.profile.position }}</div>
         <div class="profile-detail manager"><strong>Руководитель:</strong> {{ user.profile.manager }}</div>
     </div>
+    <div class="footer">
+        <div class="footer-text footer-text-1">Белый раст</div>
+        <div class="footer-text footer-text-2">Терминально-<br>логический центр</div>
+    </div>
 </body>
 </html>
+
+
