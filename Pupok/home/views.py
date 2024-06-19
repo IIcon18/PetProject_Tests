@@ -6,51 +6,40 @@ import random
 from datetime import datetime, timedelta
 
 def home(request):
-    categories = Types.objects.all()
-    return render(request, 'test/home.html', {'categories': categories})
+    return render(request, 'test/home.html')
 
 def quiz(request):
-    if request.method == 'GET' and 'gfg' in request.GET:
-        selected_category = request.GET.get('gfg')
-        start_time = timezone.now()  # Сохранение времени начала теста
-        request.session['start_time'] = start_time.isoformat()
+    start_time = timezone.now()  # Сохранение времени начала теста
+    request.session['start_time'] = start_time.isoformat()
 
-        # Получаем все вопросы (и обычные, и с развернутым ответом)
-        questions = list(Question.objects.filter(gfg__gfg_name__icontains=selected_category))
-        extended_questions = list(ExtendedQuestion.objects.filter(gfg__gfg_name__icontains=selected_category))
+    questions = list(Question.objects.all())
+    extended_questions = list(ExtendedQuestion.objects.all())
 
-        return render(request, 'test/quiz.html', {'questions': questions, 'extended_questions': extended_questions, 'selected_category': selected_category})
-    else:
-        return redirect('home')
+    return render(request, 'test/quiz.html', {'questions': questions, 'extended_questions': extended_questions})
 
 def get_quiz(request):
     try:
-        if request.method == 'GET' and 'gfg' in request.GET:
-            selected_category = request.GET.get('gfg')
-            questions = Question.objects.filter(gfg__gfg_name__icontains=selected_category)
-            data = []
-            for question in questions:
-                answers = list(Answer.objects.filter(question=question))
-                data.append({
-                    'uid': str(question.uid),
-                    'question': question.question,
-                    'marks': question.marks,
-                    'question_type': question.question_type,
-                    'answers': [{'answer': answer.answer, 'is_correct': answer.is_correct} for answer in answers]
-                })
-            payload = {'status': True, 'data': data}
-            return JsonResponse(payload)
-        else:
-            return HttpResponse(status=400)
+        questions = Question.objects.all()
+        data = []
+        for question in questions:
+            answers = list(Answer.objects.filter(question=question))
+            data.append({
+                'uid': str(question.uid),
+                'question': question.question,
+                'marks': question.marks,
+                'question_type': question.question_type,
+                'answers': [{'answer': answer.answer, 'is_correct': answer.is_correct} for answer in answers]
+            })
+        payload = {'status': True, 'data': data}
+        return JsonResponse(payload)
     except Exception as e:
         print(e)
         return HttpResponse("Something went wrong", status=500)
 
 def result(request):
-    if request.method == 'POST' and 'gfg' in request.POST:
-        selected_category = request.POST.get('gfg')
-        questions = list(Question.objects.filter(gfg__gfg_name__icontains=selected_category))
-        extended_questions = list(ExtendedQuestion.objects.filter(gfg__gfg_name__icontains=selected_category))
+    if request.method == 'POST':
+        questions = list(Question.objects.all())
+        extended_questions = list(ExtendedQuestion.objects.all())
 
         # Получение времени начала теста из сессии
         start_time_str = request.session.get('start_time')
@@ -127,7 +116,6 @@ def result(request):
             'correct_answers': correct_answers_count,
             'incorrect_answers': incorrect_answers,
             'results': results,
-            'selected_category': selected_category,
             'test_duration': test_duration_str
         }
         return render(request, 'test/result.html', context)

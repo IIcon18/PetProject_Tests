@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Выбор категории теста</title>
+    <title>Выбор теста</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
@@ -31,20 +31,11 @@
 </head>
 <body>
     <div class="header">
-        <h1>Выберите категорию тестов</h1>
+        <h1>Добро пожаловать на тестирование</h1>
     </div>
     <div class="container">
         <form action="{% url 'quiz' %}" method="get">
-            <div class="form-group">
-                <label for="categorySelect">Категория:</label>
-                <select class="form-control" id="categorySelect" name="gfg">
-                    <option value="">Выбрать</option>
-                    {% for category in categories %}
-                        <option value="{{ category.gfg_name }}">{{ category.gfg_name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Выбрать</button>
+            <button type="submit" class="btn btn-primary">Пройти тест</button>
         </form>
     </div>
 </body>

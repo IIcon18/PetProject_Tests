@@ -34,7 +34,17 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+        #chart-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #resultChart {
+            max-width: 300px;
+            max-height: 300px;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="header">
@@ -57,7 +67,48 @@
             {% endfor %}
         </ul>
 
-        <a href="{% url 'home' %}" class="btn btn-primary">Вернуться к выбору категории</a>
+        <div id="chart-container">
+            <canvas id="resultChart" width="300" height="300"></canvas>
+        </div>
+
+        <a href="http://127.0.0.1:8000/account/" class="btn btn-primary">Вернуться в лк</a>
     </div>
+
+    <script>
+        const ctx = document.getElementById('resultChart').getContext('2d');
+        const resultChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Правильные ответы', 'Неправильные ответы'],
+                datasets: [{
+                    label: 'Результаты теста',
+                    data: [{{ correct_answers }}, {{ incorrect_answers }}],
+                    backgroundColor: ['#28a745', '#dc3545'],
+                    borderColor: ['#28a745', '#dc3545'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.raw;
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
