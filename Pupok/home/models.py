@@ -19,13 +19,13 @@ class Types(BaseModel):
 class Question(BaseModel):
     QUESTION_TYPE_CHOICES = [
         ('MCQ', 'Multiple Choice Question'),
-        ('SA', 'Short Answer Question')
     ]
     
     gfg = models.ForeignKey(Types, related_name='questions', on_delete=models.CASCADE)
-    question = models.CharField(max_length=100)
+    question = models.CharField(max_length=250)
     marks = models.IntegerField(default=5)
     question_type = models.CharField(max_length=3, choices=QUESTION_TYPE_CHOICES, default='MCQ')
+    image = models.ImageField(upload_to='question_images/', null=True, blank=True)  # Добавлено поле для изображения
     
     def __str__(self):
         return self.question

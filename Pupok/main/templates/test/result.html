@@ -9,55 +9,171 @@
         body {
             background-color: #f8f9fa;
             color: #343a40;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
         }
         .container {
             margin-top: 50px;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex: 1;
         }
         .header {
             background-color: #dc3545;
             color: #fff;
             padding: 10px;
             text-align: center;
+            position: relative;
+            width: 100%;
         }
-        .result {
+        .header .btn-profile {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #CC000A;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-decoration: none;
+            text-align: center;
+        }
+        .header .btn-profile img {
+            max-width: 30px;
+            max-height: 30px;
+        }
+        #chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #result-details {
+            margin-top: 20px;
             background-color: #fff;
             padding: 15px;
-            margin-bottom: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
+            text-align: center;
+            width: 300px;
+        }
+        #resultChart {
+            max-width: 300px;
+            max-height: 300px;
+        }
+        .footer {
+            background-color: #CC000A;
+            color: white;
+            width: 100%;
+            height: 80px;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+        .footer .footer-text {
+            margin: 10px;
+            font-size: 16px;
+        }
+        .footer .footer-text-1 {
+            font-size: 34px; /* Размер первой надписи */
+        }
+        .footer .footer-text-2 {
+            font-size: 12px; /* Размер второй надписи */
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="header">
-        <h1>Результаты теста по категории "{{ selected_category }}"</h1>
+        <h1>Результаты теста</h1>
+        <a href="http://127.0.0.1:8000/account/" class="btn-profile">
+            <img src="/mnt/data/image.png" alt="Профиль">
+            <span>профиль</span>
+        </a>
     </div>
     <div class="container">
-        <p>Общее количество баллов: <strong>{{ total_marks }}</strong></p>
-        <p>Количество правильных ответов: <strong>{{ correct_answers }}</strong></p>
-        <p>Количество неправильных ответов: <strong>{{ incorrect_answers }}</strong></p>
-        <p>Время выполнения теста: <strong>{{ test_duration }}</strong></p>
-
-        <h2>Детали:</h2>
-        <ul>
-            {% for result in results %}
+        <div id="chart-container">
+            <canvas id="resultChart" width="300" height="300"></canvas>
+        </div>
+        <div id="result-details">
+            <p>Общее количество баллов: <strong>50</strong></p>
+            <p>Количество правильных ответов: <strong>50</strong></p>
+            <p>Количество неправильных ответов: <strong>0</strong></p>
+            <p>Процент правильных ответов: <strong>100%</strong></p>
+            <h2>Детали:</h2>
+            <ul>
+                <!-- Пример вопросов с развернутыми ответами -->
                 <li class="result">
-                    <p><strong>Вопрос:</strong> {{ result.question }}</p>
-                    <p><strong>Ответ пользователя:</strong> {{ result.user_answers|join:", " }}</p>
-                    <p><strong>Результат:</strong> {% if result.correct %} <span style="color: green;">Правильный</span> {% else %} <span style="color: red;">Неправильный</span> {% endif %}</p>
+                    <p><strong>Вопрос:</strong> Пример вопроса 1</p>
+                    <p><strong>Ответ пользователя:</strong> Пример развернутого ответа</p>
+                    <p><strong>Результат:</strong> <span style="color: green;">Правильный</span></p>
                 </li>
-            {% endfor %}
-        </ul>
-
-        <a href="{% url 'home' %}" class="btn btn-primary">Вернуться к выбору категории</a>
+                <li class="result">
+                    <p><strong>Вопрос:</strong> Пример вопроса 2</p>
+                    <p><strong>Ответ пользователя:</strong> Пример развернутого ответа</p>
+                    <p><strong>Результат:</strong> <span style="color: green;">Правильный</span></p>
+                </li>
+                <!-- Добавьте дополнительные вопросы и ответы по мере необходимости -->
+            </ul>
+        </div>
     </div>
+    <div class="footer">
+        <div class="footer-text footer-text-1">Белый раст</div>
+        <div class="footer-text footer-text-2">Терминально-<br>логический центр</div>
+    </div>
+    <script>
+        const ctx = document.getElementById('resultChart').getContext('2d');
+        const resultChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Правильные ответы', 'Неправильные ответы'],
+                datasets: [{
+                    label: 'Результаты теста',
+                    data: [50, 0],
+                    backgroundColor: ['#28a745', '#dc3545'],
+                    borderColor: ['#28a745', '#dc3545'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.raw;
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
+
+
+
+
+

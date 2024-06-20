@@ -17,20 +17,32 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
             color: #000;
             font-family: Arial, sans-serif;
             margin: 0;
             min-height: 100vh;
             font-weight: bold;
+            position: relative; /* Добавлено для позиционирования footer */
+            zoom: 1;
         }
         .header {
             background-color: #CC000A;
             width: 100%;
+            height: 80px;
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
+            
+        }
+        .logo-container {
+            width: 100px;
+            height: 50px; 
+            background-image: url('{% static "main/images/Logo.png" %}'); 
+            background-size: contain; 
+            background-repeat: no-repeat; 
         }
         .header h1 {
             margin: 0;
@@ -47,11 +59,11 @@
             background-position: center;
             padding: 20px;
             border-radius: 10px;
-            width: 250vh;
+            width: 100%;
             max-width: 1100px;
-            height: 70vh;
-            margin-top: 100px;
-            margin-right: 50px;
+            height: 700px;
+            margin-top: 20px;
+            margin-bottom: 100px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             color: #000;
             font-family: Arial, sans-serif;
@@ -59,129 +71,42 @@
             overflow: hidden;
             position: relative;
         }
+        .profile-details-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+        }
         .profile-detail {
-            position: absolute;
             padding: 10px;
             border-radius: 5px;
             margin: 5px 0;
-        }
-        
-        .phone, .email, .username {
-            color: black;
-            transform: scale(1.2);
-            text-align: center;
-            right: 0;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        
-        .first-name {
-            color: white;
-            font-weight: bold;
-            bottom: 10px;
-            left: 20px;
-            font-size: 28px;
-        }
-        
-        .last-name {
-            color: white;
-            font-weight: bold;
-            bottom: 50px;
-            left: 20px;
-            font-size: 28px;
-        }
-
-        .patronymic {
-            color: white;
-            font-weight: bold;
-            bottom: 30px;
-            left: 20px;
-            font-size: 28px;
-            top: 570px;
-        }
-
-        .position {
-            color: white;
-            font-weight: bold;
-            top: 500px;
-            right: 20px;
-            font-size: 20px;
-            padding-top: 10px;
-        }
-
-        .manager {
-            color: white;
-            font-weight: bold;
-            top: 550px;
-            right: 20px;
-            font-size: 20px;
-            padding-top: 10px;
-        }
-        
-        .top-left-text {
             position: absolute;
-            top: 80px;
-            left: 150px;
-            color: black;
-            font-weight: bold;
-            font-size: 44px;
         }
-
-        .additional-left-text {
-            position: absolute;
-            top: 180px;
-            left: 150px;
-            color: black;
-            font-size: 20px;
-        }
-
-        .additional1-left-text {
-            position: absolute;
-            top: 205px;
-            left: 150px;
-            color: black;
-            font-size: 20px;
-        }
-
-        .additional2-left-text {
-            position: absolute;
-            top: 230px;
-            left: 150px;
-            color: black;
-            font-size: 20px;
-        }
-
         .avatar-container {
             position: absolute;
-            top: 170px;
-            left: 150px;
-            width: 450px;
-            height: 450px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
             overflow: hidden;
-            border-radius: 5%;
+            border-radius: 50%;
             border: 5px solid #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-        
         .avatar-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
-        .phone { top: 150px; left: 650px; }
-        .email { top: 200px; left: 650px; }
-        .username { top: 250px; left: 650px; }
-        .first-name { bottom: 90px; left: 20px; }
-        .last-name { bottom: 50px; left: 20px; }
-        .patronymic { bottom: 70px; left: 20px; }
-        .position { bottom: 10px; right: 20px; }
-        .manager { bottom: 40px; right: 20px; }
         .btn-custom {
             background-color: #CC000A;
             color: #fff;
             text-decoration: none;
-            border: 2px solid #630000;
+            border: none; /* Remove the border */
             border-radius: 5px;
             padding: 12px 24px;
             margin: 0 5px;
@@ -190,40 +115,136 @@
             font-size: 16px;
             font-weight: bold;
         }
-        .btn
         .btn-custom:hover {
             background-color: black;
             transform: scale(1.05);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
+        .last-name, .first-name, .patronymic {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .last-name {
+            bottom: 80px;
+        }
+        .first-name {
+            bottom: 110px; /* Переместили ниже */
+        }
+        .patronymic {
+            bottom: 50px; /* Переместили выше */
+        }
+        .position, .manager {
+            position: absolute;
+            right: 20px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+        .position {
+            bottom: 50px;
+        }
+        .manager {
+            bottom: 20px;
+        }
+        .phone {
+            position: absolute;
+            right: 430px;
+            bottom: 360px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .username {
+            position: absolute;
+            right: 490px;
+            bottom: 400px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .email {
+            position: absolute;
+            right: 415px;
+            bottom: 320px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .avatar-container {
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 120px;
+                height: 120px;
+            }
+            .phone, .email, .username, .position, .manager {
+                font-size: 12px;
+            }
+            .last-name, .first-name, .patronymic {
+                font-size: 14px;
+            }
+        }
+        .footer {
+            background-color: #CC000A;
+            color: white;
+            width: 100%;
+            height: 80px;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+        .footer .footer-text {
+            margin:  10px;
+            font-size: 16px;
+        }
+        .footer .footer-text-1 {
+            font-size: 34px; /* Размер первой надписи */
+        }
+        .footer .footer-text-2 {
+            font-size: 12px; /* Размер второй надписи */
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Профиль пользователя</h1>
+        <h1>Личный кабинет</h1>
         <div>
-            <a href="http://127.0.0.1:8000/login/account/manual" class="btn-custom">Методичка</a>
+            <a href="http://127.0.0.1:8000/login/account/materials" class="btn-custom">Методички</a>
             <a href="http://127.0.0.1:8000/account/home/" class="btn-custom">Пройти тест</a>
             <a href="http://127.0.0.1:8000/" class="btn-custom">Выйти</a>
         </div>
     </div>
-    <div class="avatar-container">
-        <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
-    </div>
     <div class="container profile-container">
-        <div class="top-left-text">Белый раст</div>
-        <div class="additional-left-text">Терминально-</div>
-        <div class="additional1-left-text">логический</div>
-        <div class="additional2-left-text">центр</div>
-        
-        <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
-        <div class="profile-detail email"><strong>Почта:</strong> {{ user.email }}</div>
-        <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
-        <div class="profile-detail first-name"><strong>Имя:</strong> {{ user.first_name }}</div>
+        <div class="avatar-container">
+            <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
+        </div>
+        <div class="profile-details-container">
+            <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
+            <div class="profile-detail email"><strong>Почта:</strong> {{ user.email }}</div>
+            <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
+        </div>
         <div class="profile-detail last-name"><strong>Фамилия:</strong> {{ user.last_name }}</div>
+        <div class="profile-detail first-name"><strong>Имя:</strong> {{ user.first_name }}</div>
         <div class="profile-detail patronymic"><strong>Отчество:</strong> {{ user.profile.patronymic }}</div>
         <div class="profile-detail position"><strong>Должность:</strong> {{ user.profile.position }}</div>
         <div class="profile-detail manager"><strong>Руководитель:</strong> {{ user.profile.manager }}</div>
+    </div>
+    <div class="footer">
+        <div class="footer-text footer-text-1">Белый раст</div>
+        <div class="footer-text footer-text-2">Терминально-<br>логический центр</div>
+        <div class="logo-container"></div>
     </div>
 </body>
 </html>

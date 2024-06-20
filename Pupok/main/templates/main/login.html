@@ -49,6 +49,16 @@
            align-items: flex-start;
         }
 
+        .logo-container {
+            width: 100px;
+            height: 50px; 
+            background-image: url('{% static "main/images/Logo.png" %}'); 
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            margin-left: 450px;
+            margin-top: -50px;
+        }
+
         h1 {
            margin: 0;
            font-size: 2.5rem;
@@ -60,7 +70,7 @@
            font-size: 1rem;
            position: absolute;
            top: 2.5vw;
-           left: 28.125vw;
+           left: 380px;
         }
 
         form {
@@ -98,11 +108,16 @@
            color: #fff;
            font-size: 1rem;
            margin-left: 1.25em;
+           transition: background-color 0.3s, transform 0.3s, color 0.3s
         }
 
         button:hover {
-           opacity: 0.9;
-           cursor: pointer;
+            background-color: #000;
+            color: #fff;
+            border-color: #000;
+            opacity: 0.9;
+            cursor: pointer;
+            transform: scale(1.05);
         }
 
         .messages {
@@ -173,6 +188,7 @@
             <br> 
             центр
         </h4>
+        <div class="logo-container"></div>
     </header>
     <h2>Авторизация</h2>
     <form method="post">

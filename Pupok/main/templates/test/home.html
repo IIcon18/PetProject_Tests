@@ -1,51 +1,110 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Выбор категории теста</title>
+    <title>Выбор теста</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
             background-color: #f8f9fa;
             color: #343a40;
+            background-image: url('{% static "main/images/service1.jpg" %}');
         }
         .container {
             margin-top: 50px;
+            text-align: center;
         }
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #dc3545;
+            border-color: #dc3545;
         }
         .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
+            background-color: #c82333;
+            border-color: #bd2130;
         }
         .header {
-            background-color: #dc3545;
+            background-color: #7C82A2;
             color: #fff;
             padding: 10px;
             text-align: center;
+        }
+        .intro {
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: left;
+        }
+        .intro p {
+            font-size: 1.25rem; /* Увеличенный размер текста */
+        }
+        .footer {
+            background-color: #7C82A2;
+            color: white;
+            width: 100%;
+            height: 80px;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+        .footer .footer-text {
+            margin: 10px;
+            font-size: 16px;
+        }
+        .footer .footer-text-1 {
+            font-size: 34px; /* Размер первой надписи */
+        }
+        .footer .footer-text-2 {
+            font-size: 12px; /* Размер второй надписи */
+        }
+        .btn-custom {
+            background-color: #CC000A;
+            color: #fff;
+            text-decoration: none;
+            border: none; /* Remove the border */
+            border-radius: 5px;
+            padding: 12px 24px;
+            margin: 0 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn-custom:hover {
+            background-color: black;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Выберите категорию тестов</h1>
+        <h1>Добро пожаловать на тестирование</h1>
     </div>
     <div class="container">
+        <div class="intro">
+            <h1>Добро пожаловать!</h1>
+            <p>Сегодня у вас есть возможность проверить свои знания и навыки, пройдя наш тест. Это отличный способ узнать свои сильные стороны и области, которые могут потребовать дополнительного внимания. Не волнуйтесь, если что-то покажется сложным — каждый вопрос помогает вам учиться и расти. Устройтесь поудобнее, сосредоточьтесь и начните, когда будете готовы. Удачи!</p>
+        </div>
         <form action="{% url 'quiz' %}" method="get">
-            <div class="form-group">
-                <label for="categorySelect">Категория:</label>
-                <select class="form-control" id="categorySelect" name="gfg">
-                    <option value="">Выбрать</option>
-                    {% for category in categories %}
-                        <option value="{{ category.gfg_name }}">{{ category.gfg_name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Выбрать</button>
+            <button type="submit" class="btn-custom">Пройти тест</button>
+            <button type="button" class="btn-custom" onclick="window.location.href='http://127.0.0.1:8000/account'">Вернуться в личный кабинет</button>
+
         </form>
+    </div>
+    <div class="footer">
+        <div class="footer-text footer-text-1">Белый раст</div>
+        <div class="footer-text footer-text-2">Терминально-<br>логический центр</div>
     </div>
 </body>
 </html>
