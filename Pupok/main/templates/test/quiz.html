@@ -14,12 +14,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            min-height: 100vh; /* минимальная высота по высоте окна браузера */
+            min-height: 100vh;
             margin: 0;
-            position: relative; /* чтобы футер правильно прижимался к нижнему краю */
-            background-image: url('{% static "main/images/service1.jpg" %}'); /* задний фон */
-            background-size: cover; /* масштабирование фона */
-            background-repeat: no-repeat; /* запрет повторения фона */
+            position: relative;
+            background-image: url('{% static "main/images/service1.jpg" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         .container {
             margin-top: 20px;
@@ -60,16 +60,21 @@
             max-width: 600px;
             width: 100%;
         }
-        #timer {
+        #timer, #countdown {
             font-size: 1.5em;
             font-weight: bold;
-            color: #007bff;
             text-align: center;
             margin-bottom: 20px;
         }
+        #timer {
+            color: #007bff;
+        }
+        #countdown {
+            color: #dc3545;
+        }
         .sidebar {
             position: fixed;
-            top: 80px; /* ниже верхней шапки */
+            top: 80px;
             bottom: 0;
             left: 0;
             width: 80px;
@@ -77,14 +82,14 @@
             padding-top: 20px;
             border-right: 1px solid #ddd;
             overflow-y: auto;
-            border-radius: 0 0 25px 0; /* закруглен только правый нижний угол */
-            color: white; /* изменено на белый для лучшего контраста */
+            border-radius: 0 0 25px 0;
+            color: white;
         }
         .sidebar a {
             display: block;
             padding: 10px;
             text-align: center;
-            color: white; /* изменено на белый для лучшего контраста */
+            color: white;
             text-decoration: none;
         }
         .sidebar a:hover {
@@ -97,7 +102,7 @@
             align-items: center;
             margin-top: 100px;
             width: 100%;
-            padding-bottom: 80px; /* учесть высоту футера */
+            padding-bottom: 80px;
         }
         .block-title {
             font-size: 1.2em;
@@ -149,8 +154,10 @@
     </div>
     <div class="container content">
         <div id="timer">00:00:00</div>
-        <form action="{% url 'result' %}" method="post">
+        <div id="countdown">00:15</div>
+        <form action="{% url 'result' %}" method="post" id="test-form">
             {% csrf_token %}
+            <input type="hidden" name="timerExpired" id="timerExpired" value="false">
             {% for question in questions %}
                 {% if question.uid != "c08c1d7d-4753-4d76-bc58-eebef0e0ba42" %}
                     <div class="question-block" id="question{{ forloop.counter }}">
@@ -190,8 +197,10 @@
         <div class="footer-text footer-text-2">Терминально-<br>логический центр</div>
     </div>
     <script>
+        // Инициализация времени начала теста
         let startTime = new Date();
         
+        // Функция обновления таймера
         function updateTimer() {
             let now = new Date();
             let elapsedTime = now - startTime;
@@ -200,13 +209,41 @@
             let minutes = Math.floor((elapsedTime / 1000 / 60) % 60);
             let seconds = Math.floor((elapsedTime / 1000) % 60);
             
+            // Вывод времени на экран
             document.getElementById('timer').textContent = 
                 String(hours).padStart(2, '0') + ':' + 
                 String(minutes).padStart(2, '0') + ':' + 
                 String(seconds).padStart(2, '0');
         }
         
+        // Установка интервала обновления таймера
         setInterval(updateTimer, 1000);
+
+        // Инициализация времени для обратного отсчета
+        let totalTime =  15; // 15 минут в секундах
+        
+        // Функция обновления обратного отсчета
+        function updateCountdown() {
+            if (totalTime <= 0) {
+                // Если время истекло, устанавливаем флаг и отправляем форму
+                document.getElementById('timerExpired').value = 'true';
+                document.getElementById('test-form').submit();
+                return;
+            }
+            
+            // Обновление времени обратного отсчета
+            totalTime--;
+            let minutes = Math.floor(totalTime / 60);
+            let seconds = totalTime % 60;
+            
+            // Вывод времени обратного отсчета на экран
+            document.getElementById('countdown').textContent = 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+        
+        // Установка интервала обновления обратного отсчета
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
