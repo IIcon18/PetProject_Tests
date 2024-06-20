@@ -12,6 +12,8 @@
         }
         .container {
             margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
         }
         .btn-primary {
             background-color: #007bff;
@@ -27,6 +29,14 @@
             padding: 10px;
             text-align: center;
         }
+        .chart-container {
+            width: 40%; /* Ширина контейнера для диаграммы */
+            max-width: 300px; /* Максимальная ширина для диаграммы */
+            margin-right: 10px; /* Отступ между контейнерами */
+        }
+        .details-container {
+            width: 50%; /* Ширина контейнера для деталей */
+        }
         .result {
             background-color: #fff;
             padding: 15px;
@@ -34,44 +44,39 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
-        #chart-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
         #resultChart {
-            max-width: 300px;
-            max-height: 300px;
+            max-width: 100%; /* Чтобы диаграмма занимала всю доступную ширину контейнера */
+            height: auto; /* Адаптивная высота */
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="header">
-        <h1>Результаты теста по категории "{{ selected_category }}"</h1>
+        <h1>Результаты теста</h1>
     </div>
     <div class="container">
-        <p>Общее количество баллов: <strong>{{ total_marks }}</strong></p>
-        <p>Количество правильных ответов: <strong>{{ correct_answers }}</strong></p>
-        <p>Количество неправильных ответов: <strong>{{ incorrect_answers }}</strong></p>
-        <p>Время выполнения теста: <strong>{{ test_duration }}</strong></p>
-
-        <h2>Детали:</h2>
-        <ul>
-            {% for result in results %}
-                <li class="result">
-                    <p><strong>Вопрос:</strong> {{ result.question }}</p>
-                    <p><strong>Ответ пользователя:</strong> {{ result.user_answers|join:", " }}</p>
-                    <p><strong>Результат:</strong> {% if result.correct %} <span style="color: green;">Правильный</span> {% else %} <span style="color: red;">Неправильный</span> {% endif %}</p>
-                </li>
-            {% endfor %}
-        </ul>
-
-        <div id="chart-container">
-            <canvas id="resultChart" width="300" height="300"></canvas>
+        <div class="chart-container">
+            <div id="chart">
+                <canvas id="resultChart"></canvas>
+            </div>
+            <div class="container">
+                <a href="http://127.0.0.1:8000/account/" class="btn btn-primary">Вернуться в лк</a>
+            </div>
         </div>
-
-        <a href="http://127.0.0.1:8000/account/" class="btn btn-primary">Вернуться в лк</a>
+        <div class="details-container">
+            <div class="container">
+                <h2>Детали:</h2>
+                <ul>
+                    <li class="result">
+                        <p><strong>Общее количество баллов:</strong> <strong>{{ total_marks }}</strong></p>
+                        <p><strong>Количество правильных ответов:</strong> <strong>{{ correct_answers }}</strong></p>
+                        <p><strong>Количество неправильных ответов:</strong> <strong>{{ incorrect_answers }}</strong></p>
+                        <p><strong>Время выполнения теста:</strong> <strong>{{ test_duration }}</strong></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script>
