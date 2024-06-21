@@ -13,7 +13,7 @@
             padding: 0;
             overflow: hidden;
         }
-        
+
         body {
            font-family: Arial, sans-serif;
            background-image: url('{% static "main/images/bg1.png" %}'); 
@@ -30,6 +30,7 @@
         h2 {
            font-size: 2rem;
            margin-top: 7em;
+           text-align: center;
         }
 
         header {
@@ -75,13 +76,11 @@
         form {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             width: 100%;
             max-width: 50vw;
             margin-top: 1em;
-            margin-right: -405px;
         }
-        
 
         input[type="text"], input[type="password"] {
            width: 100%;
@@ -106,8 +105,7 @@
            border: none;
            color: #fff;
            font-size: 1rem;
-           margin-left: 1.25em;
-           transition: background-color 0.3s, transform 0.3s, color 0.3s
+           transition: background-color 0.3s, transform 0.3s, color 0.3s;
         }
 
         button:hover {
