@@ -20,11 +20,16 @@ def quiz(request):
         all_questions = list(Question.objects.all())
         all_extended_questions = list(ExtendedQuestion.objects.all())
 
-        # Перемешиваем вопросы и выбираем нужное количество
-        questions = random.sample(all_questions, min(num_questions, len(all_questions)))
-        extended_questions = random.sample(all_extended_questions, min(num_questions, len(all_extended_questions)))
+        # Присвоение типу вопросов значение 'extended'
+        for question in all_extended_questions:
+            question.question_type = 'extended'
 
-        return render(request, 'test/quiz.html', {'questions': questions, 'extended_questions': extended_questions})
+        # Перемешиваем вопросы и выбираем нужное количество
+        combined_questions = all_questions + all_extended_questions
+        random.shuffle(combined_questions)
+        selected_questions = combined_questions[:num_questions]
+
+        return render(request, 'test/quiz.html', {'questions': selected_questions})
 
 def get_quiz(request):
     try:

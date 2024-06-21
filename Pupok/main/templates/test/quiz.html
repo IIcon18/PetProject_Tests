@@ -159,9 +159,12 @@
             {% csrf_token %}
             <input type="hidden" name="timerExpired" id="timerExpired" value="false">
             {% for question in questions %}
-                {% if question.uid != "c08c1d7d-4753-4d76-bc58-eebef0e0ba42" %}
-                    <div class="question-block" id="question{{ forloop.counter }}">
-                        <h4>Задание {{ forloop.counter }} / Вопрос {{ forloop.counter }}</h4>
+                <div class="question-block" id="question{{ forloop.counter }}">
+                    <h4>Задание {{ forloop.counter }} / Вопрос {{ forloop.counter }}</h4>
+                    {% if question.question_type == 'extended' %}
+                        <h5>{{ question.text }}</h5>
+                        <textarea class="form-control" name="{{ question.uid }}"></textarea>
+                    {% else %}
                         <h5>{{ question.question }}</h5>
                         {% if question.image %}
                             <img src="{{ question.image.url }}" alt="Question Image" class="img-fluid">
@@ -177,14 +180,7 @@
                         {% else %}
                             <textarea class="form-control" name="{{ question.uid }}"></textarea>
                         {% endif %}
-                    </div>
-                {% endif %}
-            {% endfor %}
-            {% for question in extended_questions %}
-                <div class="question-block" id="question{{ forloop.counter }}">
-                    <h4>Задание {{ forloop.counter }} / Вопрос {{ forloop.counter }}</h4>
-                    <h5>{{ question.text }}</h5>
-                    <textarea class="form-control" name="{{ question.uid }}"></textarea>
+                    {% endif %}
                 </div>
             {% endfor %}
             <div class="pagination">
@@ -220,7 +216,7 @@
         setInterval(updateTimer, 1000);
 
         // Инициализация времени для обратного отсчета
-        let totalTime =  15; // 15 минут в секундах
+        let totalTime =  15 * 60; // 15 минут в секундах
         
         // Функция обновления обратного отсчета
         function updateCountdown() {
