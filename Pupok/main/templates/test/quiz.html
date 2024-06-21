@@ -50,6 +50,8 @@
             top: 0;
             left: 0;
             z-index: 1000;
+            padding-left: 220px; /* Учитываем ширину боковой панели + отступ */
+            border: 1px solid white; /* Белая обводка */
         }
         .question-block {
             background-color: #fff;
@@ -77,13 +79,14 @@
             top: 80px;
             bottom: 0;
             left: 0;
-            width: 80px;
+            width: 200px; /* Ширина боковой панели */
             background-color: #7C82A2;
             padding-top: 20px;
             border-right: 1px solid #ddd;
             overflow-y: auto;
-            border-radius: 0 0 25px 0;
+            border-radius: 50px; /* Побольше округление */
             color: white;
+            border: 1px solid white; /* Белая обводка */
         }
         .sidebar a {
             display: block;
@@ -121,14 +124,19 @@
             width: 100%;
             height: 80px;
             padding: 20px 0;
-            position: absolute;
-            bottom: 0;
-            left: 0;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            padding-left: 20px;
+            padding-left: 220px; /* Учитываем ширину боковой панели + отступ */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            transform: translateY(0);
+            transition: transform 0.3s ease-in-out;
+            border-top-left-radius: 50px; /* Закругление левого верхнего угла */
+            border-top-right-radius: 50px; /* Закругление правого верхнего угла */
+            border-top: 1px solid white; /* Белая обводка */
         }
         .footer .footer-text {
             margin: 10px;
@@ -139,6 +147,9 @@
         }
         .footer .footer-text-2 {
             font-size: 12px;
+        }
+        .footer.hidden {
+            transform: translateY(100%);
         }
     </style>
 </head>
@@ -188,7 +199,7 @@
             </div>
         </form>
     </div>
-    <div class="footer">
+    <div class="footer" id="footer">
         <div class="footer-text footer-text-1">Белый раст</div>
         <div class="footer-text footer-text-2">Терминально-<br>логический центр</div>
     </div>
@@ -240,6 +251,22 @@
         
         // Установка интервала обновления обратного отсчета
         setInterval(updateCountdown, 1000);
+
+        // Обработчик прокрутки страницы
+        window.addEventListener('scroll', function() {
+            let headerHeight = document.querySelector('.header').offsetHeight;
+            let sidebarHeight = document.querySelector('.sidebar').offsetHeight;
+            let footerHeight = document.querySelector('.footer').offsetHeight;
+            let scrollPosition = window.scrollY + window.innerHeight - sidebarHeight; // Учитываем ширину боковой панели
+
+            if (scrollPosition >= document.body.offsetHeight - footerHeight) {
+                // При прокрутке до футера
+                document.getElementById('footer').classList.add('hidden');
+            } else {
+                // В остальных случаях
+                document.getElementById('footer').classList.remove('hidden');
+            }
+        });
     </script>
 </body>
 </html>
