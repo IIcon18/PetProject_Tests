@@ -10,11 +10,34 @@
         body {
             background-color: #f8f9fa;
             color: #343a40;
-            background-image: url('{% static "main/images/buda.png" %}');
+            background-image: url('{% static "main/images/service1.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .header {
+            background-color: #7C82A2;
+            color: #fff;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
         .container {
-            margin-top: 50px;
             text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 70px; /* Margin to push content below the header */
         }
         .btn-primary {
             background-color: #dc3545;
@@ -24,23 +47,12 @@
             background-color: #c82333;
             border-color: #bd2130;
         }
-        .header {
-            background-color: #7C82A2;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
         .intro {
             margin-bottom: 20px;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: inline-block;
             text-align: left;
         }
         .intro p {
-            font-size: 1.25rem; /* Увеличенный размер текста */
+            font-size: 1.25rem; /* Increased text size */
         }
         .footer {
             background-color: #7C82A2;
@@ -50,7 +62,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
             padding: 0 20px;
@@ -91,22 +103,29 @@
             transform: scale(1.05);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Добро пожаловать на тестирование</h1>
     </div>
-    <div class="container">
-        <div class="intro">
-            <h1>Добро пожаловать!</h1>
-            <p>Сегодня у вас есть возможность проверить свои знания и навыки, пройдя наш тест. Это отличный способ узнать свои сильные стороны и области, которые могут потребовать дополнительного внимания. Не волнуйтесь, если что-то покажется сложным — каждый вопрос помогает вам учиться и расти. Устройтесь поудобнее, сосредоточьтесь и начните, когда будете готовы. Удачи!</p>
+    <div class="button-container">
+        <div class="container">
+            <div class="intro">
+                <h1>Добро пожаловать!</h1>
+                <p>Сегодня у вас есть возможность проверить свои знания и навыки, пройдя наш тест. Это отличный способ узнать свои сильные стороны и области, которые могут потребовать дополнительного внимания. Не волнуйтесь, если что-то покажется сложным — каждый вопрос помогает вам учиться и расти. Устройтесь поудобнее, сосредоточьтесь и начните, когда будете готовы. Удачи!</p>
+            </div>
+            <form action="{% url 'quiz' %}" method="get">
+                <button type="submit" class="btn-custom">Пройти тест</button>
+                <button type="button" class="btn-custom" onclick="window.location.href='http://127.0.0.1:8000/account'">Вернуться в личный кабинет</button>
+            </form>
         </div>
-        <form action="{% url 'quiz' %}" method="get">
-            <button type="submit" class="btn-custom">Пройти тест</button>
-            <button type="button" class="btn-custom" onclick="window.location.href='http://127.0.0.1:8000/account'">Вернуться в личный кабинет</button>
-
-        </form>
     </div>
     <div class="footer">
         <div class="footer-text footer-text-1">Белый раст</div>
