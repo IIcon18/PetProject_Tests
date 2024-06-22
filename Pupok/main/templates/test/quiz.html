@@ -79,12 +79,12 @@
             top: 80px;
             bottom: 0;
             left: 0;
-            width: 200px; /* Ширина боковой панели */
+            width: 150px; /* Ширина боковой панели */
             background-color: #7C82A2;
             padding-top: 20px;
             border-right: 1px solid #ddd;
             overflow-y: auto;
-            border-radius: 50px; /* Побольше округление */
+            border-radius: 40px; /* Побольше округление */
             color: white;
             border: 1px solid white; /* Белая обводка */
         }
@@ -151,6 +151,26 @@
         .footer.hidden {
             transform: translateY(100%);
         }
+        .btn-custom {
+            background-color: #CC000A;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            margin: 20px auto 0; /* Отступ сверху и авто по бокам */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn-custom:hover {
+            background-color: black;
+            color: #fff; /* Сохраняем цвет текста белым при наведении */
+            text-decoration: none; /* Убираем подчеркивание текста при наведении */
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -195,7 +215,7 @@
                 </div>
             {% endfor %}
             <div class="pagination">
-                <button type="submit" class="btn btn-primary">Завершить тест</button>
+                <button type="submit" class="btn btn-custom">Завершить тест</button>
             </div>
         </form>
     </div>
