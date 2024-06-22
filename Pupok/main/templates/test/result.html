@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,14 +7,45 @@
     <title>Результаты теста</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
         body {
-            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #c0c0c0, #8b9dc3);
             color: #343a40;
         }
-        .container {
-            margin-top: 50px;
+        .header {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            flex: 0 0 auto;
+        }
+        .main-content {
+            flex: 1 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Центрируем содержимое по горизонтали */
+            align-items: center; /* Центрируем содержимое по вертикали */
+            padding: 50px;
+        }
+        .chart-container {
+            width: 40%;
+            max-width: 300px;
+            margin-right: 100px;
+        }
+        .details-container {
+            width: 25%;
+            margin-top: 0;
+        }
+        .result {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
         .btn-primary {
             background-color: #007bff;
@@ -23,30 +55,64 @@
             background-color: #0056b3;
             border-color: #004085;
         }
-        .header {
-            background-color: #dc3545;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
+        .footer {
+            background-color: #CC000A;
+            color: white;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
         }
-        .chart-container {
-            width: 40%; /* Ширина контейнера для диаграммы */
-            max-width: 300px; /* Максимальная ширина для диаграммы */
-            margin-right: 10px; /* Отступ между контейнерами */
+        .footer .footer-text {
+            font-size: 16px;
+            margin: 0 10px;
         }
-        .details-container {
-            width: 50%; /* Ширина контейнера для деталей */
+        .footer .footer-text-1 {
+            font-size: 34px;
         }
-        .result {
-            background-color: #fff;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+        .footer .footer-text-2 {
+            font-size: 12px;
+            text-align: left;
+        }
+        .footer .logo-container {
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url('{% static "main/images/Logo.png" %}');
         }
         #resultChart {
-            max-width: 100%; /* Чтобы диаграмма занимала всю доступную ширину контейнера */
-            height: auto; /* Адаптивная высота */
+            max-width: 100%;
+            height: auto;
+        }
+        .btn-custom {
+            background-color: #CC000A;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            margin: 20px auto 0; /* Отступ сверху и авто по бокам */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn-custom:hover {
+            background-color: black;
+            color: #fff; /* Сохраняем цвет текста белым при наведении */
+            text-decoration: none; /* Убираем подчеркивание текста при наведении */
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .button-container {
+            width: 100%;
+            display: flex;
+            justify-content: center; /* Центрируем содержимое по горизонтали */
+            margin-top: 20px; /* Отступ сверху */
+            margin-bottom: 50px; /* Отступ снизу */
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -55,17 +121,14 @@
     <div class="header">
         <h1>Результаты теста</h1>
     </div>
-    <div class="container">
+    <div class="main-content">
         <div class="chart-container">
             <div id="chart">
                 <canvas id="resultChart"></canvas>
             </div>
-            <div class="container">
-                <a href="http://127.0.0.1:8000/account/" class="btn btn-primary">Вернуться в лк</a>
-            </div>
         </div>
         <div class="details-container">
-            <div class="container">
+            <div>
                 <h2>Детали:</h2>
                 <ul>
                     <li class="result">
@@ -77,6 +140,14 @@
                 </ul>
             </div>
         </div>
+    </div>
+    <div class="button-container">
+        <a href="http://127.0.0.1:8000/account/" class="btn-custom">Вернуться в личный кабинет</a>
+    </div>
+    <div class="footer">
+        <div class="footer-text footer-text-1">Белый раст</div>
+        <div class="logo-container"></div>
+        <div class="footer-text footer-text-2">Терминально-<br>логический центр</div>
     </div>
 
     <script>
