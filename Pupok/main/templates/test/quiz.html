@@ -190,6 +190,9 @@
                     <h4>Задание {{ forloop.counter }} / Вопрос {{ forloop.counter }}</h4>
                     {% if question.question_type == 'extended' %}
                         <h5>{{ question.text }}</h5>
+                        {% if question.image %}
+                            <img src="{{ question.image.url }}" alt="Question Image" class="img-fluid">
+                        {% endif %}
                         <textarea class="form-control" name="{{ question.uid }}"></textarea>
                     {% else %}
                         <h5>{{ question.question }}</h5>

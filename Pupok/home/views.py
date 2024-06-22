@@ -13,7 +13,7 @@ def quiz(request):
         timer_expired = request.POST.get('timerExpired', 'false') == 'true'
         return render(request, 'result.html', {'timer_expired': timer_expired})
     else:
-        num_questions = 10  # Количество вопросов в тесте
+        num_questions = 20  # Количество вопросов в тесте
         start_time = timezone.now()  # Сохранение времени начала теста
         request.session['start_time'] = start_time.isoformat()
 

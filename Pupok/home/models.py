@@ -47,7 +47,7 @@ class Question(BaseModel):
 
 class Answer(BaseModel):
     question = models.ForeignKey(Question, related_name='answers', on_delete=models.CASCADE)
-    answer = models.CharField(max_length=100)
+    answer = models.CharField(max_length=200)
     is_correct = models.BooleanField(default=False)
     
     def __str__(self):
@@ -57,13 +57,15 @@ class ExtendedQuestion(BaseModel):
     gfg = models.ForeignKey(Types, related_name='extended_questions', on_delete=models.CASCADE)
     text = models.TextField(verbose_name="Текст вопроса")
     marks = models.IntegerField(default=5)
-
+    image = models.ImageField(upload_to='extended_question_images/', null=True, blank=True)  # Поле для изображения
+    
     class Meta:
         verbose_name = "Вопрос с развернутым ответом"
         verbose_name_plural = "Вопросы с развернутым ответом"
 
     def __str__(self):
         return self.text[:50]
+
 
 class ExtendedAnswer(BaseModel):
     question_text = models.ForeignKey(ExtendedQuestion, on_delete=models.CASCADE, related_name='answers', verbose_name="Вопрос")
