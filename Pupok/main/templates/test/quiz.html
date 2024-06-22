@@ -51,7 +51,6 @@
             left: 0;
             z-index: 1000;
             padding-left: 220px; /* Учитываем ширину боковой панели + отступ */
-            border: 1px solid white; /* Белая обводка */
         }
         .question-block {
             background-color: #fff;
@@ -134,9 +133,6 @@
             left: 0;
             transform: translateY(0);
             transition: transform 0.3s ease-in-out;
-            border-top-left-radius: 50px; /* Закругление левого верхнего угла */
-            border-top-right-radius: 50px; /* Закругление правого верхнего угла */
-            border-top: 1px solid white; /* Белая обводка */
         }
         .footer .footer-text {
             margin: 10px;
@@ -180,7 +176,7 @@
     <div class="sidebar">
         <!-- Sidebar for question navigation -->
         {% for question in questions %}
-            <a href="#question{{ forloop.counter }}">Вопрос {{ forloop.counter }}</a>
+            <a href="#question{{ forloop.counter }}">{{ forloop.counter }}</a>
         {% endfor %}
     </div>
     <div class="container content">
