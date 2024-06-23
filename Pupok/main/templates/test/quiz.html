@@ -76,16 +76,16 @@
         .sidebar {
             position: fixed;
             top: 80px;
-            bottom: 0;
+            bottom: 80px; /* Устанавливаем отступ снизу, чтобы не перекрывать footer */
             left: 0;
-            width: 150px; /* Ширина боковой панели */
+            width: 100px;
             background-color: #7C82A2;
             padding-top: 20px;
             border-right: 1px solid #ddd;
             overflow-y: auto;
-            border-radius: 40px; /* Побольше округление */
+            border-radius: 40px;
             color: white;
-            border: 1px solid white; /* Белая обводка */
+            border: 1px solid white;
         }
         .sidebar a {
             display: block;
@@ -104,7 +104,7 @@
             align-items: center;
             margin-top: 100px;
             width: 100%;
-            padding-bottom: 80px;
+            padding-bottom: 160px; /* Увеличиваем отступ снизу для учета footer */
         }
         .block-title {
             font-size: 1.2em;
@@ -131,8 +131,6 @@
             position: fixed;
             bottom: 0;
             left: 0;
-            transform: translateY(0);
-            transition: transform 0.3s ease-in-out;
         }
         .footer .footer-text {
             margin: 10px;
@@ -143,9 +141,6 @@
         }
         .footer .footer-text-2 {
             font-size: 12px;
-        }
-        .footer.hidden {
-            transform: translateY(100%);
         }
         .btn-custom {
             background-color: #CC000A;
@@ -162,8 +157,8 @@
         }
         .btn-custom:hover {
             background-color: black;
-            color: #fff; /* Сохраняем цвет текста белым при наведении */
-            text-decoration: none; /* Убираем подчеркивание текста при наведении */
+            color: #fff;
+            text-decoration: none;
             transform: scale(1.05);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
@@ -185,7 +180,9 @@
         <form action="{% url 'result' %}" method="post" id="test-form">
             {% csrf_token %}
             <input type="hidden" name="timerExpired" id="timerExpired" value="false">
+            <input type="hidden" name="num_questions" value="{{ questions|length }}">
             {% for question in questions %}
+                <input type="hidden" name="selected_questions" value="{{ question.uid }}">
                 <div class="question-block" id="question{{ forloop.counter }}">
                     <h4>Задание {{ forloop.counter }} / Вопрос {{ forloop.counter }}</h4>
                     {% if question.question_type == 'extended' %}
@@ -217,6 +214,7 @@
                 <button type="submit" class="btn btn-custom">Завершить тест</button>
             </div>
         </form>
+        
     </div>
     <div class="footer" id="footer">
         <div class="footer-text footer-text-1">Белый раст</div>
@@ -277,7 +275,7 @@
             let sidebarHeight = document.querySelector('.sidebar').offsetHeight;
             let footerHeight = document.querySelector('.footer').offsetHeight;
             let scrollPosition = window.scrollY + window.innerHeight - sidebarHeight; // Учитываем ширину боковой панели
-
+            
             if (scrollPosition >= document.body.offsetHeight - footerHeight) {
                 // При прокрутке до футера
                 document.getElementById('footer').classList.add('hidden');
