@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -19,8 +19,7 @@
         {% endfor %}
     </div>
     <div class="container content">
-        <div id="timer">00:00:00</div>
-        <div id="countdown">00:15</div>
+        <div id="countdown">00:15</div> <!-- Таймер обратного отсчета -->
         <form action="{% url 'result' %}" method="post" id="test-form">
             {% csrf_token %}
             <input type="hidden" name="timerExpired" id="timerExpired" value="false">
@@ -67,28 +66,9 @@
     <script>
         // Инициализация времени начала теста
         let startTime = new Date();
-        
-        // Функция обновления таймера
-        function updateTimer() {
-            let now = new Date();
-            let elapsedTime = now - startTime;
-            
-            let hours = Math.floor(elapsedTime / 1000 / 60 / 60);
-            let minutes = Math.floor((elapsedTime / 1000 / 60) % 60);
-            let seconds = Math.floor((elapsedTime / 1000) % 60);
-            
-            // Вывод времени на экран
-            document.getElementById('timer').textContent = 
-                String(hours).padStart(2, '0') + ':' + 
-                String(minutes).padStart(2, '0') + ':' + 
-                String(seconds).padStart(2, '0');
-        }
-        
-        // Установка интервала обновления таймера
-        setInterval(updateTimer, 1000);
 
         // Инициализация времени для обратного отсчета
-        let totalTime =  15 * 60; // 15 минут в секундах
+        let totalTime = 15 * 60; // 15 минут в секундах
         
         // Функция обновления обратного отсчета
         function updateCountdown() {
