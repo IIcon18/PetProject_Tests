@@ -1,0 +1,102 @@
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+    background-image: url('../images/service1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.header {
+    background-color: #7C82A2;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 70px; /* Margin to push content below the header */
+}
+.btn-primary {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-primary:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.intro {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.intro p {
+    font-size: 1.25rem; /* Increased text size */
+}
+.footer {
+    background-color: #7C82A2;
+    color: white;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0 20px;
+}
+.footer .footer-text {
+    font-size: 16px;
+    margin: 0 10px;
+}
+.footer .footer-text-1 {
+    font-size: 34px;
+}
+.footer .footer-text-2 {
+    font-size: 12px;
+    text-align: left;
+}
+.footer .logo-container {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../images/Logo.png'); 
+}
+.btn-custom {
+    background-color: #CC000A;
+    color: #fff;
+    text-decoration: none;
+    border: none; /* Remove the border */
+    border-radius: 5px;
+    padding: 12px 24px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btn-custom:hover {
+    background-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
