@@ -50,7 +50,7 @@ body {
     width: 100%;
     max-width: 1200px; /* Увеличена максимальная ширина */
     min-height: 800px; /* Увеличена минимальная высота */
-    margin-top: 20px;
+    margin-top: 100px;
     margin-bottom: 100px; /* Проверено, что этот отступ не излишен */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     color: #000;
@@ -75,11 +75,11 @@ body {
     background-image: url("../images/avatarka.png");
     background-size: cover;
     position: absolute;
-    top: 20px;
+    top: 20px; /* Установите подходящее значение, чтобы аватарка была в пределах видимости */
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
+    width: 200px; /* Установите подходящий размер аватарки */
+    height: 200px; /* Установите подходящий размер аватарки */
     overflow: hidden;
     border-radius: 50%;
     border: 5px solid #fff;

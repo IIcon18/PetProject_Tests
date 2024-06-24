@@ -14,13 +14,14 @@
     <div class="header">
         <h1>Личный кабинет</h1>
         <div>
-            <a href="http://127.0.0.1:8000/login/account/materials" class="btn-custom">Методички</a>
+            <a href="http://127.0.0.1:8000/login/account/materials" class="btn-custom">Материалы</a>
             <a href="http://127.0.0.1:8000/account/home/" class="btn-custom">Пройти тест</a>
             <a href="http://127.0.0.1:8000/" class="btn-custom">Выйти</a>
         </div>
     </div>
     <div class="container profile-container">
         <div class="avatar-container">
+            <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя">
         </div>
         <div class="profile-details-container">
             <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
@@ -34,9 +35,9 @@
         <div class="profile-detail manager"><strong>Руководитель:</strong> {{ user.profile.manager }}</div>
     </div>
     <div class="footer">
-        <h2>Белый раст</h2>
+        <div class="footer-text footer-text-1">Белый раст</div>
         <div class="logo-container"></div>
-        <h6>Терминально-<br>логический <br> центр</h6>
+        <div class="footer-text footer-text-2">Терминально-<br>логический центр</div>
     </div>
 </body>
 </html>
