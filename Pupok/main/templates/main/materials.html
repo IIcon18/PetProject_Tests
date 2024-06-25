@@ -18,6 +18,9 @@
         <h1>Материалы</h1>
         <div class="header-right">
             <a href="http://127.0.0.1:8000/account/" class="btn-custom">Вернуться в личный кабинет</a>
+            {% if request.user.profile.is_manager %}
+                <a href="{% url 'admin:index' %}" class="btn-custom">В админку</a>
+            {% endif %}
             <a href="http://127.0.0.1:8000/" class="btn-custom">Выйти</a>
         </div>
     </div>
