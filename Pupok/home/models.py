@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 import random
+from django.contrib.auth.models import User
 
 class BaseModel(models.Model):
     uid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
@@ -78,3 +79,19 @@ class ExtendedAnswer(BaseModel):
     
     def __str__(self):
         return f"{self.question_text.text[:20]} - {self.text[:50]}"
+
+
+class TestResult(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    correct_answers = models.IntegerField()
+    total_questions = models.IntegerField()
+    test_duration = models.DurationField()
+    
+    @property
+    def percentage(self):
+        if self.total_questions > 0:
+            return (self.correct_answers / self.total_questions) * 100
+        return 0
+
+    def __str__(self):
+        return f'{self.user.get_full_name()} - {self.correct_answers}/{self.total_questions} ({self.percentage:.2f}%)'
