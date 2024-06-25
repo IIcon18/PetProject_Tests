@@ -9,10 +9,13 @@ class ProfileInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = 'Профиль'  # Изменение множественного числа
 
+    # Customize fields displayed in inline
+    fields = ('phone_number', 'position', 'patronymic', 'manager', 'hire_date', 'last_test_date')
+
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
-    list_display = ('username', 'email', 'first_name', 'last_name', 'get_patronymic', 'get_manager', 'get_position')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'get_patronymic', 'get_manager', 'get_position', 'get_hire_date', 'get_last_test_date')
 
     def get_position(self, instance):
         return instance.profile.position if hasattr(instance, 'profile') else None
@@ -25,6 +28,14 @@ class UserAdmin(BaseUserAdmin):
     def get_patronymic(self, instance):
         return instance.profile.patronymic if hasattr(instance, 'profile') else None
     get_patronymic.short_description = 'Отчество'  # Название колонки
+
+    def get_hire_date(self, instance):
+        return instance.profile.hire_date if hasattr(instance, 'profile') else None
+    get_hire_date.short_description = 'Дата принятия на работу'  # Название колонки
+
+    def get_last_test_date(self, instance):
+        return instance.profile.last_test_date if hasattr(instance, 'profile') else None
+    get_last_test_date.short_description = 'Последняя дата прохождения теста'  # Название колонки
 
 # Unregister old User admin
 admin.site.unregister(User)

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db import models
 import os
 
 class Profile(models.Model):
@@ -9,6 +8,8 @@ class Profile(models.Model):
     position = models.CharField(max_length=100, blank=True, null=True)
     patronymic = models.CharField(max_length=100, blank=True, null=True)  # Добавлено поле отчества
     manager = models.CharField(max_length=100, blank=True, null=True)  # Добавлено поле руководитель
+    hire_date = models.DateField(blank=True, null=True)  # Добавлено поле дата принятия на работу
+    last_test_date = models.DateField(blank=True, null=True)  # Добавлено поле последняя дата прохождения теста
 
     def __str__(self):
         return self.user.username

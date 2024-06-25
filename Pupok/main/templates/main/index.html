@@ -27,12 +27,14 @@
             <div class="profile-detail phone"><strong>Телефон:</strong> {{ user.profile.phone_number }}</div>
             <div class="profile-detail email"><strong>Почта:</strong> {{ user.email }}</div>
             <div class="profile-detail username"><strong>Логин:</strong> {{ user.username }}</div>
+            <div class="profile-detail last-name"><strong>Фамилия:</strong> {{ user.last_name }}</div>
+            <div class="profile-detail first-name"><strong>Имя:</strong> {{ user.first_name }}</div>
+            <div class="profile-detail patronymic"><strong>Отчество:</strong> {{ user.profile.patronymic }}</div>
+            <div class="profile-detail position"><strong>Должность:</strong> {{ user.profile.position }}</div>
+            <div class="profile-detail manager"><strong>Руководитель:</strong> {{ user.profile.manager }}</div>
+            <div class="profile-detail hire-date"><strong>Дата принятия на работу:</strong> {{ user.profile.hire_date }}</div>
+            <div class="profile-detail last-test-date"><strong>Дата последнего прохождения в тестах:</strong> {{ user.profile.last_test_date }}</div>
         </div>
-        <div class="profile-detail last-name"><strong>Фамилия:</strong> {{ user.last_name }}</div>
-        <div class="profile-detail first-name"><strong>Имя:</strong> {{ user.first_name }}</div>
-        <div class="profile-detail patronymic"><strong>Отчество:</strong> {{ user.profile.patronymic }}</div>
-        <div class="profile-detail position"><strong>Должность:</strong> {{ user.profile.position }}</div>
-        <div class="profile-detail manager"><strong>Руководитель:</strong> {{ user.profile.manager }}</div>
     </div>
     <div class="footer">
         <div class="footer-text footer-text-1">Белый Раст</div>
