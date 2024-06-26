@@ -51,8 +51,6 @@ def get_quiz(request):
 
 def result(request):
     if request.method == 'POST':
-        num_questions = 25  # Количество вопросов в тесте
-
         questions = list(Question.objects.all())
         extended_questions = list(ExtendedQuestion.objects.all())
 
@@ -127,12 +125,17 @@ def result(request):
                     'correct': correct
                 })
 
-        # Сохранение результата теста с указанием количества вопросов в тесте
-        TestResult.objects.create(
+        num_questions = 25  # количество вопросов в тесте
+
+        # Обновление или создание результата теста
+        TestResult.objects.update_or_create(
             user=request.user,
-            correct_answers=correct_answers_count,
-            total_questions=num_questions,  # Используем заданное количество вопросов в тесте
-            test_duration=test_duration
+            defaults={
+                'correct_answers': correct_answers_count,
+                'total_questions': num_questions,
+                'test_duration': test_duration,
+                'created_at': end_time  # Обновляем время завершения теста
+            }
         )
 
         context = {
@@ -145,7 +148,6 @@ def result(request):
         return render(request, 'test/result.html', context)
     else:
         return HttpResponseRedirect('/')
-
 def results_list(request):
     results = TestResult.objects.all().order_by('-created_at')
     return render(request, 'test/result_list.html', {'results': results})

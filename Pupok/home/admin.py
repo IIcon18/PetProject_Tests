@@ -20,8 +20,18 @@ class ExtendedQuestionAdmin(admin.ModelAdmin):
     search_fields = ('text',)
     list_filter = ('gfg',)
 
+class TestResultAdmin(admin.ModelAdmin):
+    list_display = ('user', 'correct_answers', 'total_questions', 'percentage', 'test_duration', 'created_at')
+    search_fields = ('user__username', 'user__first_name', 'user__last_name')
+    list_filter = ('created_at',)
+    
+    def percentage(self, obj):
+        return f"{obj.percentage:.2f}%"
+    percentage.short_description = 'Percentage'
+
 admin.site.register(Types)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
 admin.site.register(ExtendedQuestion, ExtendedQuestionAdmin)
 admin.site.register(ExtendedAnswer)
+admin.site.register(TestResult, TestResultAdmin)  # Регистрация TestResult в админке
