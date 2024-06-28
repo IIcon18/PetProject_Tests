@@ -6,6 +6,7 @@ body {
     background: linear-gradient(to bottom, #c0c0c0, #8b9dc3);
     color: #343a40;
 }
+
 .header {
     background-color: #a8000e;
     padding: 20px;
@@ -16,11 +17,13 @@ body {
     align-items: center;
     position: relative;
 }
+
 .header h1 {
     margin: 0;
     font-size: 2em;
     text-align: center;
 }
+
 .header .btn-container {
     position: absolute;
     right: 20px;
@@ -28,6 +31,7 @@ body {
     align-items: center;
     gap: 10px;
 }
+
 .header .btn-custom {
     background-color: #CC000A;
     color: #fff;
@@ -41,6 +45,7 @@ body {
     font-size: 16px;
     font-weight: bold;
 }
+
 .header .btn-custom:hover {
     background-color: black;
     color: #fff;
@@ -48,6 +53,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 .result-item {
     background: linear-gradient(90deg, #a8000e 0%, #8c0221 100%);
     margin-bottom: 20px;
@@ -61,6 +67,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
 .avatar {
     border-radius: 50%;
     margin-right: 20px;
@@ -69,16 +76,25 @@ body {
     background-size: cover;
     background-position: center;
 }
+
 .result-item h3, .result-item p {
     margin: 0;
 }
+
 .result-item p {
     color: white;
 }
+
 .result-details {
     display: flex;
     flex-direction: column;
 }
+
+main.content {
+    flex: 1; /* Это заставит основной контент занять оставшееся пространство */
+    padding-bottom: 80px; /* Добавляем отступ снизу, чтобы не перекрывать последний блок */
+}
+
 .footer {
     background-color: #CC000A;
     color: white;
@@ -87,21 +103,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    position: static; /* Убираем fixed для правильного позиционирования */
+    margin-top: auto; /* Это переместит footer вниз страницы */
 }
+
 .footer .footer-text {
     font-size: 16px;
     margin: 0 10px;
 }
+
 .footer .footer-text-1 {
     font-size: 34px;
 }
+
 .footer .footer-text-2 {
     font-size: 12px;
     text-align: left;
 }
+
 .footer .logo-container {
     width: 50px;
     height: 50px;
