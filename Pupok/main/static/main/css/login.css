@@ -1,135 +1,138 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-image: url('../images/bg1.png'); 
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+	font-family: Arial, sans-serif;
+	background-image: url('../images/bg1.png');
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
 }
 
 h2 {
-    font-size: 32px; /* фиксированный размер */
-    margin-top: 16px; /* фиксированный размер */
-    margin-left: 100px; /* фиксированный размер */
+	font-size: 32px; /* фиксированный размер */
+	margin-top: 16px; /* фиксированный размер */
+	margin-left: 100px; /* фиксированный размер */
 }
 
 header {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: #CC000A;
-    color: #fff;
-    padding: 32px; /* фиксированный размер */
-    width: 100%;
-    text-align: left;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-color: #cc000a;
+	color: #fff;
+	padding: 32px; /* фиксированный размер */
+	width: 100%;
+	text-align: left;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .logo-container {
-    width: 100px;
-    height: 50px;
-    background-image: url('../images/Logo.png'); 
-    background-size: contain; 
-    background-repeat: no-repeat; 
-    margin-left: 275px;
-    margin-top: -45px;
+	width: 100px;
+	height: 50px;
+	background-image: url('../images/Logo.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-left: 275px;
+	margin-top: -45px;
 }
 
 h1 {
-    margin: 0;
-    font-size: 40px; /* фиксированный размер */
-    padding-left: 16px; /* фиксированный размер */
-    width: 50%;
+	margin: 0;
+	font-size: 40px; /* фиксированный размер */
+	padding-left: 16px; /* фиксированный размер */
+	width: 50%;
 }
 
 h4 {
-    font-size: 12px; /* фиксированный размер */
-    position: absolute;
-    top: 22px; /* фиксированный размер */
-    left: 380px; /* фиксированный размер */
+	font-size: 12px; /* фиксированный размер */
+	position: absolute;
+	top: 22px; /* фиксированный размер */
+	left: 380px; /* фиксированный размер */
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 600px; /* фиксированный размер */
-    margin-top: 16px; /* фиксированный размер */
-    margin-left: 100px; /* фиксированный размер */
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	max-width: 600px; /* фиксированный размер */
+	margin-top: 16px; /* фиксированный размер */
+	margin-left: 100px; /* фиксированный размер */
 }
 
-input[type="text"], input[type="password"] {
-    width: 100%;
-    max-width: 300px; /* фиксированный размер */
-    padding: 25px; /* фиксированный размер */
-    margin-bottom: 16px; /* фиксированный размер */
-    border: 2px solid transparent;
-    background-color: #7C82A2;
+input[type='text'],
+input[type='password'] {
+	width: 100%;
+	max-width: 300px; /* фиксированный размер */
+	padding: 25px; /* фиксированный размер */
+	margin-bottom: 16px; /* фиксированный размер */
+	border: 2px solid transparent;
+	background-color: #7c82a2;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
-    outline: none;
-    border-color: #7C82A2;
+input[type='text']:focus,
+input[type='password']:focus {
+	outline: none;
+	border-color: #7c82a2;
 }
 
 ::-webkit-input-placeholder {
-    color: #fff;
+	color: #fff;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-text-fill-color: #ffffff;
-    transition: background-color 5000s ease-in-out 0s;
+	-webkit-text-fill-color: #ffffff;
+	transition: background-color 5000s ease-in-out 0s;
 }
 
 button {
-    width: 100%;
-    max-width: 300px; /* фиксированный размер */
-    padding: 25px; /* фиксированный размер */
-    background-color: #E43232;
-    border: none;
-    color: #fff;
-    font-size: 16px; /* фиксированный размер */
-    margin-left: 20px; /* фиксированный размер */
-    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+	width: 100%;
+	max-width: 300px; /* фиксированный размер */
+	padding: 25px; /* фиксированный размер */
+	background-color: #e43232;
+	border: none;
+	color: #fff;
+	font-size: 16px; /* фиксированный размер */
+	margin-left: 20px; /* фиксированный размер */
+	transition: background-color 0.3s, transform 0.3s, color 0.3s;
 }
 
 button:hover {
-    background-color: #000;
-    color: #fff;
-    border-color: #000;
-    opacity: 0.9;
-    cursor: pointer;
-    transform: scale(1.05);
+	background-color: #000;
+	color: #fff;
+	border-color: #000;
+	opacity: 0.9;
+	cursor: pointer;
+	transform: scale(1.05);
 }
 
 .messages {
-    margin-top: 32px; /* фиксированный размер */
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-    max-width: 600px; /* фиксированный размер */
+	margin-top: 32px; /* фиксированный размер */
+	list-style-type: none;
+	padding: 0;
+	width: 100%;
+	max-width: 600px; /* фиксированный размер */
 }
 
 .messages li {
-    background-color: #ffdddd;
-    color: #a94442;
-    padding: 16px; /* фиксированный размер */
-    margin-bottom: 16px; /* фиксированный размер */
-    border: 1px solid #a94442;
+	background-color: #ffdddd;
+	color: #a94442;
+	padding: 16px; /* фиксированный размер */
+	margin-bottom: 16px; /* фиксированный размер */
+	border: 1px solid #a94442;
 }

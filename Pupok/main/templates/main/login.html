@@ -1,39 +1,57 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Авторизация</title>
-    <link rel="icon" href="{% static 'main/images/Logo.png' %}" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/login.css' %}">
-</head>
-<body>
-    <header>
-        <h1>Белый Раст</h1>
-        <h4>
-            Терминально-
-            <br>
-            логистический
-            <br> 
-            центр
-        </h4>
-        <div class="logo-container"></div>
-    </header>
-    <h2>Авторизация</h2>
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Имя пользователя" style="color: aliceblue;">
-        <input type="password" name="password" placeholder="Пароль" style="color: aliceblue;">
-        <button type="submit">Войти</button>
-    </form>
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Авторизация</title>
+		<link
+			rel="icon"
+			href="{% static 'main/images/Logo.png' %}"
+			type="image/x-icon"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{% static 'main/css/login.css' %}"
+		/>
+	</head>
+	<body>
+		<header>
+			<h1>Белый Раст</h1>
+			<h4>
+				Терминально-
+				<br />
+				логистический
+				<br />
+				центр
+			</h4>
+			<div class="logo-container"></div>
+		</header>
+		<h2>Авторизация</h2>
+		<form method="post">
+			{% csrf_token %}
+			<input
+				type="text"
+				name="username"
+				placeholder="Имя пользователя"
+				style="color: aliceblue"
+			/>
+			<input
+				type="password"
+				name="password"
+				placeholder="Пароль"
+				style="color: aliceblue"
+			/>
+			<button type="submit">Войти</button>
+		</form>
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</body>
 </html>
