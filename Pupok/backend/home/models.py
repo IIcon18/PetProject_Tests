@@ -16,7 +16,12 @@ class Types(BaseModel):
     
     def __str__(self):
         return self.gfg_name
-    
+
+class QuestionDifficulty(models.TextChoices):
+    EASY = 'easy', 'Легкий'
+    MEDIUM = 'medium', 'Средний'
+    HARD = 'hard', 'Сложный'
+
 class Question(BaseModel):
     QUESTION_TYPE_CHOICES = [
         ('MCQ', 'Multiple Choice Question'),
@@ -26,7 +31,8 @@ class Question(BaseModel):
     question = models.CharField(max_length=250)
     marks = models.IntegerField(default=5)
     question_type = models.CharField(max_length=3, choices=QUESTION_TYPE_CHOICES, default='MCQ')
-    image = models.ImageField(upload_to='question_images/', null=True, blank=True)  # Добавлено поле для изображения
+    image = models.ImageField(upload_to='question_images/', null=True, blank=True)
+    difficulty = models.CharField(max_length=6, choices=QuestionDifficulty.choices, default=QuestionDifficulty.EASY)
     
     def __str__(self):
         return self.question
@@ -58,7 +64,8 @@ class ExtendedQuestion(BaseModel):
     gfg = models.ForeignKey(Types, related_name='extended_questions', on_delete=models.CASCADE)
     text = models.TextField(verbose_name="Текст вопроса")
     marks = models.IntegerField(default=5)
-    image = models.ImageField(upload_to='extended_question_images/', null=True, blank=True)  # Поле для изображения
+    image = models.ImageField(upload_to='extended_question_images/', null=True, blank=True)
+    difficulty = models.CharField(max_length=6, choices=QuestionDifficulty.choices, default=QuestionDifficulty.EASY)
     
     class Meta:
         verbose_name = "Вопрос с развернутым ответом"
@@ -66,7 +73,6 @@ class ExtendedQuestion(BaseModel):
 
     def __str__(self):
         return self.text[:50]
-
 
 class ExtendedAnswer(BaseModel):
     question_text = models.ForeignKey(ExtendedQuestion, on_delete=models.CASCADE, related_name='answers', verbose_name="Вопрос")
@@ -79,7 +85,6 @@ class ExtendedAnswer(BaseModel):
     
     def __str__(self):
         return f"{self.question_text.text[:20]} - {self.text[:50]}"
-
 
 class TestResult(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

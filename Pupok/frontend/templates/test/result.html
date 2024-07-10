@@ -1,112 +1,110 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Результаты теста</title>
-		<link
-			rel="icon"
-			href="{% static 'main/images/Logo.png' %}"
-			type="image/x-icon"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-			crossorigin="anonymous"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="{% static 'main/css/result.css' %}"
-		/>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	</head>
-	<body>
-		<div class="header">
-			<h1>Результаты теста</h1>
-		</div>
-		<div class="main-content">
-			<div class="chart-container">
-				<div id="chart">
-					<canvas id="resultChart"></canvas>
-				</div>
-			</div>
-			<div class="details-container">
-				<div>
-					<h2>Детали:</h2>
-					<ul>
-						<li class="result">
-							<p>
-								<strong>Общее количество баллов:</strong>
-								<strong>{{ total_marks }}</strong>
-							</p>
-							<p>
-								<strong>Количество правильных ответов:</strong>
-								<strong>{{ correct_answers }}</strong>
-							</p>
-							<p>
-								<strong>Количество неправильных ответов:</strong>
-								<strong>{{ incorrect_answers }}</strong>
-							</p>
-							<p>
-								<strong>Время выполнения теста:</strong>
-								<strong>{{ test_duration }}</strong>
-							</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="button-container">
-			<a href="http://127.0.0.1:8000/account/" class="btn-custom"
-				>Вернуться в личный кабинет</a
-			>
-		</div>
-		<div class="footer">
-			<div class="footer-text footer-text-1">Белый Раст</div>
-			<div class="logo-container"></div>
-			<div class="footer-text footer-text-2">
-				Терминально-<br />логический центр
-			</div>
-		</div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Результаты теста</title>
+        <link
+            rel="icon"
+            href="{% static 'main/images/Logo.png' %}"
+            type="image/x-icon"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'main/css/result.css' %}"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Результаты теста</h1>
+        </div>
+        <div class="main-content">
+            <div class="chart-container">
+                <div id="chart">
+                    <canvas id="resultChart"></canvas>
+                </div>
+            </div>
+            <div class="details-container">
+                <div>
+                    <h2>Детали:</h2>
+                    <ul>
+                        <li class="result">
+                            <p>
+                                <strong>Общее количество баллов:</strong>
+                                <strong>{{ total_marks }}</strong>
+                            </p>
+                            <p>
+                                <strong>Количество правильных ответов:</strong>
+                                <strong>{{ correct_answers }}</strong>
+                            </p>
+                            <p>
+                                <strong>Количество неправильных ответов:</strong>
+                                <strong>{{ incorrect_answers }}</strong>
+                            </p>
+                            <p>
+                                <strong>Время выполнения теста:</strong>
+                                <strong>{{ test_duration }}</strong>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <a href="http://127.0.0.1:8000/account/" class="btn-custom">Вернуться в личный кабинет</a>
+        </div>
+        <div class="footer">
+            <div class="footer-text footer-text-1">Белый Раст</div>
+            <div class="logo-container"></div>
+            <div class="footer-text footer-text-2">
+                Терминально-<br />логический центр
+            </div>
+        </div>
 
-		<script>
-			const ctx = document.getElementById('resultChart').getContext('2d');
-			const resultChart = new Chart(ctx, {
-			    type: 'doughnut',
-			    data: {
-			        labels: ['Правильные ответы', 'Неправильные ответы'],
-			        datasets: [{
-			            label: 'Результаты теста',
-			            data: [{{ correct_answers }}, {{ incorrect_answers }}],
-			            backgroundColor: ['#28a745', '#dc3545'],
-			            borderColor: ['#28a745', '#dc3545'],
-			            borderWidth: 1
-			        }]
-			    },
-			    options: {
-			        responsive: true,
-			        plugins: {
-			            legend: {
-			                position: 'top',
-			            },
-			            tooltip: {
-			                callbacks: {
-			                    label: function(context) {
-			                        let label = context.label || '';
-			                        if (label) {
-			                            label += ': ';
-			                        }
-			                        label += context.raw;
-			                        return label;
-			                    }
-			                }
-			            }
-			        }
-			    }
-			});
-		</script>
-	</body>
+        <script>
+            const ctx = document.getElementById('resultChart').getContext('2d');
+            const resultChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Правильные ответы', 'Неправильные ответы'],
+                    datasets: [{
+                        label: 'Результаты теста',
+                        data: [{{ correct_answers }}, {{ incorrect_answers }}],
+                        backgroundColor: ['#28a745', '#dc3545'],
+                        borderColor: ['#28a745', '#dc3545'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    label += context.raw;
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
 </html>

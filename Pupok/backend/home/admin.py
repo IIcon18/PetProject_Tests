@@ -6,19 +6,19 @@ class AnswerAdmin(admin.StackedInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerAdmin]
-    list_display = ('question', 'gfg', 'marks', 'question_type')
+    list_display = ('question', 'gfg', 'marks', 'question_type', 'difficulty')
     search_fields = ('question',)
-    list_filter = ('gfg', 'question_type')
-    fields = ('question', 'gfg', 'marks', 'question_type', 'image')  # Добавлено поле 'image'
+    list_filter = ('gfg', 'question_type', 'difficulty')
+    fields = ('question', 'gfg', 'marks', 'question_type', 'image', 'difficulty')
 
 class ExtendedAnswerAdmin(admin.StackedInline):
     model = ExtendedAnswer
 
 class ExtendedQuestionAdmin(admin.ModelAdmin):
     inlines = [ExtendedAnswerAdmin]
-    list_display = ('text', 'gfg', 'marks')
+    list_display = ('text', 'gfg', 'marks', 'difficulty')
     search_fields = ('text',)
-    list_filter = ('gfg',)
+    list_filter = ('gfg', 'difficulty')
 
 class TestResultAdmin(admin.ModelAdmin):
     list_display = ('user', 'correct_answers', 'total_questions', 'percentage', 'test_duration', 'created_at')
@@ -34,4 +34,4 @@ admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
 admin.site.register(ExtendedQuestion, ExtendedQuestionAdmin)
 admin.site.register(ExtendedAnswer)
-admin.site.register(TestResult, TestResultAdmin)  # Регистрация TestResult в админке
+admin.site.register(TestResult, TestResultAdmin)

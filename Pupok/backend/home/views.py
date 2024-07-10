@@ -4,7 +4,6 @@ from django.utils import timezone
 from .models import *
 import random
 from datetime import datetime, timedelta
-from .models import TestResult
 
 def home(request):
     return render(request, 'test/home.html')
@@ -15,18 +14,38 @@ def quiz(request):
         return render(request, 'result.html', {'timer_expired': timer_expired})
     else:
         num_questions = 25
+        num_easy = num_questions // 3
+        num_medium = num_questions // 3
+        num_hard = num_questions - num_easy - num_medium
+        
         start_time = timezone.now()
         request.session['start_time'] = start_time.isoformat()
 
-        all_questions = list(Question.objects.all())
-        all_extended_questions = list(ExtendedQuestion.objects.all())
+        easy_questions = list(Question.objects.filter(difficulty='easy'))
+        medium_questions = list(Question.objects.filter(difficulty='medium'))
+        hard_questions = list(Question.objects.filter(difficulty='hard'))
 
-        for question in all_extended_questions:
+        easy_extended_questions = list(ExtendedQuestion.objects.filter(difficulty='easy'))
+        medium_extended_questions = list(ExtendedQuestion.objects.filter(difficulty='medium'))
+        hard_extended_questions = list(ExtendedQuestion.objects.filter(difficulty='hard'))
+
+        for question in easy_extended_questions + medium_extended_questions + hard_extended_questions:
             question.question_type = 'extended'
 
-        combined_questions = all_questions + all_extended_questions
-        random.shuffle(combined_questions)
-        selected_questions = combined_questions[:num_questions]
+        combined_easy_questions = easy_questions + easy_extended_questions
+        combined_medium_questions = medium_questions + medium_extended_questions
+        combined_hard_questions = hard_questions + hard_extended_questions
+
+        random.shuffle(combined_easy_questions)
+        random.shuffle(combined_medium_questions)
+        random.shuffle(combined_hard_questions)
+
+        selected_easy_questions = combined_easy_questions[:num_easy]
+        selected_medium_questions = combined_medium_questions[:num_medium]
+        selected_hard_questions = combined_hard_questions[:num_hard]
+
+        selected_questions = selected_easy_questions + selected_medium_questions + selected_hard_questions
+        random.shuffle(selected_questions)
 
         return render(request, 'test/quiz.html', {'questions': selected_questions})
 
@@ -127,25 +146,24 @@ def result(request):
 
         num_questions = 25  # количество вопросов в тесте
 
-        # Обновление или создание результата теста
-        TestResult.objects.update_or_create(
+        # Обновление или### Изменения в `views.py` (продолжение)
+
+        # создание записи результата теста
+        TestResult.objects.create(
             user=request.user,
-            defaults={
-                'correct_answers': correct_answers_count,
-                'total_questions': num_questions,
-                'test_duration': test_duration,
-                'created_at': end_time  # Обновляем время завершения теста
-            }
+            correct_answers=correct_answers_count,
+            total_questions=num_questions,
+            test_duration=test_duration
         )
 
-        context = {
+        return render(request, 'test/result.html', {
             'total_marks': total_marks,
             'correct_answers': correct_answers_count,
             'incorrect_answers': incorrect_answers,
-            'results': results,
-            'test_duration': test_duration_str
-        }
-        return render(request, 'test/result.html', context)
+            'test_duration': test_duration_str,
+            'results': results
+        })
+
     else:
         return HttpResponseRedirect('/')
 def results_list(request):

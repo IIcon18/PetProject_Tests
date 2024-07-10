@@ -1,160 +1,101 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Тестирование</title>
-		<link
-			rel="icon"
-			href="{% static 'main/images/Logo.png' %}"
-			type="image/x-icon"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-			crossorigin="anonymous"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="{% static 'main/css/quiz.css' %}"
-		/>
-	</head>
-	<body>
-		<div class="header">
-			<div class="test-label">Тестирование</div>
-			<!-- Новый элемент для надписи -->
-		</div>
-		<div class="sidebar">
-			<!-- Sidebar for question navigation -->
-			{% for question in questions %}
-			<a href="#question{{ forloop.counter }}">{{ forloop.counter }}</a>
-			{% endfor %}
-		</div>
-		<div class="container content">
-			<div id="countdown">00:15</div>
-			<!-- Таймер обратного отсчета -->
-			<form action="{% url 'result' %}" method="post" id="test-form">
-				{% csrf_token %}
-				<input
-					type="hidden"
-					name="timerExpired"
-					id="timerExpired"
-					value="false"
-				/>
-				<input
-					type="hidden"
-					name="num_questions"
-					value="{{ questions|length }}"
-				/>
-				{% for question in questions %}
-				<input
-					type="hidden"
-					name="selected_questions"
-					value="{{ question.uid }}"
-				/>
-				<div class="question-block" id="question{{ forloop.counter }}">
-					<h4>Задание {{ forloop.counter }} / Вопрос {{ forloop.counter }}</h4>
-					{% if question.question_type == 'extended' %}
-					<h5>{{ question.text }}</h5>
-					{% if question.image %}
-					<img
-						src="{{ question.image.url }}"
-						alt="Question Image"
-						class="img-fluid"
-					/>
-					{% endif %}
-					<textarea class="form-control" name="{{ question.uid }}"></textarea>
-					{% else %}
-					<h5>{{ question.question }}</h5>
-					{% if question.image %}
-					<img
-						src="{{ question.image.url }}"
-						alt="Question Image"
-						class="img-fluid"
-					/>
-					{% endif %} {% if question.question_type == 'MCQ' %}
-					<p>Выберите один или несколько вариантов:</p>
-					{% for answer in question.get_answers %}
-					<div class="form-check">
-						<input
-							class="form-check-input"
-							type="checkbox"
-							name="{{ question.uid }}"
-							value="{{ answer.answer }}"
-						/>
-						<label class="form-check-label">{{ answer.answer }}</label>
-					</div>
-					{% endfor %} {% else %}
-					<textarea
-						class="form-control"
-						name="{{ question.uid }}"
-						readonly
-					></textarea>
-					<!-- Запрещено изменение размера -->
-					{% endif %} {% endif %}
-				</div>
-				{% endfor %}
-				<div class="pagination">
-					<button type="submit" class="btn btn-custom">Завершить тест</button>
-				</div>
-			</form>
-		</div>
-		<div class="footer">
-			<div class="footer-text footer-text-1">Белый Раст</div>
-			<div class="logo-container"></div>
-			<div class="footer-text footer-text-2">
-				Терминально-<br />логический центр
-			</div>
-		</div>
-		<script>
-			// Инициализация времени начала теста
-			let startTime = new Date()
-
-			// Инициализация времени для обратного отсчета
-			let totalTime = 15 * 60 // 15 минут в секундах
-
-			// Функция обновления обратного отсчета
-			function updateCountdown() {
-				if (totalTime <= 0) {
-					// Если время истекло, устанавливаем флаг и отправляем форму
-					document.getElementById('timerExpired').value = 'true'
-					document.getElementById('test-form').submit()
-					return
-				}
-
-				// Обновление времени обратного отсчета
-				totalTime--
-				let minutes = Math.floor(totalTime / 60)
-				let seconds = totalTime % 60
-
-				// Вывод времени обратного отсчета на экран
-				document.getElementById('countdown').textContent =
-					String(minutes).padStart(2, '0') +
-					':' +
-					String(seconds).padStart(2, '0')
-			}
-
-			// Установка интервала обновления обратного отсчета
-			setInterval(updateCountdown, 1000)
-
-			// Обработчик прокрутки страницы
-			window.addEventListener('scroll', function () {
-				let headerHeight = document.querySelector('.header').offsetHeight
-				let sidebarHeight = document.querySelector('.sidebar').offsetHeight
-				let footerHeight = document.querySelector('.footer').offsetHeight
-				let scrollPosition = window.scrollY + window.innerHeight - sidebarHeight // Учитываем ширину боковой панели
-
-				if (scrollPosition >= document.body.offsetHeight - footerHeight) {
-					// При прокрутке до футера
-					document.getElementById('footer').classList.add('hidden')
-				} else {
-					// В остальных случаях
-					document.getElementById('footer').classList.remove('hidden')
-				}
-			})
-		</script>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Тестирование</title>
+        <link
+            rel="icon"
+            href="{% static 'main/images/Logo.png' %}"
+            type="image/x-icon"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'main/css/quiz.css' %}"
+        />
+    </head>
+    <body>
+        <div class="header">
+            <div class="test-label">Тестирование</div>
+        </div>
+        <div class="sidebar">
+            {% for question in questions %}
+            <a href="#question{{ forloop.counter }}">{{ forloop.counter }}</a>
+            {% endfor %}
+        </div>
+        <div class="container content">
+            <div id="countdown">00:15</div>
+            <form action="{% url 'result' %}" method="post" id="test-form">
+                {% csrf_token %}
+                <input type="hidden" name="timerExpired" id="timerExpired" value="false" />
+                <input type="hidden" name="num_questions" value="{{ questions|length }}" />
+                {% for question in questions %}
+                <input type="hidden" name="selected_questions" value="{{ question.uid }}" />
+                <div class="question-block" id="question{{ forloop.counter }}">
+                    <h4>Задание {{ forloop.counter }} / Вопрос {{ forloop.counter }}</h4>
+                    {% if question.question_type == 'extended' %}
+                    <h5>{{ question.text }}</h5>
+                    {% if question.image %}
+                    <img src="{{ question.image.url }}" alt="Question Image" class="img-fluid" />
+                    {% endif %}
+                    <textarea class="form-control" name="{{ question.uid }}"></textarea>
+                    {% else %}
+                    <h5>{{ question.question }}</h5>
+                    {% if question.image %}
+                    <img src="{{ question.image.url }}" alt="Question Image" class="img-fluid" />
+                    {% endif %}
+                    {% if question.question_type == 'MCQ' %}
+                    <p>Выберите один или несколько вариантов:</p>
+                    {% for answer in question.get_answers %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="{{ question.uid }}" value="{{ answer.answer }}" />
+                        <label class="form-check-label">{{ answer.answer }}</label>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <textarea class="form-control" name="{{ question.uid }}" readonly></textarea>
+                    {% endif %}
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="pagination">
+                    <button type="submit" class="btn btn-custom">Завершить тест</button>
+                </div>
+            </form>
+        </div>
+        <div class="footer">
+            <div class="footer-text footer-text-1">Белый Раст</div>
+            <div class="logo-container"></div>
+            <div class="footer-text footer-text-2">
+                Терминально-<br />логический центр
+            </div>
+        </div>
+        <script>
+            let startTime = new Date();
+            let totalTime = 15 * 60; // 15 минут в секундах
+            function updateCountdown() {
+                if (totalTime <= 0) {
+                    document.getElementById('timerExpired').value = 'true';
+                    document.getElementById('test-form').submit();
+                    return;
+                }
+                totalTime--;
+                let minutes = Math.floor(totalTime / 60);
+                let seconds = totalTime % 60;
+                document.getElementById('countdown').textContent =
+                    String(minutes).padStart(2, '0') +
+                    ':' +
+                    String(seconds).padStart(2, '0');
+            }
+            setInterval(updateCountdown, 1000);
+        </script>
+    </body>
 </html>
