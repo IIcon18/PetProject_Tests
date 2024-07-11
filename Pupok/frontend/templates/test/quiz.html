@@ -27,8 +27,11 @@
             <div class="test-label">Тестирование</div>
         </div>
         <div class="sidebar">
-            {% for question in questions %}
-            <a href="#question{{ forloop.counter }}">{{ forloop.counter }}</a>
+            {% for block_label, block in question_blocks %}
+                <div class="block-label">Блок {{ block_label }}</div>
+                {% for question in block %}
+                    <a href="#question{{ question.uid }}">{{ forloop.counter }}</a>
+                {% endfor %}
             {% endfor %}
         </div>
         <div class="container content">
@@ -37,34 +40,39 @@
                 {% csrf_token %}
                 <input type="hidden" name="timerExpired" id="timerExpired" value="false" />
                 <input type="hidden" name="num_questions" value="{{ questions|length }}" />
-                {% for question in questions %}
-                <input type="hidden" name="selected_questions" value="{{ question.uid }}" />
-                <div class="question-block" id="question{{ forloop.counter }}">
-                    <h4>Задание {{ forloop.counter }} / Вопрос {{ forloop.counter }}</h4>
-                    {% if question.question_type == 'extended' %}
-                    <h5>{{ question.text }}</h5>
-                    {% if question.image %}
-                    <img src="{{ question.image.url }}" alt="Question Image" class="img-fluid" />
-                    {% endif %}
-                    <textarea class="form-control" name="{{ question.uid }}"></textarea>
-                    {% else %}
-                    <h5>{{ question.question }}</h5>
-                    {% if question.image %}
-                    <img src="{{ question.image.url }}" alt="Question Image" class="img-fluid" />
-                    {% endif %}
-                    {% if question.question_type == 'MCQ' %}
-                    <p>Выберите один или несколько вариантов:</p>
-                    {% for answer in question.get_answers %}
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="{{ question.uid }}" value="{{ answer.answer }}" />
-                        <label class="form-check-label">{{ answer.answer }}</label>
+                {% for block_label, block in question_blocks %}
+                    <div class="block">
+                        <h3>Блок {{ block_label }}</h3>
+                        {% for question in block %}
+                            <input type="hidden" name="selected_questions" value="{{ question.uid }}" />
+                            <div class="question-block" id="question{{ question.uid }}">
+                                <h4>{{ block_label }} / Вопрос {{ forloop.counter }}</h4>
+                                {% if question.question_type == 'extended' %}
+                                    <h5>{{ question.text }}</h5>
+                                    {% if question.image %}
+                                        <img src="{{ question.image.url }}" alt="Question Image" class="img-fluid" />
+                                    {% endif %}
+                                    <textarea class="form-control" name="{{ question.uid }}"></textarea>
+                                {% else %}
+                                    <h5>{{ question.question }}</h5>
+                                    {% if question.image %}
+                                        <img src="{{ question.image.url }}" alt="Question Image" class="img-fluid" />
+                                    {% endif %}
+                                    {% if question.question_type == 'MCQ' %}
+                                        <p>Выберите один или несколько вариантов:</p>
+                                        {% for answer in question.get_answers %}
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="{{ question.uid }}" value="{{ answer.answer }}" />
+                                                <label class="form-check-label">{{ answer.answer }}</label>
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <textarea class="form-control" name="{{ question.uid }}" readonly></textarea>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                    {% else %}
-                    <textarea class="form-control" name="{{ question.uid }}" readonly></textarea>
-                    {% endif %}
-                    {% endif %}
-                </div>
                 {% endfor %}
                 <div class="pagination">
                     <button type="submit" class="btn btn-custom">Завершить тест</button>

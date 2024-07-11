@@ -17,7 +17,9 @@ def quiz(request):
         num_easy = num_questions // 3
         num_medium = num_questions // 3
         num_hard = num_questions - num_easy - num_medium
-        
+
+        block_size = 5  # Размер блока можно изменить по необходимости
+
         start_time = timezone.now()
         request.session['start_time'] = start_time.isoformat()
 
@@ -47,7 +49,21 @@ def quiz(request):
         selected_questions = selected_easy_questions + selected_medium_questions + selected_hard_questions
         random.shuffle(selected_questions)
 
-        return render(request, 'test/quiz.html', {'questions': selected_questions})
+        # Разбиваем вопросы на блоки
+        question_blocks = []
+        current_block = []
+        for index, question in enumerate(selected_questions, start=1):
+            current_block.append(question)
+            if len(current_block) == block_size:
+                block_label = chr(65 + len(question_blocks))  # Генерация метки блока (A, B, C, ...)
+                question_blocks.append((block_label, current_block))
+                current_block = []
+        
+        if current_block:
+            block_label = chr(65 + len(question_blocks))
+            question_blocks.append((block_label, current_block))
+
+        return render(request, 'test/quiz.html', {'question_blocks': question_blocks})
 
 def get_quiz(request):
     try:
