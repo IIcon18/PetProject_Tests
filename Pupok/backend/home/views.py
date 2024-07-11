@@ -146,15 +146,21 @@ def result(request):
 
         num_questions = 25  # количество вопросов в тесте
 
-        # Обновление или### Изменения в `views.py` (продолжение)
-
-        # создание записи результата теста
-        TestResult.objects.create(
-            user=request.user,
-            correct_answers=correct_answers_count,
-            total_questions=num_questions,
-            test_duration=test_duration
-        )
+        # Найти и обновить существующую запись результата теста, если она существует
+        try:
+            test_result = TestResult.objects.filter(user=request.user).latest('created_at')
+            test_result.correct_answers = correct_answers_count
+            test_result.total_questions = num_questions
+            test_result.test_duration = test_duration
+            test_result.save()
+        except TestResult.DoesNotExist:
+            # Создать новую запись результата теста, если еще не существует
+            TestResult.objects.create(
+                user=request.user,
+                correct_answers=correct_answers_count,
+                total_questions=num_questions,
+                test_duration=test_duration
+            )
 
         return render(request, 'test/result.html', {
             'total_marks': total_marks,
@@ -166,6 +172,7 @@ def result(request):
 
     else:
         return HttpResponseRedirect('/')
+
 def results_list(request):
-    results = TestResult.objects.all().order_by('-created_at')
+    results = TestResult.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'test/result_list.html', {'results': results})
