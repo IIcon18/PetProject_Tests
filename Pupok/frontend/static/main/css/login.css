@@ -3,6 +3,8 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	height: 100%;
+	width: 100%;
 }
 
 body {
@@ -15,13 +17,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	min-height: 100vh;
-}
-
-h2 {
-	font-size: 32px; /* фиксированный размер */
-	margin-top: 16px; /* фиксированный размер */
-	margin-left: 100px; /* фиксированный размер */
+	justify-content: center;
 }
 
 header {
@@ -29,13 +25,15 @@ header {
 	background-repeat: no-repeat;
 	background-color: #cc000a;
 	color: #fff;
-	padding: 32px; /* фиксированный размер */
+	padding: 32px;
 	width: 100%;
 	text-align: left;
-	position: relative;
+	position: absolute;
+	top: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	box-sizing: border-box; /* добавлено для учета padding */
 }
 
 .logo-container {
@@ -50,36 +48,64 @@ header {
 
 h1 {
 	margin: 0;
-	font-size: 40px; /* фиксированный размер */
-	padding-left: 16px; /* фиксированный размер */
+	font-size: 2.5em; /* использованы относительные единицы */
+	padding-left: 16px;
 	width: 50%;
 }
 
 h4 {
-	font-size: 12px; /* фиксированный размер */
+	font-size: 0.75em; /* использованы относительные единицы */
 	position: absolute;
-	top: 22px; /* фиксированный размер */
-	left: 380px; /* фиксированный размер */
+	top: 22px;
+	left: 380px;
+}
+
+.auth-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	padding: 16px; /* добавлено для отступа от края окна */
+	box-sizing: border-box; /* добавлено для учета padding */
+}
+
+.auth-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 800px;
+	padding: 16px;
+	box-sizing: border-box; /* добавлено для учета padding */
+	background-color: rgba(255, 255, 255, 0.9); /* добавлен фон для читаемости */
+	border-radius: 8px; /* добавлен скругленный угол */
+}
+
+h2 {
+	font-size: 2em; /* использованы относительные единицы */
+	margin-top: 0;
+	margin-bottom: 24px;
+	text-align: center;
+	width: 100%;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
 	width: 100%;
-	max-width: 600px; /* фиксированный размер */
-	margin-top: 16px; /* фиксированный размер */
-	margin-left: 100px; /* фиксированный размер */
 }
 
 input[type='text'],
 input[type='password'] {
 	width: 100%;
-	max-width: 300px; /* фиксированный размер */
-	padding: 25px; /* фиксированный размер */
-	margin-bottom: 16px; /* фиксированный размер */
+	max-width: 600px;
+	padding: 20px;
+	margin-bottom: 24px;
 	border: 2px solid transparent;
 	background-color: #7c82a2;
+	font-size: 1em; /* использованы относительные единицы */
 }
 
 input[type='text']:focus,
@@ -102,13 +128,12 @@ input:-webkit-autofill:active {
 
 button {
 	width: 100%;
-	max-width: 300px; /* фиксированный размер */
-	padding: 25px; /* фиксированный размер */
+	max-width: 600px;
+	padding: 20px;
 	background-color: #e43232;
 	border: none;
 	color: #fff;
-	font-size: 16px; /* фиксированный размер */
-	margin-left: 20px; /* фиксированный размер */
+	font-size: 1em; /* использованы относительные единицы */
 	transition: background-color 0.3s, transform 0.3s, color 0.3s;
 }
 
@@ -122,17 +147,65 @@ button:hover {
 }
 
 .messages {
-	margin-top: 32px; /* фиксированный размер */
+	margin-top: 32px;
 	list-style-type: none;
 	padding: 0;
 	width: 100%;
-	max-width: 600px; /* фиксированный размер */
+	max-width: 800px;
 }
 
 .messages li {
 	background-color: #ffdddd;
 	color: #a94442;
-	padding: 16px; /* фиксированный размер */
-	margin-bottom: 16px; /* фиксированный размер */
+	padding: 16px;
+	margin-bottom: 16px;
 	border: 1px solid #a94442;
+}
+
+/* Media Queries для адаптации к меньшим экранам */
+@media (max-width: 768px) {
+	h1 {
+		font-size: 2em;
+	}
+
+	h4 {
+		font-size: 0.5em;
+		left: 20px;
+	}
+
+	.auth-container {
+		padding: 8px;
+	}
+
+	input[type='text'],
+	input[type='password'],
+	button {
+		max-width: 100%;
+	}
+
+	button {
+		font-size: 0.8em;
+	}
+}
+
+@media (max-width: 480px) {
+	h1 {
+		font-size: 1.5em;
+	}
+
+	h4 {
+		font-size: 0.4em;
+		left: 10px;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}
+
+	input[type='text'],
+	input[type='password'],
+	button {
+		padding: 12px;
+		font-size: 0.8em;
+	}
 }
