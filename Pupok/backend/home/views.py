@@ -13,12 +13,12 @@ def quiz(request):
         timer_expired = request.POST.get('timerExpired', 'false') == 'true'
         return render(request, 'result.html', {'timer_expired': timer_expired})
     else:
-        num_questions = 25
-        num_easy = num_questions // 3
-        num_medium = num_questions // 3
-        num_hard = num_questions - num_easy - num_medium
+        num_questions = 30
+        num_hard = 8
+        num_medium = (num_questions - num_hard) // 2
+        num_easy = num_questions - num_hard - num_medium
 
-        block_size = 5  # Размер блока можно изменить по необходимости
+        block_size = 10  # Размер блока можно изменить по необходимости
 
         start_time = timezone.now()
         request.session['start_time'] = start_time.isoformat()
@@ -160,7 +160,7 @@ def result(request):
                     'correct': correct
                 })
 
-        num_questions = 25  # количество вопросов в тесте
+        num_questions = 30  # количество вопросов в тесте
 
         # Найти и обновить существующую запись результата теста, если она существует
         try:
