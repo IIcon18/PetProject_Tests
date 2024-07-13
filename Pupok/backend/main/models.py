@@ -1,15 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 import os
+from django.utils.translation import gettext_lazy as _
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=15, blank=True, null=True)
-    position = models.CharField(max_length=100, blank=True, null=True)
-    patronymic = models.CharField(max_length=100, blank=True, null=True)
-    is_manager = models.BooleanField(default=False)  # Поле "Руководитель"
-    hire_date = models.DateField(blank=True, null=True)  # Дата принятия на работу
-    last_test_date = models.DateField(blank=True, null=True)  # Последняя дата прохождения теста
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('пользователь'))
+    phone_number = models.CharField(max_length=15, blank=True, null=True, verbose_name=_('номер телефона'))
+    position = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('должность'))
+    patronymic = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('отчество'))
+    is_manager = models.BooleanField(default=False, verbose_name=_('руководитель'))
+    hire_date = models.DateField(blank=True, null=True, verbose_name=_('дата принятия на работу'))
+    last_test_date = models.DateField(blank=True, null=True, verbose_name=_('последняя дата прохождения теста'))
+
+    class Meta:
+        verbose_name = _('профиль')
+        verbose_name_plural = _('профили')
+
 
     def __str__(self):
         return self.user.username
