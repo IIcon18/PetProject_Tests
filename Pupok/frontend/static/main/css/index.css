@@ -1,237 +1,238 @@
 /* Основной контейнер */
 body {
-	background-image: url('../images/bg5.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	color: #000;
-	font-family: Arial, sans-serif;
-	margin: 0;
-	min-height: 100vh; /* Занимает всю высоту окна просмотра */
-	font-weight: bold;
-	position: relative;
-	overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
+    background-image: url('../images/bg5.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh; /* Занимает всю высоту окна просмотра */
+    font-weight: bold;
+    position: relative;
+    overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
 }
 
 /* Шапка */
 .header {
-	background-color: #cc000a;
-	width: 100%;
-	height: 80px;
-	padding: 10px 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	color: white;
+    background-color: #cc000a;
+    width: 100%;
+    height: 80px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
 }
 
 /* Логотип */
 .logo-container {
-	width: 50px;
-	height: 50px;
-	background-image: url('../images/Logo.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	margin: 0 20px;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/Logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 20px;
 }
 
 .header h1 {
-	margin: 0;
-	color: white;
+    margin: 0;
+    color: white;
 }
 
 .header a {
-	color: white;
-	text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
 /* Контейнер профиля */
 .profile-container {
-	background-image: url('../images/11.png');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	padding: 20px;
-	border-radius: 10px;
-	width: 90%; /* адаптивная ширина */
-	max-width: 1200px; /* максимальная ширина */
-	height: auto; /* высота автоматически подстраивается */
-	margin: 50px auto; /* центрирование и отступы */
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-	color: #000;
-	font-family: Arial, sans-serif;
-	text-align: center;
-	overflow: hidden;
-	position: relative;
-	flex-grow: 1; /* Растягивает контейнер, чтобы занять все доступное пространство */
+    background-image: url('../images/11.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 900px; /* увеличенная фиксированная ширина */
+    height: 900px; /* увеличенная фиксированная высота */
+    margin: 50px auto; /* центрирование и отступы */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    color: #000;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
 }
 
 /* Детали профиля */
 .profile-details-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	margin-top: 20px; /* отступ сверху */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 250px; /* отступ сверху, чтобы текст был ниже аватарки */
 }
 
 .profile-detail {
-	padding: 10px;
-	border-radius: 5px;
-	margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
 }
 
 /* Аватар */
 .avatar-container {
-	position: absolute;
-	top: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 200px;
-	height: 200px;
-	overflow: hidden;
-	border-radius: 50%;
-	border: 5px solid #fff;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .avatar-container img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Кнопка */
 .btn-custom {
-	background-color: #cc000a;
-	color: #fff;
-	text-decoration: none;
-	border: none;
-	border-radius: 5px;
-	padding: 12px 24px;
-	margin: 0 5px;
-	transition: background-color 0.3s ease, transform 0.2s ease,
-		box-shadow 0.2s ease;
-	display: inline-block;
-	font-size: 16px;
-	font-weight: bold;
+    background-color: #cc000a;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease,
+        box-shadow 0.2s ease;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .btn-custom:hover {
-	background-color: black;
-	transform: scale(1.05);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Текстовые поля */
 .last-name,
 .first-name,
 .patronymic {
-	position: absolute;
-	bottom: 20px;
-	left: 20px;
-	font-size: 24px;
-	font-weight: bold;
-	color: white;
+    font-size: 24px; /* фиксированный размер шрифта */
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
 }
 
 .last-name {
-	bottom: 65px;
+    bottom: 65px;
 }
 
 .first-name {
-	bottom: 95px;
+    bottom: 95px;
 }
 
 .patronymic {
-	bottom: 35px;
+    bottom: 35px;
 }
 
 .position,
 .manager {
-	position: absolute;
-	right: 20px;
-	text-align: right;
-	font-size: 16px;
-	font-weight: bold;
-	color: white;
+    font-size: 16px; /* фиксированный размер шрифта */
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    right: 20px;
+    text-align: right;
 }
 
 .position {
-	bottom: 50px;
+    bottom: 50px;
 }
 
 .manager {
-	bottom: 20px;
+    bottom: 20px;
 }
 
 .phone,
 .username,
-.email {
-	text-align: center;
-	font-size: 18px;
-	font-weight: bold;
-	margin-top: 10px;
+.email,
+.date-employed,
+.date-tested {
+    font-size: 18px; /* фиксированный размер шрифта */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
 }
 
 /* Подвал */
 .footer {
-	background-color: #cc000a;
-	color: white;
-	width: 100%;
-	height: 80px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 0 20px;
+    background-color: #cc000a;
+    color: white;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
 }
 
 .footer .footer-text {
-	font-size: 16px;
-	margin: 0 10px;
+    font-size: 16px;
+    margin: 0 10px;
 }
 
 .footer .footer-text-1 {
-	font-size: 34px;
+    font-size: 34px;
 }
 
 .footer .footer-text-2 {
-	font-size: 12px;
-	text-align: left;
+    font-size: 12px;
+    text-align: left;
 }
 
 .footer .logo-container {
-	width: 50px;
-	height: 50px;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-image: url('../images/Logo.png');
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../images/Logo.png');
 }
 
 /* Медиазапросы для изменения масштаба */
 @media (max-width: 1200px) {
-	.profile-container {
-		width: 95%;
-	}
+    .profile-container {
+        width: 95%;
+        height: auto; /* авто высота для адаптивности */
+    }
 }
 
 @media (max-width: 1024px) {
-	.profile-container {
-		width: 90%;
-	}
+    .profile-container {
+        width: 90%;
+    }
 }
 
 @media (max-width: 768px) {
-	.profile-container {
-		width: 85%;
-	}
+    .profile-container {
+        width: 85%;
+    }
 }
 
 @media (max-width: 600px) {
-	.profile-container {
-		width: 80%;
-	}
+    .profile-container {
+        width: 80%;
+    }
 }
