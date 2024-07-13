@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from .models import Profile, Document
+from .models import Profile, Document, Group, GroupMembership
 
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
     verbose_name_plural = 'Профиль'
-    fields = ('phone_number', 'position', 'patronymic', 'is_manager', 'hire_date', 'last_test_date')  # Включаем новые поля
+    fields = ('phone_number', 'position', 'patronymic', 'is_manager', 'hire_date', 'last_test_date')
 
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
@@ -37,7 +37,25 @@ class DocumentAdmin(admin.ModelAdmin):
     list_display = ('title', 'uploaded_at')
     search_fields = ('title',)
 
+class GroupMembershipInline(admin.TabularInline):
+    model = GroupMembership
+    extra = 1
+    verbose_name_plural = 'Участники группы'
+    fields = ('user', 'is_leader')
+
+class GroupAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    inlines = (GroupMembershipInline,)
+
+class GroupMembershipAdmin(admin.ModelAdmin):
+    list_display = ('group', 'user', 'is_leader')
+    list_filter = ('group', 'is_leader')
+    search_fields = ('group__name', 'user__username')
+
 # Регистрация моделей в админке
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Document, DocumentAdmin)
+admin.site.register(Group, GroupAdmin)
+admin.site.register(GroupMembership, GroupMembershipAdmin)
