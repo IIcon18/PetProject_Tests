@@ -7,11 +7,11 @@ class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
     verbose_name_plural = 'Профиль'
-    fields = ('phone_number', 'position', 'patronymic', 'is_manager', 'hire_date', 'last_test_date')
+    fields = ('phone_number', 'position', 'patronymic', 'is_manager', 'hire_date', 'last_test_date', 'manager')
 
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
-    list_display = ('username', 'email', 'first_name', 'last_name', 'get_patronymic', 'get_position', 'get_is_manager', 'get_hire_date', 'get_last_test_date')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'get_patronymic', 'get_position', 'get_is_manager', 'get_hire_date', 'get_last_test_date', 'get_manager')
 
     def get_position(self, instance):
         return instance.profile.position if hasattr(instance, 'profile') else None
@@ -32,6 +32,10 @@ class UserAdmin(BaseUserAdmin):
     def get_last_test_date(self, instance):
         return instance.profile.last_test_date if hasattr(instance, 'profile') else None
     get_last_test_date.short_description = 'Последняя дата прохождения теста'
+
+    def get_manager(self, instance):
+        return instance.profile.manager if hasattr(instance, 'profile') else None
+    get_manager.short_description = 'Руководитель'
 
 class DocumentAdmin(admin.ModelAdmin):
     list_display = ('title', 'uploaded_at')

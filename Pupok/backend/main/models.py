@@ -11,6 +11,7 @@ class Profile(models.Model):
     is_manager = models.BooleanField(default=False, verbose_name=_('руководитель'))
     hire_date = models.DateField(blank=True, null=True, verbose_name=_('дата принятия на работу'))
     last_test_date = models.DateField(blank=True, null=True, verbose_name=_('последняя дата прохождения теста'))
+    manager = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('руководитель'))
 
     class Meta:
         verbose_name = _('профиль')

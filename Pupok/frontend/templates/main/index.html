@@ -1,93 +1,74 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		{% load static %}
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Профиль пользователя</title>
-		<link
-			rel="icon"
-			href="{% static 'main/images/Logo.png' %}"
-			type="image/x-icon"
-		/>
-		<link rel="stylesheet" href="{% static 'main/css/index.css' %}" />
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-		/>
-	</head>
-	<body>
-		<div class="header">
-			<h1>Личный кабинет</h1>
-			<div>
-				<a
-					href="http://127.0.0.1:8000/login/account/materials"
-					class="btn-custom"
-					>Материалы</a
-				>
-				<a href="http://127.0.0.1:8000/account/home/" class="btn-custom"
-					>Пройти тест</a
-				>
-				{% if request.user.profile.is_manager %}
-				<a href="{% url 'results_list' %}" class="btn-custom"
-					>Просмотр результатов</a
-				>
-				<!-- Кнопка для перехода к результатам -->
-				{% endif %}
-				<a href="http://127.0.0.1:8000/" class="btn-custom">Выйти</a>
-			</div>
-		</div>
-		<div class="container profile-container">
-			<div class="avatar-container">
-				<img
-					src="{% static 'main/images/avatarka.png' %}"
-					alt="Аватар пользователя"
-				/>
-			</div>
-			<div class="profile-details-container">
-				<div class="profile-detail phone">
-					<strong>Телефон:</strong> {{ user.profile.phone_number }}
-				</div>
-				<div class="profile-detail email">
-					<strong>Почта:</strong> {{ user.email }}
-				</div>
-				<div class="profile-detail username">
-					<strong>Логин:</strong> {{ user.username }}
-				</div>
-				<div class="profile-detail last-name">
-					<strong>Фамилия:</strong> {{ user.last_name }}
-				</div>
-				<div class="profile-detail first-name">
-					<strong>Имя:</strong> {{ user.first_name }}
-				</div>
-				<div class="profile-detail patronymic">
-					<strong>Отчество:</strong> {{ user.profile.patronymic }}
-				</div>
-				<div class="profile-detail position">
-					<strong>Должность:</strong> {{ user.profile.position }}
-				</div>
-				<div class="profile-detail manager">
-					<strong>Руководитель:</strong> {{ user.profile.manager }}
-				</div>
-				<div class="profile-detail hire-date">
-					<strong>Дата принятия на работу:</strong> {{ user.profile.hire_date }}
-				</div>
-				<div class="profile-detail last-test-date">
-					<strong>Дата последнего прохождения в тестах:</strong>{{user.profile.last_test_date }}
-				</div>
-			</div>
-		</div>
-		<div class="footer">
-			<div class="footer-text footer-text-1">Белый Раст</div>
-			<div class="logo-container"></div>
-			<div class="footer-text footer-text-2">
-				Терминально-<br />логический центр
-			</div>
-		</div>
-	</body>
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Профиль пользователя</title>
+    <link rel="icon" href="{% static 'main/images/Logo.png' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+</head>
+<body>
+    <div class="header">
+        <h1>Личный кабинет</h1>
+        <div>
+            <a href="http://127.0.0.1:8000/login/account/materials" class="btn-custom">Материалы</a>
+            <a href="http://127.0.0.1:8000/account/home/" class="btn-custom">Пройти тест</a>
+            {% if request.user.profile.is_manager %}
+            <a href="{% url 'results_list' %}" class="btn-custom">Просмотр результатов</a>
+            <!-- Кнопка для перехода к результатам -->
+            {% endif %}
+            <a href="http://127.0.0.1:8000/" class="btn-custom">Выйти</a>
+        </div>
+    </div>
+    <div class="container profile-container">
+        <div class="avatar-container">
+            <img src="{% static 'main/images/avatarka.png' %}" alt="Аватар пользователя" />
+        </div>
+        <div class="profile-details-container">
+            <div class="profile-detail phone">
+                <strong>Телефон:</strong> {{ user.profile.phone_number }}
+            </div>
+            <div class="profile-detail email">
+                <strong>Почта:</strong> {{ user.email }}
+            </div>
+            <div class="profile-detail username">
+                <strong>Логин:</strong> {{ user.username }}
+            </div>
+            <div class="profile-detail last-name">
+                <strong>Фамилия:</strong> {{ user.last_name }}
+            </div>
+            <div class="profile-detail first-name">
+                <strong>Имя:</strong> {{ user.first_name }}
+            </div>
+            <div class="profile-detail patronymic">
+                <strong>Отчество:</strong> {{ user.profile.patronymic }}
+            </div>
+            <div class="profile-detail position">
+                <strong>Должность:</strong> {{ user.profile.position }}
+            </div>
+            {% if not user.profile.is_manager %}
+            <div class="profile-detail manager">
+                <strong>Руководитель:</strong> {{ user.profile.manager }}
+            </div>
+            {% endif %}
+            <div class="profile-detail hire-date">
+                <strong>Дата принятия на работу:</strong> {{ user.profile.hire_date }}
+            </div>
+            <div class="profile-detail last-test-date">
+                <strong>Дата последнего прохождения тестов:</strong> {{ user.profile.last_test_date }}
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-text footer-text-1">Белый Раст</div>
+        <div class="logo-container"></div>
+        <div class="footer-text footer-text-2">
+            Терминально-<br />логический центр
+        </div>
+    </div>
+</body>
 </html>
