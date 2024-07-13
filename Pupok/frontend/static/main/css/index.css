@@ -1,3 +1,4 @@
+/* Основной контейнер */
 body {
 	background-image: url('../images/bg5.png');
 	background-repeat: no-repeat;
@@ -9,12 +10,13 @@ body {
 	color: #000;
 	font-family: Arial, sans-serif;
 	margin: 0;
-	min-height: 100vh;
+	min-height: 100vh; /* Занимает всю высоту окна просмотра */
 	font-weight: bold;
 	position: relative;
-	zoom: 1;
+	overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
 }
 
+/* Шапка */
 .header {
 	background-color: #cc000a;
 	width: 100%;
@@ -26,6 +28,7 @@ body {
 	color: white;
 }
 
+/* Логотип */
 .logo-container {
 	width: 50px;
 	height: 50px;
@@ -45,6 +48,7 @@ body {
 	text-decoration: none;
 }
 
+/* Контейнер профиля */
 .profile-container {
 	background-image: url('../images/11.png');
 	background-size: cover;
@@ -52,24 +56,26 @@ body {
 	background-position: center;
 	padding: 20px;
 	border-radius: 10px;
-	width: 1200px; /* фиксированный размер */
-	height: 800px; /* фиксированный размер */
-	margin-top: 100px;
-	margin-bottom: 100px;
+	width: 90%; /* адаптивная ширина */
+	max-width: 1200px; /* максимальная ширина */
+	height: auto; /* высота автоматически подстраивается */
+	margin: 50px auto; /* центрирование и отступы */
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 	color: #000;
 	font-family: Arial, sans-serif;
 	text-align: center;
 	overflow: hidden;
 	position: relative;
+	flex-grow: 1; /* Растягивает контейнер, чтобы занять все доступное пространство */
 }
 
+/* Детали профиля */
 .profile-details-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	margin-top: 240px;
+	margin-top: 20px; /* отступ сверху */
 }
 
 .profile-detail {
@@ -78,6 +84,7 @@ body {
 	margin: 5px 0;
 }
 
+/* Аватар */
 .avatar-container {
 	position: absolute;
 	top: 20px;
@@ -97,6 +104,7 @@ body {
 	object-fit: cover;
 }
 
+/* Кнопка */
 .btn-custom {
 	background-color: #cc000a;
 	color: #fff;
@@ -118,6 +126,7 @@ body {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Текстовые поля */
 .last-name,
 .first-name,
 .patronymic {
@@ -168,6 +177,7 @@ body {
 	margin-top: 10px;
 }
 
+/* Подвал */
 .footer {
 	background-color: #cc000a;
 	color: white;
@@ -176,8 +186,6 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	bottom: 0;
-	left: 0;
 	padding: 0 20px;
 }
 
@@ -201,4 +209,29 @@ body {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-image: url('../images/Logo.png');
+}
+
+/* Медиазапросы для изменения масштаба */
+@media (max-width: 1200px) {
+	.profile-container {
+		width: 95%;
+	}
+}
+
+@media (max-width: 1024px) {
+	.profile-container {
+		width: 90%;
+	}
+}
+
+@media (max-width: 768px) {
+	.profile-container {
+		width: 85%;
+	}
+}
+
+@media (max-width: 600px) {
+	.profile-container {
+		width: 80%;
+	}
 }

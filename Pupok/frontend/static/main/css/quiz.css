@@ -1,189 +1,272 @@
 body {
-	background: linear-gradient(to bottom, #c0c0c0, #8b9dc3);
-	color: #343a40;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	min-height: 100vh;
-	margin: 0;
-	position: relative;
-	background-size: 100% auto; /* Пример использования процентного значения */
-	background-repeat: no-repeat;
+    background: linear-gradient(to bottom, #c0c0c0, #8b9dc3);
+    color: #343a40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
 }
 
 .container {
-	margin-top: 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
+
 .btn-primary {
-	background-color: #007bff;
-	border-color: #007bff;
+    background-color: #007bff;
+    border-color: #007bff;
 }
+
 .btn-primary:hover {
-	background-color: #0056b3;
-	border-color: #004085;
+    background-color: #0056b3;
+    border-color: #004085;
 }
+
 .header {
-	background-color: #7c82a2;
-	width: 100%;
-	height: 80px;
-	padding: 10px 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	color: white;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 1000;
-	padding-left: 220px; /* Учитываем ширину боковой панели + отступ */
+    background-color: #7c82a2;
+    width: 100%;
+    height: 80px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding-left: 220px;
 }
+
 .header h1 {
-	margin: 0; /* Убираем отступы вокруг заголовка */
+    margin: 0;
 }
+
 .header .test-label {
-	position: absolute; /* Позиционируем абсолютно внутри .header */
-	top: 50%; /* Размещаем надпись на вертикально посередине */
-	left: 50%; /* Размещаем надпись на горизонтально посередине */
-	transform: translate(-50%, -50%); /* Центрируем по центру .header */
-	font-size: 2em; /* Увеличиваем размер шрифта */
-	font-weight: bold; /* Делаем текст жирным */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    font-weight: bold;
 }
 
 .question-block {
-	background-color: #fff;
-	padding: 20px;
-	margin-bottom: 10px;
-	border-radius: 5px;
-	border: 1px solid #ddd;
-	max-width: 600px;
-	width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    max-width: 600px;
+    width: 100%;
 }
+
 .question-block textarea {
-	resize: none; /* Запрет изменения размера */
+    resize: none;
 }
+
 #timer,
 #countdown {
-	font-size: 1.5em;
-	font-weight: bold;
-	text-align: center;
-	margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
 #timer {
-	color: #007bff;
+    color: #007bff;
 }
+
 #countdown {
-	color: #dc3545;
+    color: #dc3545;
 }
+
 .sidebar {
-	position: fixed;
-	top: 80px;
-	bottom: 80px; /* Устанавливаем отступ снизу, чтобы не перекрывать footer */
-	left: 0;
-	width: 100px;
-	background-color: #7c82a2;
-	padding-top: 20px;
-	border-right: 1px solid #ddd;
-	overflow-y: auto;
-	border-radius: 40px;
-	color: white;
-	border: 1px solid white;
+    position: fixed;
+    top: 80px;
+    bottom: 80px;
+    left: 0;
+    width: 100px;
+    background-color: #7c82a2;
+    padding-top: 20px;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    border-radius: 40px;
+    color: white;
+    border: 1px solid white;
 }
+
 .sidebar a {
-	display: block;
-	padding: 10px;
-	text-align: center;
-	color: white;
-	text-decoration: none;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
 }
+
 .sidebar a:hover {
-	background-color: #ddd;
-	color: #343a40;
+    background-color: #ddd;
+    color: #343a40;
 }
+
 .content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 100px;
-	width: 100%;
-	padding-bottom: 160px; /* Увеличиваем отступ снизу для учета footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    width: 100%;
+    padding-bottom: 160px;
+    padding-left: 120px; /* Добавляем отступ слева */
 }
+
 .block-title {
-	font-size: 1.2em;
-	font-weight: bold;
-	margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
+
 .pagination {
-	display: flex;
-	justify-content: space-between;
-	max-width: 600px;
-	width: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    width: 100%;
 }
+
 .footer {
-	background-color: #7c82a2;
-	color: white;
-	width: 100%;
-	height: 80px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	padding: 0 20px;
+    background-color: #7c82a2;
+    color: white;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0 20px;
 }
 
 .footer .footer-text {
-	font-size: 16px;
-	margin: 0 10px;
+    font-size: 16px;
+    margin: 0 10px;
 }
 
 .footer .footer-text-1 {
-	font-size: 34px;
+    font-size: 34px;
 }
 
 .footer .footer-text-2 {
-	font-size: 12px;
-	text-align: left;
+    font-size: 12px;
+    text-align: left;
 }
+
 .footer .logo-container {
-	width: 50px;
-	height: 50px;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-image: url('../images/Logo.png');
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../images/Logo.png');
 }
+
 .btn-custom {
-	background-color: #cc000a;
-	color: #fff;
-	text-decoration: none;
-	border: none;
-	border-radius: 5px;
-	padding: 12px 24px;
-	margin: 20px auto 0; /* Отступ сверху и авто по бокам */
-	transition: background-color 0.3s ease, transform 0.2s ease,
-		box-shadow 0.2s ease;
-	display: inline-block;
-	font-size: 16px;
-	font-weight: bold;
+    background-color: #cc000a;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    margin: 20px auto 0;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
 }
+
 .btn-custom:hover {
-	background-color: black;
-	color: #fff;
-	text-decoration: none;
-	transform: scale(1.05);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: black;
+    color: #fff;
+    text-decoration: none;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 .logo-container {
-	width: 50px;
-	height: 50px;
-	background-image: url('../images/Logo.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	margin: 0 20px;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/Logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding-left: 120px;
+    }
+
+    .header .test-label {
+        font-size: 1.5em;
+    }
+
+    .sidebar {
+        width: 80px;
+    }
+
+    .content {
+        margin-top: 80px;
+        padding-left: 100px; /* Изменяем отступ для меньших экранов */
+    }
+
+    .question-block {
+        max-width: 90%;
+    }
+
+    .footer .footer-text-1 {
+        font-size: 24px;
+    }
+
+    .footer .footer-text-2 {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding-left: 100px;
+    }
+
+    .header .test-label {
+        font-size: 1.2em;
+    }
+
+    .sidebar {
+        width: 60px;
+    }
+
+    .content {
+        margin-top: 60px;
+        padding-left: 80px; /* Изменяем отступ для еще меньших экранов */
+    }
+
+    .question-block {
+        max-width: 95%;
+    }
+
+    .footer .footer-text-1 {
+        font-size: 20px;
+    }
+
+    .footer .footer-text-2 {
+        font-size: 8px;
+    }
 }
