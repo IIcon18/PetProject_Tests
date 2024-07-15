@@ -1,11 +1,11 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,windows,microsoftoffice,django,python
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,windows,microsoftoffice,django,python
+# Created by https://www.toptal.com/developers/gitignore/api/microsoftoffice,visualstudiocode,django,python
+# Edit at https://www.toptal.com/developers/gitignore?templates=microsoftoffice,visualstudiocode,django,python
 
 ### Django ###
 *.log
 *.pot
 *.pyc
-**/__pycache__/
+__pycache__/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -303,30 +303,4 @@ pyrightconfig.json
 .history
 .ionide
 
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
-
-# Dump file
-*.stackdump
-
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,windows,microsoftoffice,django,python
+# End of https://www.toptal.com/developers/gitignore/api/microsoftoffice,visualstudiocode,django,python

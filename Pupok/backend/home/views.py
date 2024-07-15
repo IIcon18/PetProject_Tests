@@ -4,6 +4,7 @@ from django.utils import timezone
 from .models import *
 import random
 from datetime import datetime, timedelta
+import pytz
 
 def home(request):
     return render(request, 'test/home.html')
@@ -86,16 +87,18 @@ def get_quiz(request):
 
 def result(request):
     if request.method == 'POST':
+        moscow_tz = pytz.timezone('Europe/Moscow')
+
         questions = list(Question.objects.all())
         extended_questions = list(ExtendedQuestion.objects.all())
 
         start_time_str = request.session.get('start_time')
         if start_time_str:
-            start_time = datetime.fromisoformat(start_time_str)
+            start_time = datetime.fromisoformat(start_time_str).astimezone(moscow_tz)
         else:
-            start_time = timezone.now()
+            start_time = timezone.now().astimezone(moscow_tz)
 
-        end_time = timezone.now()
+        end_time = timezone.now().astimezone(moscow_tz)
         test_duration = end_time - start_time
         test_duration_str = str(timedelta(seconds=int(test_duration.total_seconds())))
 
@@ -169,9 +172,15 @@ def result(request):
                 'correct_answers': correct_answers_count,
                 'total_questions': num_questions,
                 'test_duration': test_duration,
-                'created_at': end_time  # Обновление времени прохождения теста
+                'created_at': end_time,  # Обновление времени прохождения теста
+                'total_marks': total_marks  # Сохранение общего количества баллов
             }
         )
+
+        # Сохранение даты последнего прохождения теста в профиль пользователя
+        profile = request.user.profile
+        profile.last_test_date = end_time.date()  # Сохраняем только дату
+        profile.save()
 
         return render(request, 'test/result.html', {
             'total_marks': total_marks,
@@ -183,6 +192,7 @@ def result(request):
 
     else:
         return HttpResponseRedirect('/')
+
 
 def results_list(request):
     results = TestResult.objects.all().order_by('-created_at')

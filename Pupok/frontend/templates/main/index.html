@@ -59,7 +59,7 @@
                 <strong>Дата принятия на работу:</strong> {{ user.profile.hire_date }}
             </div>
             <div class="profile-detail last-test-date">
-                <strong>Дата последнего прохождения тестов:</strong> {{ user.profile.last_test_date }}
+                <strong>Дата последнего прохождения тестов:</strong> {{ user.profile.last_test_date|date:"d M Y" }}
             </div>
         </div>
     </div>
